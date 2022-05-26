@@ -105,11 +105,14 @@ app.get('/location/:id', (req, res) => {
         user_id: 1,
         place_id: 1,
         type_id: 1,
-        rating_wifi: 3,
-        rating_comf: 2,
-        rating_pers: 2,
-        rating_noise: 1,
-        rating_atmo: 4,
+        rates: {
+            rating_wifi: 3,
+            rating_comf: 2,
+            rating_pers: 2,
+            rating_noise: 1,
+            rating_atmo: 4,
+            overall: 4.3
+        }
     }
 })
 
