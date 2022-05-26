@@ -3,23 +3,39 @@ const path = require('path');
 const session = require('express-session');
 const { url } = require('inspector');
 const FileStore = require('session-file-store')(session);
+const authRouter = require('./src/routes/auth.router');
+const usersRouter = require('./src/routes/users.router');
 
 
 const app = express();
 const PORT = 3000;
+const {COOKIE_SECRET, COOKIE_NAME } = process.env;
+
+app.set('cookieName', COOKIE_NAME);
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use(
-    session({
-        secret: 'test',
-        resave: false,
-        store: new FileStore(),
-        saveUninitialized: false,
-        name: 'sid',
-        cookie: {httpOnly: true},
-    })
+  session({
+    name: app.get('cookieName'),
+    secret: COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new FileStore(),
+    cookie: {
+      secure: false,
+      httpOnly: true,
+      maxAge: 1e3 * 86400, 
+    },
+  }),
 );
 
 app.use((req, res, next) => {
@@ -111,7 +127,8 @@ app.get('/location/:id', (req, res) => {
   }
 })
 
-
+app.use('/auth', authRouter);
+app.use('/users', usersRouter);
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);
