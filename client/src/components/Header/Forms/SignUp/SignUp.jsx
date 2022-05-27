@@ -56,7 +56,7 @@ function SignUp() {
          onChange={changeHandler}
          value={userSignUp.nickname}
          type="text"
-         name="nickName"
+         name="nickname"
          placeholder="nickName"
        />
       </div>

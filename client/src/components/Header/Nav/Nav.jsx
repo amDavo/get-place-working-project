@@ -1,11 +1,16 @@
 import React, { useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Nav() {
   const user = useSelector((state) => state.user)
 
   return (
     <nav>
+      <div>
+      <Link className="navbar-brand" to="/">
+            Get place
+          </Link>
+      </div>
     <div>
       <ul>
       {user ? (
