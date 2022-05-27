@@ -11,7 +11,7 @@ function Nav() {
       {user ? (
         <>
         <li> <NavLink to="/auth/signout">
-          Войти
+          Выйти
           </NavLink></li>
         <li> <NavLink to="/addPlace">
         Добавить место
