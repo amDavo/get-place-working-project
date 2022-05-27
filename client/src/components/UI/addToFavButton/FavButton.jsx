@@ -1,10 +1,13 @@
 import React from 'react';
 
-const FavButton = () => {
-    
+const FavButton = ({cardData}) => {
+
+    const addToFavHandler = () => {
+
+    }
 
     return (
-        <button>add to favorite</button>
+        <button onClick={addToFavHandler}>add to favorite</button>
     );
 };
 
