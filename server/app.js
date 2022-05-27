@@ -10,7 +10,7 @@ const usersRouter = require('./src/routes/users.router');
 
 
 const app = express();
-const PORT = 3001;
+const PORT = 8080;
 const {COOKIE_SECRET, COOKIE_NAME} = process.env;
 
 app.set('cookieName', COOKIE_NAME);
@@ -47,28 +47,27 @@ app.use((req, res, next) => {
 });
 
 
-      app.get('/places/:params', (req, res) => {
+app.get('/places/:params', (req, res) => {
 
-          const params = req.params
+    const params = req.params
 
 
-
-          const places = [{
-              place_name: 'test 1',
-              location: 'test 1',
-              img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
-              category: 'coffeeshop',
-              free: true,
-              body: 'test1',
-              working_hours: '9-20',
-              user_id: 1,
-              place_id: 1,
-              type_id: 1,
-              rating_wifi: 5,
-              rating_comf: 4,
-              rating_pers: 4,
-              rating_noise: 5,
-              rating_atmo: 5,
+    const places = [{
+        place_name: 'test 1',
+        location: 'test 1',
+        img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
+        category: 'coffeeshop',
+        free: true,
+        body: 'test1',
+        working_hours: '9-20',
+        user_id: 1,
+        place_id: 1,
+        type_id: 1,
+        rating_wifi: 5,
+        rating_comf: 4,
+        rating_pers: 4,
+        rating_noise: 5,
+        rating_atmo: 5,
 
     },
         {
@@ -107,17 +106,17 @@ app.use((req, res, next) => {
             rating_atmo: 4,
 
         }];
-          console.log (params, '----------------')
+    console.log(params, '----------------')
 
-          if(params.params === 'wifi') {
-              console.log (req.params, '========')
+    if (params.params === 'wifi') {
+        console.log(req.params, '========')
 
-              console.log(111111)
-              res.json([places[0]])
-          }     else {
-              console.log(2222)
-              res.json(places)
-          }
+        console.log(111111)
+        res.json([places[0]])
+    } else {
+        console.log(2222)
+        res.json(places)
+    }
 });
 
 app.post('/newplace', (req, res) => {
