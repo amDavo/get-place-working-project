@@ -1,28 +1,28 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
-import {setAllPlaces} from "../../redux/actions/allPlacesAction/placesAction";
+import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 
 const Filters = () => {
     const dispatch = useDispatch()
 
     const wifiFilter = () => {
-        dispatch(setAllPlaces('wifi'))
+        dispatch(getAllPlaces('wifi'))
     }
 
     const comfortFilter = () => {
-        dispatch(setAllPlaces('comfort'))
+        dispatch(getAllPlaces('comfort'))
     }
 
     const persFilter = () => {
-        dispatch(setAllPlaces('pers'))
+        dispatch(getAllPlaces('pers'))
     }
 
     const noiseFilter = () => {
-        dispatch(setAllPlaces('noise'))
+        dispatch(getAllPlaces('noise'))
     }
 
     const atmoFilter = () => {
-        dispatch(setAllPlaces('atmo'))
+        dispatch(getAllPlaces('atmo'))
     }
 
 

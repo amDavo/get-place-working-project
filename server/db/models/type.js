@@ -15,11 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Type.init({
-    rating_wifi: DataTypes.INTEGER,
-    rating_comf: DataTypes.INTEGER,
-    rating_pers: DataTypes.INTEGER,
-    rating_noise: DataTypes.INTEGER,
-    rating_atmo: DataTypes.INTEGER
+    type_name: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Type',

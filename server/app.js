@@ -44,23 +44,29 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/places', (req, res) => {
-    const places = [{
-        place_name: 'test 1',
-        location: 'test 1',
-        img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
-        category: 'coffeeshop',
-        free: true,
-        body: 'test1',
-        working_hours: '9-20',
-        user_id: 1,
-        place_id: 1,
-        type_id: 1,
-        rating_wifi: 5,
-        rating_comf: 4,
-        rating_pers: 4,
-        rating_noise: 5,
-        rating_atmo: 5,
+
+      app.get('/places/:params', (req, res) => {
+
+          const params = req.params
+
+
+
+          const places = [{
+              place_name: 'test 1',
+              location: 'test 1',
+              img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
+              category: 'coffeeshop',
+              free: true,
+              body: 'test1',
+              working_hours: '9-20',
+              user_id: 1,
+              place_id: 1,
+              type_id: 1,
+              rating_wifi: 5,
+              rating_comf: 4,
+              rating_pers: 4,
+              rating_noise: 5,
+              rating_atmo: 5,
 
     },
         {
@@ -99,7 +105,17 @@ app.get('/places', (req, res) => {
             rating_atmo: 4,
 
         }];
-    res.json(places)
+          console.log (params, '----------------')
+
+          if(params.params === 'wifi') {
+              console.log (req.params, '========')
+
+              console.log(111111)
+              res.json([places[0]])
+          }     else {
+              console.log(2222)
+              res.json(places)
+          }
 });
 
 app.post('/newplace', (req, res) => {

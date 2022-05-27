@@ -8,7 +8,7 @@ const ListOfCards = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getAllPlaces())
+        dispatch(getAllPlaces("all"))
     }, [])
 
 

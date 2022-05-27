@@ -8,21 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      rating_wifi: {
-        type: Sequelize.INTEGER
+      type_name: {
+        type: Sequelize.STRING
       },
-      rating_comf: {
-        type: Sequelize.INTEGER
-      },
-      rating_pers: {
-        type: Sequelize.INTEGER
-      },
-      rating_noise: {
-        type: Sequelize.INTEGER
-      },
-      rating_atmo: {
-        type: Sequelize.INTEGER
-      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
