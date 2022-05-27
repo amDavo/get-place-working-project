@@ -1,4 +1,5 @@
 'use strict';
+const sha256 = require('sha256');
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -15,7 +16,7 @@ module.exports = {
       name: 'John Doe',
       nickname: '123',
       email: '123@mail.ru',
-      password: '123',
+      password: sha256('123'),
       isAdmin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -24,7 +25,7 @@ module.exports = {
         name: 'Johnt Doe',
         nickname: '12344',
         email: '124443@mail.ru',
-        password: '12344',
+        password: sha256('12344'),
         isAdmin: true,
         createdAt: new Date(),
         updatedAt: new Date(),
