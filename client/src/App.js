@@ -9,7 +9,7 @@ import SignIn from './components/Header/Forms/SignIn/SignIn'
 import {checkAuth} from './redux/actions/userAction';
 import Main from './components/Header/Main/Main'
 import Nav from "./components/Header/Nav/Nav";
-import ListOfCards from "./components/listOfCards/ListOfCards";
+import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
 
 
 function App() {
@@ -23,12 +23,12 @@ function App() {
         <>
             <div className="container py-5">
                 <Nav/>
-                <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
                     <Route path="/auth/signup" element={<SignUp/>}/>
                     <Route path="/auth/signin" element={<SignIn/>}/>
+                    <Route path="/newPlace" element={<AddNewPlace/>}/>
                 </Routes>
             </div>
         </>

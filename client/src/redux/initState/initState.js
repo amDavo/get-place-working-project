@@ -3,4 +3,5 @@ export const initState = () => ({
     allPlaces: [],
     user: null,
     loader: false,
+    newPlace: [],
 })
