@@ -7,7 +7,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
-
+const favoritRouter = require('./src/routes/favorite.router');
 
 const app = express();
 const PORT = 8080;
@@ -146,6 +146,7 @@ app.get('/location/:id', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
+app.use('/favorit', favoritRouter);
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);
