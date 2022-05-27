@@ -8,6 +8,9 @@ import Nav from './components/Header/Nav/Nav'
 import SignUp from './components/Header/Forms/SignUp/SignUp'
 import SignIn from './components/Header/Forms/SignIn/SignIn'
 import {checkAuth} from './redux/actions/userAction';
+import ListOfCards from "./components/listOfCards/ListOfCards";
+import Filters from "./components/filters/Filters";
+import Main from "./components/Header/Main/Main";
 
 
 function App() {
@@ -21,7 +24,6 @@ function App() {
         <>
             <Nav/>
             <div className="container py-5">
-                <ListOfCards/>
                 <Filters/>
                 <ListOfCards/>
                 <Routes>
