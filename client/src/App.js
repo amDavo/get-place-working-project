@@ -32,7 +32,7 @@ function App() {
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
                     <Route path="/auth/signup" element={<SignUp/>}/>
                     <Route path="/auth/signin" element={<SignIn/>}/>
-                    <Route path="/newPlace" element={<AddNewPlace/>}/>
+                    <Route path="/newPlace/add" element={<AddNewPlace/>}/>
                 </Routes>
             </div>
         </>

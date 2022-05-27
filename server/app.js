@@ -7,6 +7,7 @@ const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
 const favoritRouter = require('./src/routes/favorite.router');
 const getCardsRouter = require('./src/routes/getCardsRouter');
+const newPlaceRouter = require('./src/routes/newPlace.router')
 
 const app = express();
 const PORT = 8080;
@@ -45,10 +46,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/newplace', (req, res) => {
-    res.end();
-
-})
 
 app.get('/location/:id', (req, res) => {
     const place = {
@@ -74,6 +71,7 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/places', getCardsRouter)
 app.use('/favorit', favoritRouter);
+app.use('/newPlace', newPlaceRouter)
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);

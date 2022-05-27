@@ -54,7 +54,7 @@ const AddNewPlace = () => {
                     value={inputs.free}
                     onChange={changeHandler}
                 />
-                
+
                 <input
                     name="hoursFrom"
                     type="time"
