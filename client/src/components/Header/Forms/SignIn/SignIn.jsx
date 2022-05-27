@@ -11,7 +11,7 @@ function SignIn() {
   });
 
   const navigate = useNavigate();
-  const from = { pathname: '/'};
+  const from = { pathname: '/main'};
 
   const changeHandler = (e) => {
     setUserSignIn((prev) => ({...prev, [e.target.name]: e.target.value}))

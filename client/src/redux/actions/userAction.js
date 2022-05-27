@@ -1,7 +1,6 @@
-import {  SET_USER } from '../types/userTypes';
+import { DELETE_USER, SET_USER } from '../types/userTypes';
 import * as endPoints from '../../config/endPoints';
 import { disableLoader, enableLoader } from './loaderAction';
-
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -60,10 +59,17 @@ export const signIn = (payload, navigate, from) => async (dispatch) => {
   dispatch(disableLoader());
 };
 
+export const deleteUser = () => ({
+  type: DELETE_USER,
+});
+
 export const signOut = () => async (dispatch) => {
   const response = await fetch(endPoints.signOut(), {
     credentials: 'include',
   });
+  if (response.status === 200) {
+    dispatch(deleteUser());
+  }
 };
 
 export const checkAuth = () => async (dispatch) => {
@@ -75,4 +81,5 @@ export const checkAuth = () => async (dispatch) => {
     dispatch(setUser(user));
   }
 };
+
 
