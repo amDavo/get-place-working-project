@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(Place, { foreignKey: 'place_id' });
     }
 
-    static associate({ Type }) {
+    static associate({Type}) {
       // define association here
-      this.belongsTo(Type, { foreignKey: 'type_id' });
+      this.belongsTo(Type , { foreignKey: 'type_id' });
     }
   }
   Rate.init({

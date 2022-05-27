@@ -8,6 +8,8 @@ import Nav from './components/Header/Nav/Nav'
 import SignUp from './components/Header/Forms/SignUp/SignUp'
 import SignIn from './components/Header/Forms/SignIn/SignIn'
 import {checkAuth} from './redux/actions/userAction';
+import Filters from "./components/filters/Filters";
+import ListOfCards from "./components/listOfCards/ListOfCards";
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <>
             <Nav/>
             <div className="container py-5">
+                <Filters/>
+                <ListOfCards/>
                 <Routes>
                     {/*<Route path='/' element={<Nav/>}/>*/}
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
