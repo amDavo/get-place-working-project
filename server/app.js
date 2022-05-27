@@ -1,15 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
 const session = require('express-session');
-const {url} = require('inspector');
 const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
 const favoritRouter = require('./src/routes/favorite.router');
 const getCardsRouter = require('./src/routes/getCardsRouter');
-const { User, Place, Type, Rate, Comments, Favorites} = require('./db/models')
 
 const app = express();
 const PORT = 8080;

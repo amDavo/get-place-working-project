@@ -7,6 +7,8 @@ const ListOfCards = () => {
     const list = useSelector(state => state.list)
     const dispatch = useDispatch()
 
+    console.log(list, 'qqqq')
+
     useEffect(() => {
         dispatch(getAllPlaces("all"))
     }, [])
