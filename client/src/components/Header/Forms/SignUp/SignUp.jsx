@@ -36,7 +36,7 @@ function SignUp() {
       <div>
         <input
          onChange={changeHandler}
-         value={userSignUp.тфьу}
+         value={userSignUp.name}
          type="text"
          name="name"
          placeholder="Имя"
@@ -49,6 +49,15 @@ function SignUp() {
          type="email"
          name="email"
          placeholder="Email"
+       />
+      </div>
+      <div>
+        <input
+         onChange={changeHandler}
+         value={userSignUp.nickname}
+         type="text"
+         name="nickName"
+         placeholder="nickName"
        />
       </div>
       <div>

@@ -5,8 +5,7 @@ const checkAuthor = require('../middlewares/checkAuthor');
 
 const usersRouter = Router();
 
-usersRouter.get('/', checkAuth, usersController.getAllUsers);
 usersRouter.route('/:id')
-  .get(checkAuth, usersController.getUser);
+.get(checkAuth, usersController.getUser);
 
 module.exports = usersRouter;
