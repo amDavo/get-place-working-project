@@ -8,7 +8,7 @@ const usersRouter = require('./src/routes/users.router');
 
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = 8080;
 const {COOKIE_SECRET, COOKIE_NAME} = process.env;
 
 app.set('cookieName', COOKIE_NAME);
@@ -44,7 +44,12 @@ app.use((req, res, next) => {
     next();
 });
 
+
 app.get('/places/:params', (req, res) => {
+
+    const params = req.params
+
+
     const places = [{
         place_name: 'test 1',
         location: 'test 1',
@@ -99,7 +104,17 @@ app.get('/places/:params', (req, res) => {
             rating_atmo: 4,
 
         }];
-    res.json(places)
+    console.log(params, '----------------')
+
+    if (params.params === 'wifi') {
+        console.log(req.params, '========')
+
+        console.log(111111)
+        res.json([places[0]])
+    } else {
+        console.log(2222)
+        res.json(places)
+    }
 });
 
 app.post('/newplace', (req, res) => {
