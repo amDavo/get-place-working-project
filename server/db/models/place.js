@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(Favorites, { foreignKey: 'place_id' });
     }
+
+    static associate({ Rate }) {
+      // define association here
+      this.hasMany(Rate, { foreignKey: 'place_id' });
+    }
   }
   Place.init({
     place_name: DataTypes.STRING,
