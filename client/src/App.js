@@ -11,6 +11,7 @@ import {checkAuth} from './redux/actions/userAction';
 import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
 import Main from "./components/Header/Main/Main";
+import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
 
 
 function App() {
