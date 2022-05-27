@@ -74,7 +74,7 @@ app.get('/location/:id', (req, res) => {
 
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/main', getCardsRouter)
+app.use('/places', getCardsRouter)
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);

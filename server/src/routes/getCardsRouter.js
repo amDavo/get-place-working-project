@@ -1,7 +1,7 @@
 const {Place, Rate, Type} = require("../../db/models");
 const router = require('express').Router()
 
-app.get('/places/:params', async (req, res) => {
+router.get('/:params', async (req, res) => {
 
     const params = req.params
 
