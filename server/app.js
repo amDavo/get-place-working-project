@@ -1,8 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
 const session = require('express-session');
-const {url} = require('inspector');
 const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
@@ -10,7 +8,7 @@ const usersRouter = require('./src/routes/users.router');
 
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const {COOKIE_SECRET, COOKIE_NAME} = process.env;
 
 app.set('cookieName', COOKIE_NAME);
@@ -46,7 +44,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/places', (req, res) => {
+app.get('/places/:params', (req, res) => {
     const places = [{
         place_name: 'test 1',
         location: 'test 1',
