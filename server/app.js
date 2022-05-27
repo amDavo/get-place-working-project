@@ -7,6 +7,7 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
+const favoritRouter = require('./src/routes/favorite.router');
 const getCardsRouter = require('./src/routes/getCardsRouter');
 const { User, Place, Type, Rate, Comments, Favorites} = require('./db/models')
 
@@ -75,6 +76,7 @@ app.get('/location/:id', (req, res) => {
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/places', getCardsRouter)
+app.use('/favorit', favoritRouter);
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);
