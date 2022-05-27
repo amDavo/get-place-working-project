@@ -10,7 +10,7 @@ const ListOfCards = () => {
     console.log(list, 'qqqq')
 
     useEffect(() => {
-        dispatch(getAllPlaces())
+        dispatch(getAllPlaces("all"))
     }, [])
 
 
