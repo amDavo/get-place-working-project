@@ -22,6 +22,7 @@ function App() {
         <Nav />
         <div className="container py-5">
             <Routes>
+                <Route path='/' element={<Nav/>}/>
                 <Route path="/auth/signout" element={<PrivateRoute><SignOut /></PrivateRoute>} />
                 <Route path="/auth/signup" element={<SignUp />} />
                 <Route path="/auth/signin" element={<SignIn />} />
