@@ -106,15 +106,15 @@ app.get('/places/:params', (req, res) => {
             rating_atmo: 4,
 
         }];
-    console.log(params, '----------------')
+    // console.log(params, '----------------')
 
     if (params.params === 'wifi') {
         console.log(req.params, '========')
 
-        console.log(111111)
+        // console.log(111111)
         res.json([places[0]])
     } else {
-        console.log(2222)
+        // console.log(2222)
         res.json(places)
     }
 });
