@@ -1,0 +1,11 @@
+.inputBtn {
+    position: absolute;
+    z-index: 5;
+    top: 50px;
+    font-size: small;
+    width: 150px;
+}
+
+span {
+    margin-right: 10px;
+}
