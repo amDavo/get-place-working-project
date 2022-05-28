@@ -6,8 +6,8 @@ router.get('/:params', async (req, res) => {
     const params = req.params
 
 
-
     const places = [{
+        id: 1,
         place_name: 'test 1',
         location: 'test 1',
         img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
@@ -61,21 +61,21 @@ router.get('/:params', async (req, res) => {
             rating_atmo: 4,
 
         }];
-    console.log (params, '----------------')
+    console.log(params, '----------------')
 
-    if(params.params === 'wifi') {
-        console.log (req.params, '========')
+    if (params.params === 'wifi') {
+        console.log(req.params, '========')
         const place = await Place.findAll({
             include: [{
                 model: Rate,
-                include: [ Type ]
+                include: [Type]
             }
             ]
         })
         console.log(place)
-        place.map(el => console.log(el) )
+        place.map(el => console.log(el))
         res.json(place)
-    }     else {
+    } else {
         console.log(2222)
         res.json(places)
     }
