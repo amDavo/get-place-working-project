@@ -29,11 +29,15 @@ const signUp = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
+  console.log('AUTH--------------------', req.body);
   const { password, email } = req.body;
 
   if (password && email) {
     try {
+      console.log('preRESPONSE-------------');
       const currentUser = await User.findOne({ where: { email } });
+      console.log('RESPONSE-------------', currentUser);
+
       if (currentUser && currentUser.password === sha256(password)) {
         req.session.user = {
           id: currentUser.id,
