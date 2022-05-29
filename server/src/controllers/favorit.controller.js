@@ -1,5 +1,5 @@
 const { response } = require('express');
-const { Favorites, Place } = require('../../db/models');
+const { Favorites, Place, User } = require('../../db/models');
 
 
 const getAll = async (req, res) => {
@@ -20,10 +20,33 @@ const getAll = async (req, res) => {
     res.sendStatus(500);
   }
 };
-
+// /favorit/:id
 const addFavorit = async (req, res) => {
+  const {id} =req.params
+  console.log({id});
   
   try {
+    const newFavorit = await Favorites.create({
+      user_id:req.session.user.id,
+      place_id:id
+    });
+    res.json(newFavorit);
+
+  } catch (error) {
+    res.sendStatus(500);
+  }
+};
+
+const deleteFavorit = async (req, res) => {
+  const {id} =req.params
+  console.log({id});
+  
+  try {
+    const delFavorit = await Favorites.destroy({ where: { place_id: req.params.id,
+      user_id:req.session.user.id } });
+    
+    
+    res.json(delFavorit);
     
   } catch (error) {
     res.sendStatus(500);
@@ -33,5 +56,6 @@ const addFavorit = async (req, res) => {
 
 module.exports = {
   getAll,
-  addFavorit
+  addFavorit,
+  deleteFavorit
 }
