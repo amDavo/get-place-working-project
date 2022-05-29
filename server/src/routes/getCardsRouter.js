@@ -26,6 +26,7 @@ router.get('/:params', async (req, res) => {
 
     },
         {
+            id: 2,
             place_name: 'test 1',
             location: 'test 1',
             img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',

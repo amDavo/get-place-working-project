@@ -5,7 +5,7 @@ const upload = require("../middlewares/imageUpload");
 const newPlaceRouter = Router()
 
 // '/newPlace'
-newPlaceRouter.post('/', upload.single('image'), newPlaceController)
+newPlaceRouter.post('/', upload.single('images'), newPlaceController)
 
 
-module.exports = newPlaceRouter
+module.exports = newPlaceController

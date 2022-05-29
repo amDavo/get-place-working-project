@@ -1,9 +1,10 @@
+const {Place} = require('../../db/models');
+
 const getPlaceDetails = async (req, res) => {
-
-    const {id} = useParams()
-    console.log(id, 'uuuuuuu')
+    const {id} = req.params
     try {
-
+        const response = await Place.findOne({where: {id}})
+        res.json(response)
     } catch (err) {
         console.log(err)
     }
