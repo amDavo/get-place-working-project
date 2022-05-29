@@ -12,6 +12,7 @@ import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
 import Main from "./components/Header/Main/Main";
 import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
+import Profile from "./components/Profile/Profile";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/auth/signup" element={<SignUp/>}/>
                     <Route path="/auth/signin" element={<SignIn/>}/>
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
                 </Routes>
             </div>
         </>

@@ -8,5 +8,6 @@ authRouter.post('/signup', authController.signUp);
 authRouter.post('/signin', authController.signIn);
 authRouter.get('/signout', authController.signOut);
 authRouter.get('/check', checkAuth, authController.checkAuth);
+authRouter.post('/signChange',checkAuth, authController.signChange)
 
 module.exports = authRouter;

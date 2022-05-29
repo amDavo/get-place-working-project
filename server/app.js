@@ -5,8 +5,9 @@ const cors = require('cors');
 const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
-const favoritRouter = require('./src/routes/favorite.router');
+const favoriteRouter = require('./src/routes/favorite.router');
 const getCardsRouter = require('./src/routes/getCardsRouter');
+const profileRouter = require('./src/routes/profile.router');
 
 const app = express();
 const PORT = 8080;
@@ -31,7 +32,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         store: new FileStore(),
-        cookie: {
+       cookie: {
             secure: false,
             httpOnly: true,
             maxAge: 1e3 * 86400,
@@ -40,7 +41,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-    res.locals.userId = req.session?.userId;
+    res.locals.user= req.session?.user;
     res.locals.name = req.session?.name;
     next();
 });
@@ -52,6 +53,7 @@ app.post('/newplace', (req, res) => {
 
 app.get('/location/:id', (req, res) => {
     const place = {
+        id: 1,
         place_name: 'test 1',
         location: 'test 1',
         img: 'https://media-cdn.tripadvisor.com/media/photo-s/15/27/3b/77/caption.jpg',
@@ -73,7 +75,8 @@ app.get('/location/:id', (req, res) => {
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/places', getCardsRouter)
-app.use('/favorit', favoritRouter);
+app.use('/favorite', favoriteRouter);
+app.use('/profile', profileRouter)
 
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);

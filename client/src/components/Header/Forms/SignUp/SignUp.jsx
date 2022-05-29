@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { signUp } from '../../../../redux/actions/userAction'
+import {useDispatch, useSelector} from 'react-redux'
+import {setIsUniqueNickName, signUp} from '../../../../redux/actions/userAction'
 
 function SignUp() {
   const [userSignUp, setUserSignUp] = useState({
     name: '',
     email: '',
     password: '',
+    nickname:''
   });
+  const isNotUnique = useSelector(state=> state.isUniqueNickName)
 
   const navigate = useNavigate();
 
@@ -20,6 +22,7 @@ function SignUp() {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(setIsUniqueNickName(false))
     let payload = Object.entries(userSignUp).filter((el) => (el[1] ? el[1].trim() : el[1]));
     if (payload.length) {
       payload = Object.fromEntries(payload);
@@ -28,6 +31,7 @@ function SignUp() {
   };
 
   return (
+      <>
     <div>
     <form
     onSubmit={submitHandler}
@@ -57,7 +61,7 @@ function SignUp() {
          value={userSignUp.nickname}
          type="text"
          name="nickname"
-         placeholder="nickName"
+         placeholder="nickname"
        />
       </div>
       <div>
@@ -72,6 +76,12 @@ function SignUp() {
       <button>Зарегистироваться</button>
     </form>
   </div>
+        <div>
+          {isNotUnique && (<span>
+            НИКНЕЙМ НЕ УНИКАЛЕН!!!
+          </span>)}
+        </div>
+      </>
   )
 }
 

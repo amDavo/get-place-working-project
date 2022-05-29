@@ -3,7 +3,10 @@ const { User } = require('../../db/models');
 
 const signUp = async (req, res) => {
   const { name, password, email, nickname } = req.body;
-
+  const user = await User.findOne({where: {nickname} })
+  if(user){
+    return res.status(201).json({isUnique:false, status:201})
+  }
   if (name && password && email,nickname) {
     try {
       const newUser = await User.create({
@@ -68,6 +71,28 @@ const signOut = async (req, res) => {
     return res.sendStatus(200);
   });
 };
+const signChange = async (req,res)=>{
+  const { name, password, email, nickname } = req.body;
+  console.log(req.session.user.id,'1234567')
+
+  if (name && password && email,nickname) {
+    try {
+      await User.update({
+        name,
+        password: sha256(password),
+        email,
+        nickname
+      }, {where:{id:req.session.user.id}});
+
+      return res.json({ id: req.session.user.id, name: name, nickname:nickname });
+    } catch (error) {
+      console.error(error);
+      return res.sendStatus(500);
+    }
+  }
+
+  return res.sendStatus(400);
+};
 
 const checkAuth = async (req, res) => {
   try {
@@ -84,4 +109,5 @@ module.exports = {
   signOut,
   signUp,
   checkAuth,
+  signChange,
 };

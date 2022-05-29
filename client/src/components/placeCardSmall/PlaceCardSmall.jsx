@@ -1,8 +1,9 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
+import FavButton from "../UI/addToFavButton/FavButton";
 
 const PlaceCardSmall = ({cardData}) => {
-
+    console.log(cardData)
     const navigate = useNavigate()
 
     const navHandler = (data) => {
@@ -20,6 +21,7 @@ const PlaceCardSmall = ({cardData}) => {
                 <h3>{cardData.working_hours}</h3>
                 <h4>RATING IN PROGRESS</h4>
                 <button onClick={() => navHandler(`/location/${cardData.id}`)}>see details</button>
+                <FavButton cardData={cardData}/>
             </div>
         </>
     );

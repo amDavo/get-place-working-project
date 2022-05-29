@@ -4,4 +4,7 @@ export const initState = () => ({
     user: null,
     loader: false,
     newPlace: [],
+    isUniqueNickName:false,
+    userFavorites: [],
+    infoFavoriteIsSuccess:''
 })
