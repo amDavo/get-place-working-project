@@ -1,8 +1,16 @@
 import React from 'react';
 import {Rating} from "@mui/material";
 import './module.css'
+import FavButton from "../UI/addToFavButton/FavButton";
+import {useNavigate} from "react-router-dom";
 
 const PlaceCardSmall = ({cardData}) => {
+
+    // const navigate = useNavigate()
+    //
+    // const navHandler = (data) => {
+    //     navigate(data)
+    // }
 
     return (
         <>
@@ -26,6 +34,7 @@ const PlaceCardSmall = ({cardData}) => {
                     </div>
                 </a>
             </div>
+            <FavButton cardData={cardData}/>
         </>
     );
 };

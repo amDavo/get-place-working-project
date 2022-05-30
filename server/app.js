@@ -6,7 +6,7 @@ const FileStore = require('session-file-store')(session);
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
 const favoriteRouter = require('./src/routes/favorite.router');
-const getCardsRouter = require('./src/routes/getCardsRouter');
+const getCardsRouter = require('./src/routes/getCards.router');
 const profileRouter = require('./src/routes/profile.router');
 
 const app = express();

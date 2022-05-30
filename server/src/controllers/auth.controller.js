@@ -20,7 +20,7 @@ const signUp = async (req, res) => {
         name: newUser.name,
         
       };
-
+      console.log(req.session.user.id)
       return res.json({ id: newUser.id, name: newUser.name, nickname:newUser.nickname });
     } catch (error) {
       console.error(error);
