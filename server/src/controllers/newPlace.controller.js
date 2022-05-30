@@ -2,7 +2,6 @@ const {Place} = require('../../db/models');
 
 
 const createNewPlace = async (req, res) => {
-    console.log(req.file?.filename, '<<<<<<<<<<<< controller')
     const {place_name, location, category, free, working_hoursFrom, working_hoursTo} = req.body
     const working_hours = working_hoursFrom + ' - ' + working_hoursTo
     try {
@@ -15,12 +14,11 @@ const createNewPlace = async (req, res) => {
                 working_hours,
             }
         )
-
+        res.json(newCard)
     } catch (error) {
         console.log(error)
         return res.sendStatus(500);
     }
-
 }
 
 module.exports = createNewPlace

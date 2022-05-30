@@ -24,9 +24,16 @@ const AddNewPlace = () => {
         navigate('/main')
     }
 
-
     return (
         <>
+
+            {/*<TextField*/}
+            {/*    id="outlined-name"*/}
+            {/*    label="Name"*/}
+            {/*    value='ss'*/}
+            {/*/>*/}
+
+
             <form onSubmit={submitHandler}>
                 <input
                     name='place_name'

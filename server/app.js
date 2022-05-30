@@ -26,7 +26,7 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/src' + '/public'));
 
 app.use(
     session({
@@ -44,15 +44,11 @@ app.use(
 );
 
 app.use((req, res, next) => {
-    res.locals.user= req.session?.user;
+    res.locals.user = req.session?.user;
     res.locals.name = req.session?.name;
     next();
 });
 
-app.post('/newplace', (req, res) => {
-    res.end();
-
-})
 
 app.get('/location/:id', (req, res) => {
     const place = {
