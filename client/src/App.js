@@ -23,9 +23,11 @@ function App() {
 
     return (
         <>
-            <Nav/>
-            <div className="container py-5">
+            <div className='nav'>
+                <Nav/>
                 <Filters/>
+            </div>
+            <div className="container py-5">
                 <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
