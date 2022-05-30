@@ -6,6 +6,23 @@ import {useJsApiLoader} from "@react-google-maps/api";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
+const center = {lat: 50.064192, lng: -130.605469};
+// Create a bounding box with sides ~10km away from the center point
+const defaultBounds = {
+    // north: center.lat + 0.1,
+    // south: center.lat - 0.1,
+    // east: center.lng + 0.1,
+    // west: center.lng - 0.1,
+    sw: {
+        lat: 55.28559774819662,
+        lng: 38.62394934082025
+    },
+    ne: {
+        lat: 56.1904,
+        lng: 36.4376
+    },
+};
+
 export const Autocomplete = () => {
     const {isLoaded} = useJsApiLoader({
         id: 'google-map-script',
@@ -24,9 +41,11 @@ export const Autocomplete = () => {
     } = usePlacesAutocomplete({
         requestOptions: {
             /* Define search scope here */
-            country: "ru",
+            location: {lat: () => 55.7522, lng: () => 37.6156},
+            radius: 200 * 1000,
+            bounds: defaultBounds,
         },
-        debounce: 300,
+        debounce: 200,
     });
     const ref = useOnclickOutside(() => {
         // When user clicks outside of the component, we can dismiss
@@ -48,7 +67,10 @@ export const Autocomplete = () => {
                 clearSuggestions();
 
                 // Get latitude and longitude via utility functions
-                getGeocode({address: description}).then((results) => {
+                getGeocode({
+                    address: description,
+                    bounds: defaultBounds,
+                }).then((results) => {
                     try {
                         const {lat, lng} = getLatLng(results[0]);
                         setAddress(description)
@@ -69,7 +91,13 @@ export const Autocomplete = () => {
             } = suggestion;
 
             return (
-                <p key={place_id} onClick={handleSelect(suggestion)}>
+                <p key={place_id}
+                   onClick={handleSelect(suggestion)}
+                   onMouseOver={(e) =>
+                       e.currentTarget.style.background = 'pink'}
+                   onMouseOut={(e) =>
+                       e.currentTarget.style.background = 'white'}
+                >
                     <strong>{main_text}</strong> <small>{secondary_text}</small>
                 </p>
             );

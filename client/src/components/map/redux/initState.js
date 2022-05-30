@@ -1,4 +1,3 @@
 export const initState = () => ({
-    user: {},
-    allPlaces: []
+    address: {},
 })

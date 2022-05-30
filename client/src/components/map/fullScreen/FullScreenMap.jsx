@@ -8,7 +8,7 @@ const FullScreenMap = () => {
         lng: 37.6156
     };
     return (
-        <Map center={center} container={classes.container}/>
+        <Map center={center} container={classes.container} fullScreen={true}/>
     );
 };
 
