@@ -14,6 +14,6 @@ export default combineReducers({
     loader: loaderReducer,
     isUniqueNickName: nickNameReducer,
     userFavorites: favoriteReducer,
-    placeDetails: placeDetailsReducer
+    placeDetails: placeDetailsReducer,
 })
 

@@ -1,0 +1,12 @@
+
+.formDiv {
+    display: flex;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.formData {
+    margin-top: 30px;
+    width: 70%;
+}

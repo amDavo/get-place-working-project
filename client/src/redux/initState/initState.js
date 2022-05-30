@@ -5,7 +5,7 @@ export const initState = () => ({
     loader: false,
     newPlace: [],
     placeDetails: [],
-    isUniqueNickName:false,
+    isUniqueNickName: false,
     userFavorites: [],
-    infoFavoriteIsSuccess:''
+    infoFavoriteIsSuccess: '',
 })
