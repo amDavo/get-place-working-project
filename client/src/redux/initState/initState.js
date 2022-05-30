@@ -1,4 +1,10 @@
 export const initState = () => ({
-    user: {},
-    allPlaces: []
+    userData: {},
+    allPlaces: [],
+    user: null,
+    loader: false,
+    newPlace: [],
+    isUniqueNickName:false,
+    userFavorites: [],
+    infoFavoriteIsSuccess:''
 })
