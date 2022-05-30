@@ -12,6 +12,10 @@ import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
 import Main from "./components/Header/Main/Main";
 import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
+import InputPlaceOnMapButton from "./components/map/buttons/inputPlace/InputPlaceOnMapButton";
+import ShowPlacesOnMapButton from "./components/map/buttons/showAllPlaces/ShowPlacesOnMapButton";
+import ShowOneOnMapButton from "./components/map/buttons/showOne/ShowOneOnMapButton";
+import {Autocomplete} from "./components/map/autocomplete/Autocomplete";
 import Profile from "./components/Profile/Profile";
 import PlaceDetails from "./components/placeDetails/PlaceDetails";
 
@@ -25,10 +29,14 @@ function App() {
 
     return (
         <>
-            <Nav/>
-            <div className="container py-5">
+            <div className='nav'>
+                <Nav/>
                 <Filters/>
             </div>
+            <InputPlaceOnMapButton/>
+            <ShowPlacesOnMapButton/>
+            <ShowOneOnMapButton/>
+            <Autocomplete/>
             <div className="container py-5">
                 <ListOfCards/>
                 <Routes>
