@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {addNewPlace} from "../../../redux/thunk/newPlaceThunk/newPlaceThunk";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {Autocomplete} from "../../map/autocomplete/Autocomplete";
 
 const AddNewPlace = () => {
     const [inputs, setInputs] = useState({})
@@ -41,6 +42,7 @@ const AddNewPlace = () => {
                     value={inputs.place_name}
                     onChange={changeHandler}
                 />
+                <Autocomplete/>
                 <input
                     name='location'
                     type="text"

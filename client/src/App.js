@@ -13,6 +13,8 @@ import Profile from "./components/Profile/Profile";
 import PlaceDetails from "./components/placeDetails/PlaceDetails";
 import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
+import {Autocomplete} from "./components/map/autocomplete/Autocomplete";
+import Nav from "./components/Header/Nav/Nav";
 
 
 function App() {
@@ -24,8 +26,10 @@ function App() {
 
     return (
         <>
+            <Nav/>
             <Filters/>
             <ListOfCards/>
+            <Autocomplete/>
             <div className="container py-5">
                 <Routes>
                     <Route path="/" element={<Main/>}/>
