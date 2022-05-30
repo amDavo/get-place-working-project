@@ -1,17 +1,17 @@
 const { Router } = require('express');
-const favoriteController = require('../controllers/favorit.controller');
+const favoritController = require('../controllers/favorit.controller');
 const checkAuth = require('../middlewares/checkAuth');
 // const checkAuthor = require('../middlewares/checkAuthor');
 
-const favoriteRouter = Router();
+const favoritRouter = Router();
 // /favorit
-favoriteRouter.route('/')
-    .get(checkAuth, favoriteController.getAll)
+favoritRouter.route('/')
+.get(checkAuth, favoritController.getAll)
 
-favoriteRouter.route('/:id')
-    .post(checkAuth, favoriteController.addFavorite)
+favoritRouter.route('/:id')
+.post(checkAuth, favoritController.addFavorit)
 
-favoriteRouter.route('/:id')
-    .delete(checkAuth, favoriteController.deleteFavorite)
+favoritRouter.route('/:id')
+.delete(checkAuth, favoritController.deleteFavorit)
 
-module.exports = favoriteRouter;
+module.exports = favoritRouter;

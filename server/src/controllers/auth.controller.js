@@ -38,7 +38,7 @@ const signIn = async (req, res) => {
   if (password && email) {
     try {
       console.log('preRESPONSE-------------');
-      const currentUser = await User.findOne({ where: { email } });
+      const currentUser = await User.findOne({ where: { email }, raw:true });
       console.log('RESPONSE-------------', currentUser);
 
       if (currentUser && currentUser.password === sha256(password)) {
