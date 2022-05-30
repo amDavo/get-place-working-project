@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import './App.css';
 import {useDispatch} from 'react-redux';
 import {Route, Routes} from 'react-router-dom';
-import PrivateRoute from './components/Header/PrivateRouter/PrivateRouter'
+import PrivateRouter from './components/Header/PrivateRouter/PrivateRouter'
 import SignOut from './components/Header/Forms/SignOut/SignOut'
 import Nav from './components/Header/Nav/Nav'
 import SignUp from './components/Header/Forms/SignUp/SignUp'
@@ -32,7 +32,7 @@ function App() {
                 <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
-                    <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
+                    <Route path="/auth/signout" element={<PrivateRouter><SignOut/></PrivateRouter>}/>
                     <Route path="/auth/signup" element={<SignUp/>}/>
                     <Route path="/auth/signin" element={<SignIn/>}/>
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
