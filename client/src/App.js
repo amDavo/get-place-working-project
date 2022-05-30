@@ -13,6 +13,7 @@ import Filters from "./components/filters/Filters";
 import Main from "./components/Header/Main/Main";
 import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
 import Profile from "./components/Profile/Profile";
+import PlaceDetails from "./components/placeDetails/PlaceDetails";
 
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
 
     return (
         <>
-            <div className='nav'>
-                <Nav/>
+            <Nav/>
+            <div className="container py-5">
                 <Filters/>
             </div>
             <div className="container py-5">
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/auth/signin" element={<SignIn/>}/>
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
                     <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/location/:id" element={<PlaceDetails/>}/>
                 </Routes>
             </div>
         </>
