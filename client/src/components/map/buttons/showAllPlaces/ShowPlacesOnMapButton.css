@@ -1,0 +1,11 @@
+.all {
+    position: absolute;
+    z-index: 4;
+    bottom: 100px;
+    font-size: small;
+    width: 175px;
+}
+
+span {
+    margin-right: 10px;
+}
