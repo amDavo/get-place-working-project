@@ -4,7 +4,7 @@ import './module.css'
 import FavButton from "../UI/addToFavButton/FavButton";
 import {useNavigate} from "react-router-dom";
 
-const PlaceCardSmall = ({cardData}) => {
+const PlaceCardSmall = ({cardData, view}) => {
 
     // const navigate = useNavigate()
     //
@@ -34,7 +34,7 @@ const PlaceCardSmall = ({cardData}) => {
                     </div>
                 </a>
             </div>
-            <FavButton cardData={cardData}/>
+            {!view&&( <FavButton cardData={cardData}/>)}
         </>
     );
 };

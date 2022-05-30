@@ -90,8 +90,8 @@ function Profile () {
             </form>
                 )}
             {
-              favorites.length &&  favorites.map(el =>
-                    <PlaceCardSmall cardData={el}/>)
+              favorites.length &&  favorites?.map(el =>
+                    <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
         </>
     )
