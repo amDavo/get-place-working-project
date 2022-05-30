@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 
 const AddNewPlace = () => {
     const [inputs, setInputs] = useState({})
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -12,16 +13,21 @@ const AddNewPlace = () => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
+
+    const addImgHandler = (event) => {
+        setFile(event.target.files[0])
+    }
+
     const submitHandler = (event) => {
         event.preventDefault()
-        dispatch(addNewPlace(inputs))
+        dispatch(addNewPlace({...inputs, file}))
         navigate('/main')
     }
 
 
     return (
         <>
-            <form encType="multipart/form-data" onSubmit={submitHandler}>
+            <form onSubmit={submitHandler}>
                 <input
                     name='place_name'
                     type="text"
@@ -39,7 +45,7 @@ const AddNewPlace = () => {
                     type="file"
                     accept="image/*"
                     value={inputs.img}
-                    onChange={changeHandler}
+                    onChange={addImgHandler}
                 />
                 <select
                     name='category'

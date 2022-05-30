@@ -77,6 +77,7 @@ app.use('/favorit', favoritRouter);
 app.use('/newPlace', newPlaceRouter)
 app.use('/location', placeRouter)
 
+
 app.listen(PORT, () => {
     console.log('Server has been started on PORT', PORT);
 });

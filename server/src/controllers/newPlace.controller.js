@@ -2,10 +2,9 @@ const {Place} = require('../../db/models');
 
 
 const createNewPlace = async (req, res) => {
-
-    const {place_name, location, img, category, free, working_hoursFrom, working_hoursTo} = req.body
+    console.log(req.file?.filename, '<<<<<<<<<<<< controller')
+    const {place_name, location, category, free, working_hoursFrom, working_hoursTo} = req.body
     const working_hours = working_hoursFrom + ' - ' + working_hoursTo
-    console.log(req.file?.filename, 'QQQQ')
     try {
         const newCard = await Place.create({
                 place_name,
