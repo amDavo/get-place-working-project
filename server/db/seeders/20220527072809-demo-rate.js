@@ -15,15 +15,15 @@ module.exports = {
         {
       place_id: 1,
       user_id: 1,
-      type_id: 2,
+      type_id: 1,
       rate_number: 2,
           createdAt: new Date(),
           updatedAt: new Date()
     },
       {
-        place_id: 2,
+        place_id: 1,
         user_id: 1,
-        type_id: 4,
+        type_id: 2,
         rate_number: 5,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -31,8 +31,33 @@ module.exports = {
       {
         place_id: 1,
         user_id: 1,
-        type_id: 1,
+        type_id: 3,
         rate_number: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        place_id: 1,
+        user_id: 1,
+        type_id: 4,
+        rate_number: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
+      {
+        place_id: 1,
+        user_id: 1,
+        type_id: 5,
+        rate_number: 5,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        place_id: 2,
+        user_id: 1,
+        type_id: 1,
+        rate_number: 5,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -40,7 +65,15 @@ module.exports = {
         place_id: 2,
         user_id: 1,
         type_id: 2,
-        rate_number: 4,
+        rate_number: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        place_id: 2,
+        user_id: 1,
+        type_id: 3,
+        rate_number: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -48,10 +81,17 @@ module.exports = {
         place_id: 2,
         user_id: 1,
         type_id: 4,
-        rate_number: 1,
+        rate_number: 4,
         createdAt: new Date(),
         updatedAt: new Date()
-
+      },
+      {
+        place_id: 2,
+        user_id: 1,
+        type_id: 5,
+        rate_number: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
     ], {});
   },

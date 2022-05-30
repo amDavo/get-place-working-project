@@ -1,27 +1,30 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
-import FavButton from "../UI/addToFavButton/FavButton";
+import {Rating} from "@mui/material";
+import './module.css'
 
 const PlaceCardSmall = ({cardData}) => {
-    console.log(cardData)
-    const navigate = useNavigate()
-
-    const navHandler = (data) => {
-        navigate(data)
-    }
 
     return (
         <>
-            <div>
-                <h3>{cardData.place_name}</h3>
-                <h3>{cardData.address}</h3>
-                <h3>{cardData.image}</h3>
-                <h3>{cardData.category}</h3>
-                <h3>{cardData.free}</h3>
-                <h3>{cardData.working_hours}</h3>
-                <h4>RATING IN PROGRESS</h4>
-                <button onClick={() => navHandler(`/location/${cardData.id}`)}>see details</button>
-                <FavButton cardData={cardData}/>
+            <div className='card'>
+                <a style={{textDecoration: "none", color: "black", margin: '10px' }} href={`/location/${cardData.id}`}>
+                    <img alt={'картинка'} src={cardData.img}/>
+                    <div>
+                        <p className= 'place-name'>{cardData.place_name}</p>
+                        <p>{cardData.location}</p>
+                        <p>{cardData.category}</p>
+                        <p>{cardData.free ? 'бесплатное' : 'платное'}</p>
+                        <p>{cardData.working_hours}</p>
+                    </div>
+                    <div className='rating'>
+                        {cardData.Rating
+                            ?
+                            ( <Rating  name="read-only" sx={{color: '#212121'}} value={+cardData.Rating} readOnly />)
+                            :
+                            (<h3> {cardData['Rates.Type.type_name']}   <Rating name="read-only" value={ cardData['Rates.rate_number']} readOnly /></h3>)
+                        }
+                    </div>
+                </a>
             </div>
         </>
     );

@@ -14,27 +14,27 @@ module.exports = {
     await queryInterface.bulkInsert('Types', [
 
       {
-        type_name: 'rating_wifi',
+        type_name: 'WiFI',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        type_name: 'rating_comf',
+        type_name: 'комфорт',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        type_name: 'rating_pers',
+        type_name: 'персонал',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        type_name: 'rating_noise',
+        type_name: 'шум',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        type_name: 'rating_atmo',
+        type_name: 'атмосфера',
         createdAt: new Date(),
         updatedAt: new Date()
       }

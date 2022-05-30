@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
+import './module.css'
 
 const ListOfCards = () => {
     const list = useSelector(state => state.list)
@@ -18,10 +19,12 @@ const ListOfCards = () => {
 
     return (
         <>
-            {
-                list.map(el =>
-                    <PlaceCardSmall cardData={el}/>)
-            }
+            <div className='cards-container'>
+                {
+                    list.map(el =>
+                        <PlaceCardSmall cardData={el} key={el.id}/>)
+                }
+            </div>
         </>
     );
 };

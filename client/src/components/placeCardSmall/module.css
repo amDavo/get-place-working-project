@@ -1,0 +1,22 @@
+.card {
+    size: 5px;
+    margin: 10px;
+    border: none;
+    width: 300px;
+}
+
+img {
+    height: 230px;
+    width: 240px;
+    border-radius: 10px;
+    border: none;
+}
+
+p {
+    width: 230px;
+    margin: 0;
+}
+
+.rating {
+    display: flex;
+}

@@ -32,7 +32,7 @@ app.use(
         resave: false,
         saveUninitialized: false,
         store: new FileStore(),
-       cookie: {
+        cookie: {
             secure: false,
             httpOnly: true,
             maxAge: 1e3 * 86400,
