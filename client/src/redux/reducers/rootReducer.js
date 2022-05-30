@@ -13,7 +13,7 @@ export default combineReducers({
     user: userReducer,
     loader: loaderReducer,
     isUniqueNickName: nickNameReducer,
-    userFavorites: favoriteReducer
+    userFavorites: favoriteReducer,
     placeDetails: placeDetailsReducer
 })
 
