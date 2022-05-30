@@ -1,35 +1,50 @@
 import React, {useState} from 'react';
 import {addNewPlace} from "../../../redux/thunk/newPlaceThunk/newPlaceThunk";
 import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const AddNewPlace = () => {
     const [inputs, setInputs] = useState({})
-    const [types, setTypes] = useState([])
+    const [file, setFile] = useState(null);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const changeHandler = (event) => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
-    const submitHandler = (event) => {
-        event.preventDefault()
-        dispatch(addNewPlace(inputs))
+
+    const addImgHandler = (event) => {
+        setFile(event.target.files[0])
     }
 
+    const submitHandler = (event) => {
+        event.preventDefault()
+        dispatch(addNewPlace({...inputs, file}))
+        navigate('/main')
+    }
 
     return (
         <>
+
+            {/*<TextField*/}
+            {/*    id="outlined-name"*/}
+            {/*    label="Name"*/}
+            {/*    value='ss'*/}
+            {/*/>*/}
+
+
             <form onSubmit={submitHandler}>
                 <input
-                    name='placeName'
+                    name='place_name'
                     type="text"
-                    value={inputs.placeName}
+                    value={inputs.place_name}
                     onChange={changeHandler}
                 />
                 <input
-                    name='address'
+                    name='location'
                     type="text"
-                    value={inputs.address}
+                    value={inputs.location}
                     onChange={changeHandler}
                 />
                 <input
@@ -37,7 +52,7 @@ const AddNewPlace = () => {
                     type="file"
                     accept="image/*"
                     value={inputs.img}
-                    onChange={changeHandler}
+                    onChange={addImgHandler}
                 />
                 <select
                     name='category'
@@ -48,23 +63,23 @@ const AddNewPlace = () => {
                     <option value="Co-working">co-working</option>
                     <option value="Public space">Public space</option>
                 </select>
+                <select
+                    name='free'
+                    onChange={changeHandler}>
+                    <option>is it paid?</option>
+                    <option value='true'>Free</option>
+                    <option value="false">Paid</option>
+                </select>
                 <input
-                    name="free"
-                    type="checkbox"
-                    value={inputs.free}
+                    name="working_hoursFrom"
+                    type="time"
+                    value={inputs.working_hoursFrom}
                     onChange={changeHandler}
                 />
-                
                 <input
-                    name="hoursFrom"
+                    name="working_hoursTo"
                     type="time"
-                    value={inputs.hoursFrom}
-                    onChange={changeHandler}
-                />
-                <input
-                    name="hoursTo"
-                    type="time"
-                    value={inputs.hoursTo}
+                    value={inputs.working_hoursTo}
                     onChange={changeHandler}
                 />
                 <button type='submit'>ADD</button>

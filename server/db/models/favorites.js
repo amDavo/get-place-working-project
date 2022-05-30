@@ -9,15 +9,13 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-     static associate({ User }) {
+     static associate({ User, Place }) {
       // define association here
       this.belongsTo(User, { foreignKey: 'user_id' });
+      this.belongsTo(Place, { foreignKey: 'place_id' });
+
     }
 
-    static associate({ Place }) {
-      // define association here
-      this.belongsTo(Place, { foreignKey: 'place_id' });
-    }
   }
   Favorites.init({
     place_id: DataTypes.INTEGER,
