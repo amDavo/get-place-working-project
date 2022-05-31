@@ -14,10 +14,7 @@ import Profile from "./components/Profile/Profile";
 import PlaceDetails from "./components/placeDetails/PlaceDetails";
 import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
-import InputPlaceOnMapButton from "./components/map/buttons/inputPlace/InputPlaceOnMapButton";
-import ShowPlacesOnMapButton from "./components/map/buttons/showAllPlaces/ShowPlacesOnMapButton";
-import ShowOneOnMapButton from "./components/map/buttons/showOne/ShowOneOnMapButton";
-import {Autocomplete} from "./components/map/autocomplete/Autocomplete";
+
 
 function App() {
     const dispatch = useDispatch();
@@ -36,13 +33,6 @@ function App() {
                 <div className='filters'>
                     <Filters/>
                 </div>
-
-            </div>
-            <InputPlaceOnMapButton/>
-            <ShowPlacesOnMapButton/>
-            <ShowOneOnMapButton/>
-            <Autocomplete/>
-            <div className="container py-5">
                 <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
@@ -52,7 +42,6 @@ function App() {
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/location/:id" element={<PlaceDetails/>}/>
-                    
                 </Routes>
             </div>
         </>
