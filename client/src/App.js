@@ -52,6 +52,7 @@ function App() {
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/location/:id" element={<PlaceDetails/>}/>
+                    
                 </Routes>
             </div>
         </>

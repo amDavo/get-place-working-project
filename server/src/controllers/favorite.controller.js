@@ -3,7 +3,7 @@ const { Favorites } = require('../../db/models');
 
 const getAll = async (req, res) => {
 
-  const user_id = req.session.user
+  const user_id = req.session.user.id
 
   
   try {
