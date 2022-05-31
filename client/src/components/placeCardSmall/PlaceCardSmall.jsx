@@ -3,7 +3,7 @@ import {Rating} from "@mui/material";
 import './module.css'
 import FavButton from "../UI/addToFavButton/FavButton";
 
-const PlaceCardSmall = ({cardData}) => {
+const PlaceCardSmall = ({cardData, view}) => {
 
     // const navigate = useNavigate()
     //
@@ -35,7 +35,7 @@ const PlaceCardSmall = ({cardData}) => {
                     </div>
                 </a>
             </div>
-            <FavButton cardData={cardData}/>
+            {!view&&( <FavButton cardData={cardData}/>)}
         </>
     );
 };

@@ -1,0 +1,25 @@
+
+.container{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: rgb(69, 123, 157);
+
+}
+.logo{
+    flex: 1 150px
+}
+.container_links{
+    display: flex;
+    flex: 3 450px;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+}
+.simpleSelect{
+    display: flex;
+    flex: 400px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}

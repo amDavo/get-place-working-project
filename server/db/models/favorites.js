@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(User, { foreignKey: 'user_id' });
       this.belongsTo(Place, { foreignKey: 'place_id' });
-
     }
 
   }
