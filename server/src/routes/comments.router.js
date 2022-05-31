@@ -5,11 +5,11 @@ const checkAuth = require('../middlewares/checkAuth');
 
 const commentsRouter = Router();
 // /comments
-commentsRouter.route('/')
-.get(checkAuth, commentsController.getAllComments)
+commentsRouter.route('/:id')
+.get(commentsController.getAllComments)
 
-Router.route('/:id')
-.post(checkAuth, commentsController.addComments)
+commentsRouter.route('/:id')
+.post(commentsController.addComments)
 
 commentsRouter.route('/:id')
 .delete(checkAuth, commentsController.deleteComments)
