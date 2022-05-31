@@ -46,7 +46,7 @@ const signIn = async (req, res) => {
           id: currentUser.id,
           name: currentUser.name,
         };
-
+        console.log('-------------------------',req.session);
         return res.json({ id: currentUser.id, name: currentUser.name });
       }
       return res.sendStatus(401);
