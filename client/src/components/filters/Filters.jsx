@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import './module.css'
+import FavButton from "../UI/addToFavButton/FavButton";
 
 const Filters = () => {
     const dispatch = useDispatch()
@@ -30,9 +31,27 @@ const Filters = () => {
         dispatch(getAllPlaces('atmosphere'))
     }
 
+    const cafeFilter = () => {
+        dispatch(getAllPlaces('Кафе'))
+    }
+
+    const libraryFilter = () => {
+        dispatch(getAllPlaces('Библиотека'))
+    }
+
     const freeFilter = () => {
         dispatch(getAllPlaces('free'))
     }
+
+    const publicFilter = () => {
+        dispatch(getAllPlaces('Опен Спейс'))
+    }
+
+    const coFilter = () => {
+        dispatch(getAllPlaces('Коворкинг'))
+    }
+
+
 
     return (
         <div className='logo-container'>
@@ -81,18 +100,51 @@ const Filters = () => {
                 <button className='filter-btn' onClick={noiseFilter}>
                     <span>
                         <img className='filter-logo' src="https://img.icons8.com/windows/96/000000/adware-free.png"/>
-                        <div>шум</div>
+                        <div>Шум</div>
                     </span>
                 </button>
             </div>
             <div className='logo'>
                 <button className='filter-btn' onClick={atmosphereFilter}>
                     <span>
-                        <img className='filter-logo' src="https://img.icons8.com/small/96/000000/accordion.png"/>
-                        <div>атмосфера</div>
+                        <img className='filter-logo' src="https://img.icons8.com/windows/96/000000/ozone.png"/>
+                        <div>Атмосфера</div>
                     </span>
                 </button>
             </div>
+            <div className='logo'>
+                <button className='filter-btn' onClick={cafeFilter}>
+                    <span>
+                        <img className='filter-logo' src="https://img.icons8.com/fluency-systems-regular/96/000000/restaurant-building.png"/>
+                        <div>Кафе</div>
+                    </span>
+                </button>
+            </div>
+            <div className='logo'>
+                <button className='filter-btn' onClick={libraryFilter}>
+                    <span>
+                        <img className='filter-logo' src="https://img.icons8.com/ios/100/000000/storytelling.png"/>
+                        <div>Библиотеки</div>
+                    </span>
+                </button>
+            </div>
+            <div className='logo'>
+                <button className='filter-btn' onClick={coFilter}>
+                    <span>
+                        <img className='filter-logo' src="https://img.icons8.com/windows/96/000000/coworking.png"/>
+                        <div>Коворкинги</div>
+                    </span>
+                </button>
+            </div>
+            <div className='logo'>
+                <button className='filter-btn' onClick={publicFilter}>
+                    <span>
+                        <img className='filter-logo' src="https://img.icons8.com/ios/100/000000/park-bench.png"/>
+                        <div>ОпенСпейс</div>
+                    </span>
+                </button>
+            </div>
+
         </div>
     );
 };

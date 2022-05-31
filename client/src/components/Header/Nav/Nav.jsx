@@ -1,44 +1,55 @@
 import React, { useSelector } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate  } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import classes from './Nav.module.css'
+import SimpleSelect from "../Forms/SelectSign/SelectSign";
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
+}));
 
 function Nav() {
   const user = useSelector((state) => state.user)
 
+    const navigate = useNavigate();
+
   return (
     <nav>
-      <div>
+        <div className= {classes.container}>
+      <div className={classes.logo}>
       <Link className="navbar-brand" to="/">
             Get place
           </Link>
       </div>
-    <div>
-      <ul>
+    <div className={classes.container_links}>
+
       {user ? (
         <>
-        <li> <NavLink to="/auth/signout">
+         <Button onClick = {() => {navigate("/auth/signout")}}>
           Выйти
-          </NavLink></li>
-        <li> <NavLink to="/addPlace">
+          </Button>
+         <Button onClick = {() => {navigate("/addPlace")}}>
         Добавить место
-        </NavLink></li> 
-          <li> <NavLink to="/place">
+        </Button>
+           <Button onClick = {() => {navigate("/place")}}>
           Места
-          </NavLink></li> 
-           <li> <NavLink to="/profile">
+          </Button>
+            <Button onClick = {() => {navigate("/profile")}}>
            Профиль
-           </NavLink></li> 
+           </Button>
           </>   
       ) : (
-        <>
-         <li> <NavLink to="/auth/signup">
-          Зарегистрироваться
-          </NavLink></li>
-          <li> <NavLink to="/auth/signin">
-          Войти
-          </NavLink></li>
+        <><div className={classes.simpleSelect}>
+            <SimpleSelect />
+        </div>
         </>
       )}
-      </ul>
+
+    </div>
     </div>
     </nav>
   )

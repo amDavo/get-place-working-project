@@ -10,6 +10,7 @@ const getCardsRouter = require('./src/routes/getCards.router');
 const profileRouter = require('./src/routes/profile.router');
 const newPlaceRouter = require('./src/routes/newPlace.router')
 const placeRouter = require("./src/routes/placeInfo.router");
+const commentsRouter = require('./src/routes/comments.router');
 
 const app = express();
 const PORT = 8080;
@@ -78,6 +79,7 @@ app.use('/favorite', favoriteRouter);
 app.use('/profile', profileRouter)
 app.use('/newPlace', newPlaceRouter)
 app.use('/location', placeRouter)
+app.use('/comments', commentsRouter)
 
 
 app.listen(PORT, () => {

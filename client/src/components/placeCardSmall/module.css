@@ -3,11 +3,12 @@
     margin: 10px;
     border: none;
     width: 300px;
+    position: relative;
 }
 
 img {
-    height: 230px;
-    width: 240px;
+    height: 250px;
+    width: 280px;
     border-radius: 10px;
     border: none;
 }
@@ -19,4 +20,25 @@ p {
 
 .rating {
     display: flex;
+}
+
+.text-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.place-name {
+    max-width: 90%;
+}
+
+.star {
+    width: 13px;
+    height: 15px;
+    position: relative;
+    left: 4px;
+    top: 1.2px
+}
+
+.rate {
+
 }

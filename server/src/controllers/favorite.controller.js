@@ -3,7 +3,7 @@ const { Favorites } = require('../../db/models');
 
 const getAll = async (req, res) => {
 
-  const user_id = req.session.user
+  const user_id = req.session.user.id
 
   
   try {
@@ -20,10 +20,10 @@ const getAll = async (req, res) => {
 };
 // /favorit/:id
 const addFavorite = async (req, res) => {
-  const {id} =req.params
+  const {id} = req.params
   try {
     const newFavorite = await Favorites.create({
-      user_id:req.session.user.id,
+      user_id: req.session.user.id,
       place_id:id
     });
     res.json(newFavorite);
@@ -34,7 +34,7 @@ const addFavorite = async (req, res) => {
 };
 
 const deleteFavorite = async (req, res) => {
-  const {id} =req.params
+  const {id} = req.params
 
   try {
     const delFavorite = await Favorites.destroy({ where: { place_id: req.params.id,
