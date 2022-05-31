@@ -6,7 +6,7 @@ import PrivateRoute from './components/Header/PrivateRouter/PrivateRouter'
 import SignOut from './components/Header/Forms/SignOut/SignOut'
 import Nav from './components/Header/Nav/Nav'
 import SignUp from './components/Header/Forms/SignUp/SignUp'
-import SignIn from './components/Header/Forms/SignIn/SignIn'
+import Modal from './components/Header/Forms/SignIn/Modal'
 import {checkAuth} from './redux/actions/userAction';
 import ListOfCards from "./components/listOfCards/ListOfCards";
 import Filters from "./components/filters/Filters";
@@ -49,7 +49,7 @@ function App() {
                     <Route path="/" element={<Main/>}/>
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
                     <Route path="/auth/signup" element={<SignUp/>}/>
-                    <Route path="/auth/signin" element={<SignIn/>}/>
+                    <Route path="/auth/signin" element={<Modal/>}/>
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/location/:id" element={<PlaceDetails/>}/>

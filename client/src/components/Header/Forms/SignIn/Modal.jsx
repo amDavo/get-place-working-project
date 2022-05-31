@@ -4,11 +4,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Input from '@mui/material/Input'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {signIn} from "../../../redux/actions/userAction";
-import {FormControl} from "@mui/material";
+import {signIn} from "../../../../redux/actions/userAction";
+// import {FormGroup} from "@mui/material";
 
 const style = {
     position: 'absolute',
@@ -24,12 +24,21 @@ const style = {
 };
 
 export default function ModalSignIn({close,open}) {
+    const [openView, setOpenView] = useState(false);
     const [userSignIn, setUserSignIn] = useState({
         email: '',
         password: '',
     });
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if(open) setOpenView(true)
+    }, [open])
+
+    const handleClose = () => {
+        setOpenView(false)
+        close()
+    }
     const from = { pathname: '/main'};
 
     const changeHandler = (e) => {
@@ -38,6 +47,8 @@ export default function ModalSignIn({close,open}) {
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
+        console.log('popal')
+        console.log(userSignIn)
         e.preventDefault();
         let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]))
         if (payload.length) {
@@ -49,13 +60,13 @@ export default function ModalSignIn({close,open}) {
     return (
         <div>
             <Modal
-                open={open}
-                onClose={close}
+                open={openView}
+                onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
                <Box sx={style}>
-                   <FormControl
+                   <form
                        onSubmit={submitHandler}
                    >
 
@@ -76,8 +87,8 @@ export default function ModalSignIn({close,open}) {
                                placeholder="Пароль"
                            />
                        </div>
-                       <Button>Войти</Button>
-                   </FormControl>
+                       <button>Войти</button>
+                   </form>
                 </Box>
             </Modal>
         </div>
