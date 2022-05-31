@@ -5,37 +5,39 @@ import FavButton from "../UI/addToFavButton/FavButton";
 
 const PlaceCardSmall = ({cardData, view}) => {
 
-    // const navigate = useNavigate()
-    //
-    // const navHandler = (data) => {
-    //     navigate(data)
-    // }
 
     return (
         <>
             <div className='card'>
                 <a style={{textDecoration: "none", color: "black", margin: '10px'}} href={`/location/${cardData.id}`}>
                     <img alt={'картинка'} src={`http://localhost:8080/images/${cardData.img}`}/>
-                    <div>
-                        <p className='place-name'>{cardData.place_name}</p>
-                        <p>{cardData.location}</p>
-                        <p>{cardData.category}</p>
-                        <p>{cardData.free ? 'бесплатное' : 'платное'}</p>
-                        <p>{cardData.working_hours}</p>
-                    </div>
-                    <div className='rating'>
-                        {cardData.Rating
-                            ?
-                            (<Rating name="read-only" sx={{color: '#212121'}} value={+cardData.Rating} readOnly/>)
-                            :
-                            (<h3> {cardData['Rates.Type.type_name']} <Rating name="read-only"
-                                                                             value={cardData['Rates.rate_number']}
-                                                                             readOnly/></h3>)
-                        }
-                    </div>
+                    <FavButton cardData={cardData}/>
+                    <div className='text'>
+                        <div className='text-holder'>
+                             <div className='place-name'>
+                                 {cardData.place_name}
+                             </div>
+                             <div className='text-holder'>
+                                 <div className= 'rate' >{cardData.Rating}</div>
+                                 <img alt='rate' className='star' src="https://img.icons8.com/ios-glyphs/30/000000/star--v1.png"/>
+                             </div>
+                        </div>
+                            <p>{cardData.location}</p>
+                            <p>{cardData.category}</p>
+                            <p>{cardData.free ? 'бесплатное' : 'платное'}</p>
+                            <p>{cardData.working_hours}</p>
+                        </div>
+                    {/*<div className='rating'>*/}
+                    {/*    {cardData.Rating*/}
+                    {/*        ?*/}
+                    {/*        (<p>{cardData.Rating}</p>)*/}
+                    {/*        :*/}
+                    {/*        (<p>{cardData['Rates.rate_number']}</p>)*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                 </a>
             </div>
-            {!view&&( <FavButton cardData={cardData}/>)}
+            <FavButton cardData={cardData}/>
         </>
     );
 };

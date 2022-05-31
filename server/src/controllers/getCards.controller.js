@@ -88,6 +88,22 @@ const getCards = async (req, res) => {
             res.sendStatus(500)
         }
     }
+    else if(params === 'Кафе' || params === 'Коворкинг' || params === 'Библиотека' || params === 'Опен Спейс' ) {
+        try {
+            const places = await Place.findAll({
+                where: {category: params},
+                include: [{
+                    model: Rate,
+                    include: [Type]
+                }],
+                order: [[Rate, 'rate_number', 'DESC']],
+                raw: true,
+            })
+            res.json(places)
+        }catch (e) {
+            res.sendStatus(500)
+        }
+    }
 
     else if(params === 'free') {
         try {

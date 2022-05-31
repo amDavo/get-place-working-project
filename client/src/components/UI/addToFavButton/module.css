@@ -1,0 +1,16 @@
+.fav-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 25px;
+    height: 25px;
+    z-index: 1;
+}
+
+.fav-logo {
+    width: 25px;
+    height: 25px;
+}
+
+
+
