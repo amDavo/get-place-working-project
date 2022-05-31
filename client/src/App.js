@@ -29,9 +29,15 @@ function App() {
 
     return (
         <>
+
             <div className='nav'>
-                <Nav/>
-                <Filters/>
+                <div className='nav-child'>
+                    <Nav/>
+                </div>
+                <div className='filters'>
+                    <Filters/>
+                </div>
+
             </div>
             <InputPlaceOnMapButton/>
             <ShowPlacesOnMapButton/>
