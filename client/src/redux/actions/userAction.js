@@ -1,6 +1,7 @@
 import {DELETE_USER, SET_IS_UNIQUE_NICK_NAME, SET_USER} from '../types/userTypes';
 import * as endPoints from '../../config/endPoints';
 import { disableLoader, enableLoader } from './loaderAction';
+import ModalSignIn from "../../components/Header/Forms/SignIn/Modal";
 
 export const setUser = (user) => ({
   type: SET_USER,
@@ -70,7 +71,7 @@ export const signChange = (payload, navigate) => async (dispatch) => {
 
 export const signIn = (payload, navigate, from) => async (dispatch) => {
   dispatch(enableLoader());
-  const response = await fetch(endPoints.signIn(), {
+  const response = await fetch(endPoints.ModalSignIn(), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
