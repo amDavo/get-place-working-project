@@ -47,7 +47,7 @@ const Filters = () => {
             <div className='logo'>
                 <button className='filter-btn' onClick={freeFilter}>
                     <span>
-                        <img className='filter-logo'  src="https://img.icons8.com/ios/100/000000/ruble.png"/>
+                        <img className='filter-logo' src="https://img.icons8.com/ios/100/000000/ruble.png"/>
                         <div>Бесплатные</div>
                     </span>
                 </button>
@@ -63,7 +63,8 @@ const Filters = () => {
             <div className='logo'>
                 <button className='filter-btn' onClick={comfortFilter}>
                     <span>
-                        <img className='filter-logo' src="https://img.icons8.com/external-outlines-amoghdesign/64/000000/external-comfort-home-appliances-outlines-amoghdesign.png"/>
+                        <img className='filter-logo'
+                             src="https://img.icons8.com/external-outlines-amoghdesign/64/000000/external-comfort-home-appliances-outlines-amoghdesign.png"/>
                         <div>Комфорт</div>
                     </span>
                 </button>
@@ -95,7 +96,6 @@ const Filters = () => {
         </div>
     );
 };
-
 
 
 export default Filters;

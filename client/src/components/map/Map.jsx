@@ -3,8 +3,8 @@ import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/
 import {defaultTheme} from "./Theme";
 import classes from "./Map.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import {THUNK_getCoordsFromAddress} from "../../redux/thunk/locationThunk/locationThunk";
+import {ACTION_clearLocation} from "../../redux/actions/locationAction/locationAction";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -32,20 +32,28 @@ const defaultOptions = {
 const Map = ({center, container, inputPlace, fullScreen}) => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     const [marker, setMarker] = useState(null);
-    const [markers, setMarkers] = useState([])
+    // const [markers, setMarkers] = useState([])
     const [selectedPlace, setSelectedPlace] = useState(null)
-    const address = useSelector(state => state.address)
+    // const address = useSelector(state => state.address)
     const location = useSelector(state => state.location)
+    // const [coords, setCoords] = useState(null)
     // console.log(address)
     const dispatch = useDispatch()
 
     const list = useSelector(state => state.list)
 
     useEffect(() => {
-        dispatch(getAllPlaces("all"))
-    }, [])
+        dispatch(ACTION_clearLocation())
+        mapBallons(list)
+    }, [list])
 
     console.log('list', list)
+    console.log({location})
+
+    const mapBallons = (arr) => {
+        if (arr.length)
+            arr.map(({location}) => dispatch(THUNK_getCoordsFromAddress(location)))
+    }
 
 
     const {isLoaded} = useJsApiLoader({
@@ -78,27 +86,44 @@ const Map = ({center, container, inputPlace, fullScreen}) => {
                 center={center}
                 zoom={12}
                 onLoad={map => setMap(map)}
-                onUnmount={map => setMap(null)}
+                onUnmount={() => setMap(null)}
                 options={defaultOptions}
                 inputPlace={inputPlace}
                 fullScreen={fullScreen}
                 onClick={handleClick}
             >
+                {location.length &&
+                    location.map((position) =>
+                        <Marker
+                            key={position.lat + position.lng}
+                            position={position}
+                            // onClick={() => {
+                            //     setSelectedPlace(location)
+                            // }}
+                        />
+                    )
+                }
                 { /* Child components, such as markers, info windows, etc. */}
-                {list.map((place, index) => (
-                    dispatch(THUNK_getCoordsFromAddress(place.location))
-                        .then((res) => {
-                            return (
-                                <Marker
-                                    key={index}
-                                    position={res}
-                                    // onClick={() => {
-                                    //     setSelectedPlace(place)
-                                    // }}
-                                />
-                            )
-                        })
-                ))}
+                {/*{list.map((place, index) => (*/}
+                {/*    dispatch(THUNK_getCoordsFromAddress(place.location))*/}
+                {/*        .then((res) => {*/}
+                {/*            console.log(*/}
+                {/*                res*/}
+                {/*            )*/}
+                {/*            console.log(place.location)*/}
+                {/*            console.log(location)*/}
+                {/*            // setCoords()*/}
+                {/*            return (*/}
+                {/*                <Marker*/}
+                {/*                    key={index}*/}
+                {/*                    position={location}*/}
+                {/*                    // onClick={() => {*/}
+                {/*                    //     setSelectedPlace(place)*/}
+                {/*                    // }}*/}
+                {/*                />*/}
+                {/*            )*/}
+                {/*        })*/}
+                {/*))}*/}
                 {/*{markers.map(marker =>*/}
                 {/*    <Marker key={marker.time}*/}
                 {/*            position={{lat: marker.lat, lng: marker.lng}}*/}

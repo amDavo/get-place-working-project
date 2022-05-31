@@ -1,10 +1,12 @@
 import {initState} from "../../initState/initState";
-import {GET_COORDS} from "../../types/locationTypes";
+import {CLEAR_LOCATION, GET_COORDS} from "../../types/locationTypes";
 
 const locationReducer = (state = initState().location, action) => {
     switch (action.type) {
         case GET_COORDS:
-            return action.payload;
+            return [...state, action.payload];
+        case CLEAR_LOCATION:
+            return [];
         default:
             return state;
     }
