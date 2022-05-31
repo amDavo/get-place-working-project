@@ -11,6 +11,7 @@ import Main from "./components/Header/Main/Main";
 import AddNewPlace from "./components/UI/addNewPlace/AddNewPlace";
 import Profile from "./components/Profile/Profile";
 import PlaceDetails from "./components/placeDetails/PlaceDetails";
+import ListOfCards from "./components/listOfCards/ListOfCards";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
     return (
         <>
+            <ListOfCards/>
             <div className="container py-5">
                 <Routes>
                     <Route path="/" element={<Main/>}/>

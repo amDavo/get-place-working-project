@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {addNewPlace} from "../../../redux/thunk/newPlaceThunk/newPlaceThunk";
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {Autocomplete} from "../../map/autocomplete/Autocomplete";
 import {Button, Form} from "react-bootstrap";
 import cl from './add.module.css'
 
@@ -32,8 +31,8 @@ const AddNewPlace = () => {
     return (
         <>
 
-            <h1 style={{marginBottom: '30px'}}>
-                <center>Добавить новое место!</center>
+            <h1 className={cl.head}>
+                <center>Добавить новое место</center>
             </h1>
             <div className={cl.formDiv}>
                 <Form className={cl.formData} onSubmit={submitHandler}>
@@ -51,7 +50,8 @@ const AddNewPlace = () => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <h5>Адрес</h5>
-                        <Autocomplete
+                        {/*<Autocomplete пока не решим вопрос с автокомплитом*/}
+                        <Form.Control
                             label="Адрес"
                             variant="standard"
                             name='location'
@@ -61,6 +61,32 @@ const AddNewPlace = () => {
                             placeholder="Введите адрес"
                         />
                     </Form.Group>
+
+
+                    <Form.Group className='mb-3' controlId="formBasicPassword">
+                        <h5>Время работы</h5>
+                        <div className={cl.hoursDiv}>
+                            <h6 className={cl.detDiv}>Открыто с</h6>
+                            <Form.Control
+                                className={cl.hours}
+                                variant="standard"
+                                name='working_hoursFrom'
+                                type="time"
+                                value={inputs.working_hoursFrom}
+                                onChange={changeHandler}
+                            />
+                            <h6 className={cl.detDiv}>Открыто до</h6>
+                            <Form.Control
+                                className={cl.hours}
+                                variant="standard"
+                                name='working_hoursTo'
+                                type="time"
+                                value={inputs.working_hoursTo}
+                                onChange={changeHandler}
+                            />
+                        </div>
+                    </Form.Group>
+
                     <h5>Тип</h5>
                     <Form.Select
                         name='category'
