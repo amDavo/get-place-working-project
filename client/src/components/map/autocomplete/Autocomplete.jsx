@@ -69,7 +69,6 @@ export const Autocomplete = () => {
                 // Get latitude and longitude via utility functions
                 getGeocode({
                     address: description,
-                    bounds: defaultBounds,
                 }).then((results) => {
                     try {
                         const {lat, lng} = getLatLng(results[0]);
