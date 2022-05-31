@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom";
-import ModalSignIn from "../Modal";
+import ModalSignIn from "../SignIn/Modal";
 
 
 export default function SimpleSelect() {
