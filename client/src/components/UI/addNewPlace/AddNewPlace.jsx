@@ -58,10 +58,10 @@ const AddNewPlace = () => {
                     name='category'
                     onChange={changeHandler}>
                     <option>Open this select menu</option>
-                    <option value="Cafe">Cafe</option>
-                    <option value="library">library</option>
-                    <option value="Co-working">co-working</option>
-                    <option value="Public space">Public space</option>
+                    <option value="Кафе">Кафе</option>
+                    <option value="Библиотека">Библиотека</option>
+                    <option value="Коворкинг">Коворкинг</option>
+                    <option value="Опен Спейс">Опен Спейс</option>
                 </select>
                 <select
                     name='free'

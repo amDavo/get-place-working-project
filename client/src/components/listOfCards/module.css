@@ -1,4 +1,5 @@
 .cards-container {
     display: flex;
     margin: 140px;
+    flex-wrap: wrap;
 }
