@@ -12,9 +12,7 @@ const ListOfCards = () => {
     useEffect(() => {
         dispatch(getAllPlaces("all"))
     }, [])
-
-    console.log(list)
-
+    
     return (
         <>
             <div className='cards-container'>

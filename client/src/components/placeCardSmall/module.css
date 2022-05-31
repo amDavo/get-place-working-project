@@ -6,7 +6,7 @@
     position: relative;
 }
 
-img {
+.card-Img {
     height: 250px;
     width: 280px;
     border-radius: 10px;

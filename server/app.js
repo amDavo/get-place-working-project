@@ -19,10 +19,11 @@ const {COOKIE_SECRET, COOKIE_NAME} = process.env;
 app.set('cookieName', COOKIE_NAME);
 
 app.use(
-    cors({
-        origin: true,
-        credentials: true,
-    }),
+    cors(
+        {
+            origin: true,
+            credentials: true,
+        }),
 );
 
 app.use(express.json());

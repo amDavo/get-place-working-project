@@ -13,7 +13,6 @@ import Profile from "./components/Profile/Profile";
 import PlaceDetails from "./components/placeDetails/PlaceDetails";
 import Filters from "./components/filters/Filters";
 import Nav from "./components/Header/Nav/Nav";
-import ListOfCards from "./components/listOfCards/ListOfCards";
 
 
 function App() {
@@ -32,8 +31,8 @@ function App() {
                 </div>
                 <div className='filters'>
                     <Filters/>
+                    {/*<ListOfCards/>*/}
                 </div>
-                <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
