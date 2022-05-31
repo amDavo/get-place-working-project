@@ -3,13 +3,13 @@
     padding: 0px;
     margin: 0px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: row;
-    background-color: rgb(69, 123, 157);
-
+    background: linear-gradient(#1D3557 80%,white);
+    height: 170px;
 }
 .logo{
-    flex: 1 150px
+    flex: 2 150px
 }
 .container_links{
     display: flex;
@@ -23,3 +23,5 @@
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+

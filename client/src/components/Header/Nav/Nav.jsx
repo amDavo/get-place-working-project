@@ -1,9 +1,11 @@
-import React, { useSelector } from 'react-redux'
+import React, {useDispatch, useSelector} from 'react-redux'
 import { Link, NavLink, useNavigate  } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import classes from './Nav.module.css'
 import SimpleSelect from "../Forms/SelectSign/SelectSign";
+import logotip from '../Nav/logotip.png'
+import {setViewNavBar} from "../../../redux/actions/viewNavBarAcction/viewNavBar.action";
 const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
@@ -14,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav() {
   const user = useSelector((state) => state.user)
+    const dispatch = useDispatch()
 
     const navigate = useNavigate();
 
@@ -22,23 +25,32 @@ function Nav() {
         <div className= {classes.container}>
       <div className={classes.logo}>
       <Link className="navbar-brand" to="/">
-            Get place
+       <img style ={{width:'650px', margin:'-40px -50px', height:'150%'}} src={logotip}/>
           </Link>
       </div>
     <div className={classes.container_links}>
 
       {user ? (
         <>
-         <Button onClick = {() => {navigate("/auth/signout")}}>
+         <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
+             dispatch(setViewNavBar(false))
+             navigate("/auth/signout")}}>
           Выйти
           </Button>
-         <Button onClick = {() => {navigate("/addPlace")}}>
+         <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
+             dispatch(setViewNavBar(false))
+             navigate("/newPlace")}}>
         Добавить место
         </Button>
-           <Button onClick = {() => {navigate("/place")}}>
-          Места
+           <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
+               dispatch(setViewNavBar(false))
+               navigate("/location/:id")}}>
+          Посмотреть места
           </Button>
-            <Button onClick = {() => {navigate("/profile")}}>
+            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
+                dispatch(setViewNavBar(true))
+                navigate("/profile")
+            }}>
            Профиль
            </Button>
           </>   

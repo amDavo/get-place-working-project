@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Route, Routes} from 'react-router-dom';
 import PrivateRoute from './components/Header/PrivateRouter/PrivateRouter'
 import SignOut from './components/Header/Forms/SignOut/SignOut'
-import SignUp from './components/Header/Forms/SignUp/SignUp'
+import ModalSignUp from './components/Header/Forms/SignUp/ModalSignUp'
 import Modal from './components/Header/Forms/SignIn/Modal'
 import {checkAuth} from './redux/actions/userAction';
 import Main from "./components/Header/Main/Main";
@@ -18,6 +18,7 @@ import ListOfCards from "./components/listOfCards/ListOfCards";
 
 function App() {
     const dispatch = useDispatch();
+    const viewNavBar = useSelector(state => state.viewNavBar)
 
     useEffect(() => {
         dispatch(checkAuth());
@@ -30,14 +31,15 @@ function App() {
                 <div className='nav-child'>
                     <Nav/>
                 </div>
+                {!viewNavBar &&(
                 <div className='filters'>
                     <Filters/>
-                </div>
+                </div>)}
                 <ListOfCards/>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/auth/signout" element={<PrivateRoute><SignOut/></PrivateRoute>}/>
-                    <Route path="/auth/signup" element={<SignUp/>}/>
+                    <Route path="/auth/signup" element={<ModalSignUp/>}/>
                     <Route path="/auth/signin" element={<Modal/>}/>
                     <Route path="/newPlace" element={<AddNewPlace/>}/>
                     <Route path="/profile" element={<Profile/>}/>

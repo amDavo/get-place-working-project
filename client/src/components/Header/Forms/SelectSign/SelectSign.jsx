@@ -6,14 +6,18 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom";
 import ModalSignIn from "../SignIn/Modal";
-
+import ModalSignUp from "../SignUp/ModalSignUp";
 
 export default function SimpleSelect() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [openModal, setOpenModal] = useState(false)
+    const [openModalSignUp, setOpenModalSignUp] = useState(false)
     const navigate = useNavigate();
     const handleCloseModal = () => {
         setOpenModal(false)
+    }
+    const handleCloseModalSignUp=()=>{
+        setOpenModalSignUp(false)
     }
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -27,6 +31,7 @@ export default function SimpleSelect() {
     const handleCloseSignUp = () => {
         setAnchorEl(null);
         navigate("/auth/signup")
+        setOpenModalSignUp(true)
     };
     const handleClose = () => {
         setAnchorEl(null)
@@ -43,9 +48,9 @@ export default function SimpleSelect() {
                     onClick={handleClick}
                 >
 
-                    <HowToRegIcon style={{color: 'black'}}/> <DehazeIcon style={{color: 'black'}}/>
+                    <HowToRegIcon style={{color: 'rgb(241, 250, 238)', marginBottom:'35px', width:'50px', height:'100px', marginRight:'40px'}}/> <DehazeIcon style={{color: 'rgb(241, 250, 238)', marginBottom:'35px', width:'50px', height:'100px', marginRight:'40px', marginLeft:'-30px'}}/>
                 </Button>
-                <Menu
+                <Menu style={{marginTop:'80px'}}
                     id="demo-positioned-menu"
                     aria-labelledby="demo-positioned-button"
                     anchorEl={anchorEl}
@@ -66,6 +71,9 @@ export default function SimpleSelect() {
             </div>
             <div>
                 {openModal && <ModalSignIn close={handleCloseModal} open={openModal}/>}
+            </div>
+            <div>
+                {openModalSignUp && <ModalSignUp close={handleCloseModalSignUp} open={openModalSignUp}/>}
             </div>
         </>
     );

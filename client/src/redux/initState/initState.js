@@ -9,4 +9,5 @@ export const initState = () => ({
     userFavorites: [],
     infoFavoriteIsSuccess: '',
     location: [],
+    viewNavBar: false,
 })

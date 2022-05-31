@@ -4,6 +4,7 @@ import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {setIsUniqueNickName, signChange, signUp} from "../../redux/actions/userAction";
 import {useNavigate } from "react-router-dom";
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
+import {setViewNavBar} from "../../redux/actions/viewNavBarAcction/viewNavBar.action";
 
 function Profile () {
     const dispatch = useDispatch();
@@ -19,9 +20,10 @@ function Profile () {
     });
     const navigate = useNavigate();
     useEffect(() => {
-        dispatch(setUserInfo(userId.id))
+        dispatch(setUserInfo(userId?.id))
        setUserChange(user)
     }, [])
+
     const changeHandler = (e) => {
         setUserChange((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
