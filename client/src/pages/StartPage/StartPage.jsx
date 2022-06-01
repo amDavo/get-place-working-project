@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from "../../components/Header/Nav/Nav";
 import {Link} from "react-router-dom";
 import './StartPage.css';
 
@@ -7,9 +6,6 @@ const StartPage = () => {
     return (
         <>
             <div>
-                <div className='nav-child'>
-                    <Nav/>
-                </div>
                 <div className='start-page-back'>
                     <div className='start-page-text'>
                         <h1>Welcome to the</h1>

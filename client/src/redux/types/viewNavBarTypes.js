@@ -1,0 +1,1 @@
+export const SET_VIEW_NAVBAR = 'SET_VIEW_NAVBAR';

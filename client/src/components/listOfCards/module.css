@@ -1,6 +1,7 @@
 .cards-container {
     display: flex;
     margin: 140px;
+    margin-top: 10px;
     flex-wrap: wrap;
     position: absolute;
     z-index: 0;

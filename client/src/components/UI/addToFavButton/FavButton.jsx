@@ -15,9 +15,12 @@ const FavButton = ({cardData}) => {
         }
     }
 
-    return (
-        <>
-            <img alt='favorite' className='fav-btn' src="https://img.icons8.com/stickers/100/000000/heart-plus.png"/>
+    return (<>
+            <button><img className='fav-btn' onClick={() => addToFavHandler()} src='/icon/iconn.svg'/></button>
+            {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
+            {show && (<div>
+                {info}
+            </div>)}
         </>
     );
 };

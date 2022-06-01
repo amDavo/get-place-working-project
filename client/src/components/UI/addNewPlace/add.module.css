@@ -1,12 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap');
 
 .formDiv {
     display: flex;
+    align-items: center;
     justify-content: center;
     border: 1px solid #1d3557;
     border-radius: 10px;
+    width: 70%;
 }
 
 .formData {
+    font-family: 'Montserrat Alternates', sans-serif;
     color: #1d3557;
     margin-top: 30px;
     width: 70%;
@@ -15,6 +20,8 @@
 .head {
     margin-bottom: 30px;
     color: #1d3557;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold;
 }
 
 .hours {
@@ -32,4 +39,17 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 5px;
+}
+
+.all {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.btn {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #457B9D;
+    color: #F1FAEE;
 }

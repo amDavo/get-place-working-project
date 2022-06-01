@@ -3,14 +3,16 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: row;
-    background-color: #001b2e;
-    height: 100px;
+    /*background: linear-gradient(#1D3557 80%,white);*/
+    background-color: black;
+    height: 80px;
+    position: sticky;
 }
 
 .logo {
-    flex: 1 150px
+    flex: 2 150px
 }
 
 .container_links {
@@ -26,3 +28,6 @@
     justify-content: flex-end;
     align-items: flex-end;
 }
+
+
+

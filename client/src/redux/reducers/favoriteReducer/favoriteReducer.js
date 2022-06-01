@@ -3,10 +3,11 @@ import {ADD_USERS_FAVORITES, INFO_FAVORITES_SUCCESS} from "../../types/favoriteT
 const favoriteReducer = (state = [], action) => {
     switch (action.type) {
         case ADD_USERS_FAVORITES:
-            return action.payload;
+            return [...state, action.payload];
         case INFO_FAVORITES_SUCCESS:
             return action.payload;
-        default: return state;
+        default:
+            return state;
     }
 }
-export default  favoriteReducer;
+export default favoriteReducer;

@@ -4,6 +4,8 @@ const getCards = async (req, res) => {
 
     const {params} = req.params
 
+
+
     if (params === 'wifi') {
         try {
             const places = await Place.findAll({

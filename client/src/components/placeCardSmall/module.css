@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,500;1,600&display=swap');
 .card {
     size: 5px;
     margin: 10px;
     border: none;
     width: 300px;
     position: relative;
+    font-family: 'Montserrat Alternates';
 }
 
-img {
+.card-Img {
     height: 250px;
     width: 280px;
     border-radius: 10px;
@@ -35,10 +37,16 @@ p {
     width: 13px;
     height: 15px;
     position: relative;
-    left: 4px;
+    left: 1px;
     top: 1.2px
 }
 
 .rate {
+    position: relative;
+    right: 4px;
+}
 
+.text {
+    padding: 0 10px 10px;
+    opacity: 0.7;
 }
