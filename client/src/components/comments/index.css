@@ -31,8 +31,9 @@ body{
 }
 
 .g-bg-secondary {
-  background-color: #dedede46 !important;
+  background-color: rgb(241, 250, 238) !important;
   border-radius: 10px;
+  
 }
 
 .u-shadow-v18 {
@@ -58,7 +59,8 @@ p {
 
 .nameUser {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 700;
+  font-weight: 700 !important;
+  color: rgb(29, 53, 87) !important;
   
 }
 
@@ -67,8 +69,8 @@ p {
 }
 
 .btn-info {
-  color: rgb(255, 255, 255) !important;
-  background-color: rgb(62, 100, 100) !important;
+  color: rgb(241, 250, 238) !important;
+  background-color: rgb(69, 123, 157) !important;
   border-color: rgb(0, 0, 0) !important;
   border-radius: 8px !important;
   font-family: 'Montserrat Alternates', sans-serif;
