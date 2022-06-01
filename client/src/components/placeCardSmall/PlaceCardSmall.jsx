@@ -3,10 +3,14 @@ import {Rating} from "@mui/material";
 import './module.css'
 import FavButton from "../UI/addToFavButton/FavButton";
 import {Link, useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const PlaceCardSmall = ({cardData, view}) => {
 
-
+    const user = useSelector(state => state.user)
+    const favorites = useSelector(state => state.userFavorites)
+    console.log(favorites, '---------------------------')
+    console.log(user)
     const navigate = useNavigate()
 
     const cardHandler = (e) => {
@@ -33,7 +37,7 @@ const PlaceCardSmall = ({cardData, view}) => {
                         </div>
                             <p>{cardData.location.length < 21 ? cardData.location : cardData.location.slice(0,20)+'...'}</p>
                             {/*<p>{cardData.category}</p>*/}
-                            <p>{cardData.free ? 'Бесплатное' : 'Платное'}</p>
+                            {/*<p>{cardData.free ? 'Бесплатное' : 'Платное'}</p>*/}
                             <p> Время : {cardData.working_hours}</p>
                         </div>
                     {/*<div className='rating'>*/}
