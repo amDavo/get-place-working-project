@@ -29,32 +29,24 @@ const defaultOptions = {
     styles: defaultTheme,
 }
 
-const Map = ({center, container, inputPlace, fullScreen}) => {
+const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     const [marker, setMarker] = useState(null);
     // const [markers, setMarkers] = useState([])
-    const [selectedPlace, setSelectedPlace] = useState(null)
-    // const address = useSelector(state => state.address)
-    const location = useSelector(state => state.location)
-    // const [coords, setCoords] = useState(null)
-    // console.log(address)
-    const dispatch = useDispatch()
-
+    // const [selectedPlace, setSelectedPlace] = useState(null)
     const list = useSelector(state => state.list)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(ACTION_clearLocation())
-        mapBallons(list)
-    }, [list])
+        dispatch(THUNK_getCoordsFromAddress(list))
+        console.log('list', list)
+        // console.log('selectedPlace', selectedPlace)
+    }, [])
 
-    console.log('list', list)
-    console.log({location})
-
-    const mapBallons = (arr) => {
-        if (arr.length)
-            arr.map(({location}) => dispatch(THUNK_getCoordsFromAddress(location)))
-    }
-
+    // console.log('list', list)
+    // console.log({location})
+    // console.log('selectedPlace', selectedPlace)
 
     const {isLoaded} = useJsApiLoader({
         id: 'google-map-script',
@@ -70,21 +62,36 @@ const Map = ({center, container, inputPlace, fullScreen}) => {
                 }
             })
         }
-        if (fullScreen) {
-            setMarkers((current) =>
-                [...current, {lat: event.latLng.lat(), lng: event.latLng.lng(), time: new Date().toISOString()}])
-            // map.panTo(event.latLng)
-            // map.setZoom(14)
-        }
+        // if (fullScreen) {
+        //     setMarkers((current) =>
+        //         [...current, {lat: event.latLng.lat(), lng: event.latLng.lng(), time: new Date().toISOString()}])
+        //     // map.panTo(event.latLng)
+        //     // map.setZoom(14)
+        // }
     }
 
+    function showCardInfo(place) {
+        console.log(place)
+        return (
+            <InfoWindow
+                position={place.coords}
+                // onCloseClick={() => setSelectedPlace(null)}
+            >
+
+                {/*<h1>{selectedPlace.place_name}</h1>*/}
+                {/*<h2>{selectedPlace.address}</h2>*/}
+                <h2>hello</h2>
+
+            </InfoWindow>
+        )
+    }
 
     return isLoaded ? (
         <div className={container}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={12}
+                zoom={10}
                 onLoad={map => setMap(map)}
                 onUnmount={() => setMap(null)}
                 options={defaultOptions}
@@ -92,53 +99,27 @@ const Map = ({center, container, inputPlace, fullScreen}) => {
                 fullScreen={fullScreen}
                 onClick={handleClick}
             >
-                {location.length &&
-                    location.map((position) =>
+                {list.length &&
+                    list.map((place) =>
                         <Marker
-                            key={position.lat + position.lng}
-                            position={position}
-                            // onClick={() => {
-                            //     setSelectedPlace(location)
-                            // }}
+                            key={place.id}
+                            position={place.coords}
+                            onClick={() => {
+                                console.log('cliiiiiiiiiiicked')
+                                // setSelectedPlace(position)
+                                showCardInfo(place)
+                            }}
+                            icon={{
+                                url: '/icon/laptop.svg',
+                                scaledSize: new window.google.maps.Size(40, 40),
+                                origin: new window.google.maps.Point(0, 0),
+                                // anchor: new window.google.maps.Point(20, 20)
+                            }}
                         />
                     )
                 }
-                { /* Child components, such as markers, info windows, etc. */}
-                {/*{list.map((place, index) => (*/}
-                {/*    dispatch(THUNK_getCoordsFromAddress(place.location))*/}
-                {/*        .then((res) => {*/}
-                {/*            console.log(*/}
-                {/*                res*/}
-                {/*            )*/}
-                {/*            console.log(place.location)*/}
-                {/*            console.log(location)*/}
-                {/*            // setCoords()*/}
-                {/*            return (*/}
-                {/*                <Marker*/}
-                {/*                    key={index}*/}
-                {/*                    position={location}*/}
-                {/*                    // onClick={() => {*/}
-                {/*                    //     setSelectedPlace(place)*/}
-                {/*                    // }}*/}
-                {/*                />*/}
-                {/*            )*/}
-                {/*        })*/}
-                {/*))}*/}
-                {/*{markers.map(marker =>*/}
-                {/*    <Marker key={marker.time}*/}
-                {/*            position={{lat: marker.lat, lng: marker.lng}}*/}
-                {/*            icon={{*/}
-                {/*                url: '/icon/laptop.svg',*/}
-                {/*                scaledSize: new window.google.maps.Size(40, 40),*/}
-                {/*                origin: new window.google.maps.Point(0, 0),*/}
-                {/*                // anchor: new window.google.maps.Point(20, 20)*/}
-                {/*            }}*/}
-                {/*            onClick={() => {*/}
-                {/*                setSelectedPlace(marker)*/}
-                {/*                dispatch(THUNK_getMarkerAddress())*/}
-                {/*            }}*/}
-                {/*    />)}*/}
-                {inputPlace ?
+                {selectedPlaceMap ?
+                    // <Marker position={}
                     <img
                         className={classes.locate}
                         src='/icon/location-arrow.svg'
@@ -153,25 +134,25 @@ const Map = ({center, container, inputPlace, fullScreen}) => {
                             })
                         }}
                     /> : null}
-                {selectedPlace ? (
-                    <InfoWindow
-                        position={{lat: selectedPlace.lat, lng: selectedPlace.lng}}
-                        onCloseClick={() => setSelectedPlace(null)}
-                    >
-                        <div>
-                            <h1>{selectedPlace.time}</h1>
-                            <h2>{selectedPlace.time}</h2>
-                        </div>
-                    </InfoWindow>) : null}
-                {marker && <Marker
-                    position={marker.position}
-                    icon={{
-                        url: '/icon/logo.svg',
-                        scaledSize: new window.google.maps.Size(40, 40),
-                        origin: new window.google.maps.Point(0, 0),
-                        anchor: new window.google.maps.Point(15, 15)
-                    }}
-                />}
+                {/*{selectedPlace ? (*/}
+                {/*    <InfoWindow*/}
+                {/*        position={{lat: selectedPlace.lat, lng: selectedPlace.lng}}*/}
+                {/*        // onCloseClick={() => setSelectedPlace(null)}*/}
+                {/*    >*/}
+                {/*        <div>*/}
+                {/*            /!*<h1>{selectedPlace.time}</h1>*!/*/}
+                {/*            /!*<h2>{selectedPlace.time}</h2>*!/*/}
+                {/*        </div>*/}
+                {/*    </InfoWindow>) : null}*/}
+                {/*{marker && <Marker*/}
+                {/*    position={marker.position}*/}
+                {/*    icon={{*/}
+                {/*        url: '/icon/logo.svg',*/}
+                {/*        scaledSize: new window.google.maps.Size(40, 40),*/}
+                {/*        origin: new window.google.maps.Point(0, 0),*/}
+                {/*        anchor: new window.google.maps.Point(15, 15)*/}
+                {/*    }}*/}
+                {/*/>}*/}
             </GoogleMap>
         </div>
     ) : <h1>Loading...</h1>

@@ -1,7 +1,9 @@
 .all {
-    position: absolute;
+    position: fixed;
     z-index: 4;
-    bottom: 100px;
+    bottom: 10%;
+    left: 50%;
+    right: 50%;
     font-size: small;
     width: 175px;
 }
