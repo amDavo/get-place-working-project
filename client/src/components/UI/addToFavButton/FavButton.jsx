@@ -17,7 +17,7 @@ const FavButton = ({cardData}) => {
 
     return (
         <>
-            <img alt='favorite' className='fav-btn' src="https://img.icons8.com/stickers/100/000000/heart-plus.png"/>
+             <img onClick = {() => addToFavHandler()} alt='favorite' className='fav-btn' src="https://img.icons8.com/stickers/100/000000/heart-plus.png"/>
         </>
     );
 };
