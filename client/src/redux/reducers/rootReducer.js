@@ -6,6 +6,7 @@ import loaderReducer from '../reducers/loaderReducer';
 import placeDetailsReducer from "./placeDetailsReducer/placeDetailsReducer";
 import nickNameReducer from "./nickNameReducer";
 import favoriteReducer from "./favoriteReducer/favoriteReducer";
+import locationReducer from "./locationReducer/locationReducer";
 
 export default combineReducers({
     userData: profileReducer,
@@ -14,6 +15,7 @@ export default combineReducers({
     loader: loaderReducer,
     isUniqueNickName: nickNameReducer,
     userFavorites: favoriteReducer,
-    placeDetails: placeDetailsReducer
+    placeDetails: placeDetailsReducer,
+    location: locationReducer,
 })
 

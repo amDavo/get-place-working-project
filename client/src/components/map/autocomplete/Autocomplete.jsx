@@ -3,32 +3,32 @@ import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomp
 import useOnclickOutside from "react-cool-onclickoutside";
 import classes from "./Autocomplete.module.css";
 import {useJsApiLoader} from "@react-google-maps/api";
+import {Form} from "react-bootstrap";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
-const center = {lat: 50.064192, lng: -130.605469};
+// const center = {lat: 50.064192, lng: -130.605469};
 // Create a bounding box with sides ~10km away from the center point
-const defaultBounds = {
-    // north: center.lat + 0.1,
-    // south: center.lat - 0.1,
-    // east: center.lng + 0.1,
-    // west: center.lng - 0.1,
-    sw: {
-        lat: 55.28559774819662,
-        lng: 38.62394934082025
-    },
-    ne: {
-        lat: 56.1904,
-        lng: 36.4376
-    },
-};
+// const defaultBounds = {
+//     // north: center.lat + 0.1,
+//     // south: center.lat - 0.1,
+//     // east: center.lng + 0.1,
+//     // west: center.lng - 0.1,
+//     sw: {
+//         lat: 55.28559774819662,
+//         lng: 38.62394934082025
+//     },
+//     ne: {
+//         lat: 56.1904,
+//         lng: 36.4376
+//     },
+// };
 
 export const Autocomplete = () => {
     const {isLoaded} = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: API_KEY,
     })
-
     const [address, setAddress] = useState('');
 
     const {
@@ -43,7 +43,6 @@ export const Autocomplete = () => {
             /* Define search scope here */
             location: {lat: () => 55.7522, lng: () => 37.6156},
             radius: 200 * 1000,
-            bounds: defaultBounds,
         },
         debounce: 200,
     });
@@ -69,7 +68,6 @@ export const Autocomplete = () => {
                 // Get latitude and longitude via utility functions
                 getGeocode({
                     address: description,
-                    bounds: defaultBounds,
                 }).then((results) => {
                     try {
                         const {lat, lng} = getLatLng(results[0]);
@@ -112,16 +110,24 @@ export const Autocomplete = () => {
 
     return (
         <div className={classes.container} ref={ref}>
-            <input
+            <Form.Control
                 className={classes.input}
                 // надо передать адрес из состояния в инпут хотя в value то же самое лежит
-                value={value}
+                value={address}
                 onChange={handleInput}
                 disabled={!ready}
-                placeholder="Search for an address"
+                placeholder="Введите адрес"
             />
             {/* We can use the "status" to decide whether we should display the dropdown or not */}
-            {status === "OK" && <ul>{renderSuggestions()}</ul>}
+            {status === "OK" &&
+            <ul style={{
+                height: "auto",
+                backdropFilter: 'blur(10px)',
+                position: "absolute",
+                bottom: '50',
+                left: 'auto',
+                borderRadius: '10px'
+            }}>{renderSuggestions()}</ul>}
         </div>
     );
 };
