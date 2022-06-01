@@ -17,6 +17,7 @@ const AddNewPlace = () => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
+
     const addImgHandler = (event) => {
         setFile(event.target.files[0])
     }
