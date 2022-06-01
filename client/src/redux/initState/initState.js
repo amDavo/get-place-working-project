@@ -8,6 +8,5 @@ export const initState = () => ({
     isUniqueNickName: false,
     userFavorites: [],
     infoFavoriteIsSuccess: '',
-    location: [],
     viewNavBar: false,
 })

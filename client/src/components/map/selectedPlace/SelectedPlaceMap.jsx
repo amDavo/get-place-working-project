@@ -8,7 +8,7 @@ const SelectedPlaceMap = () => {
         lng: 37.6156
     };
     return (
-        <Map center={center} container={classes.modal}/>
+        <Map center={center} container={classes.selected} selectedPlaceMap={true}/>
     );
 };
 

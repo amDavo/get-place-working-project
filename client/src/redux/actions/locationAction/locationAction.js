@@ -1,7 +1,11 @@
-import {GET_COORDS} from "../../types/locationTypes";
+import {CLEAR_LOCATION, GET_COORDS} from "../../types/locationTypes";
 
 
-export const ACTION_getCoordsFromAddress = (item) => ({
+export const ACTION_getCoordsFromAddress = (coords) => ({
     type: GET_COORDS,
-    payload: item
+    payload: coords
+})
+
+export const ACTION_clearLocation = () => ({
+    type: CLEAR_LOCATION,
 })
