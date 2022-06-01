@@ -1,17 +1,21 @@
 
-const { Comments } = require('../../db/models');
+const { Comments, User } = require('../../db/models');
 
 const getAllComments = async (req, res) => {
 
-  
+  console.log('START GETT COMMENTS');
   const place_id = req.params.id
   
   try {
 
-    const comments = await Comments.findAll({where: {place_id}, raw:true});
+    const comments = await Comments.findAll({
+      where: {place_id},
+      include: {
+        model: User,
+        }})
     
     return res.json({comments})
-    
+     
   } catch (error) {
     res.sendStatus(500);
   }

@@ -7,7 +7,7 @@ function Comments({id}) {
     const [comments, setComments] = useState([])
     const [inputs, setInputs] = useState('')
     useEffect(() => {
-        fetch(`http://localhost:8080/comments/${id}`).then(res => res.json()).then(data => setComments(data))
+        fetch(`http://localhost:8080/comments/${id}`).then(res => res.json()).then(data => setComments(data.comments))
     }, [])
     const addHandler = async () => {
         const response = await fetch(`http://localhost:8080/comments/${id}`, {
@@ -20,7 +20,7 @@ function Comments({id}) {
         })
     }
   
-    console.log(inputs);
+    console.log('--------------------',comments);
     return (
       <>
         <div classNameNameName='commentForm'>
@@ -40,15 +40,16 @@ function Comments({id}) {
 
 <div className="container">
 <div className="row">
-    <div className="col-md-8">
+{comments.map(comment => {return(
+   <div className="col-md-8">
         <div className="media g-mb-30 media-comment">
             <div className="media-body u-shadow-v18 g-bg-secondary g-pa-30">
               <div className="g-mb-15">
-                <h5 className="nameUser h5 g-color-gray-dark-v1 mb-0">Хабиб Шокиров</h5>
-                <span className="g-color-gray-dark-v4 g-font-size-12">5 дней назад</span>
+                <h5 className="nameUser h5 g-color-gray-dark-v1 mb-0">{comment.User.name}</h5>
+                <span className="g-color-gray-dark-v4 g-font-size-12">{comment.createdAt}</span>
               </div>
         
-              <p>Помимо высокого качества сервиса и продуктов, шеф обладает прекрасной фантазией и изысканным вкусом! Поэтому рекомендую сходить несколько раз, не ограничивать свой выбор свежими морепродуктами, которые безусловно хороши, но и обратить внимание на авторские блюда! Уверена, будете довольны!!!</p>
+              <p>{comment.body}</p>
         
               <ul className="list-inline d-sm-flex my-0">
                 <li className="list-inline-item g-mr-20">
@@ -61,28 +62,32 @@ function Comments({id}) {
             </div>
         </div>
     </div>
+)}
+  )}
+ 
 
-    <div className="col-md-8">
-        <div className="media g-mb-30 media-comment">
-            <div className="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-              <div className="g-mb-15">
-                <h5 className="nameUser h5 g-color-gray-dark-v1 mb-0">Игорь Карасев</h5>
-                <span className="g-color-gray-dark-v4 g-font-size-12">7 дней назад</span>
-              </div>
-        
-              <p>Хорошие домашние колбаски, вкусные бургеры с нежной котлеткой. К любому супу советую не хлеб брать, а теплые булочки. Безалкогольные напитки попробовать не довелось, слишком много вкусного пива и коктейлей. Крепкий алко не пил тут, ничего не скажу.</p>
-        
-              <ul className="list-inline d-sm-flex my-0">
-                <li className="list-inline-item g-mr-20">
-                </li>
-                <li className="list-inline-item g-mr-20">
-                </li>
-                <li className="list-inline-item ml-auto">
-                </li>
-              </ul>
-            </div>
+    {/* <div className="col-md-8">
+      <div className="media g-mb-30 media-comment">
+        <div className="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+          <div className="g-mb-15">
+            <h5 className="nameUser h5 g-color-gray-dark-v1 mb-0">Игорь Карасев</h5>
+            <span className="g-color-gray-dark-v4 g-font-size-12">7 дней назад</span>
+          </div>
+    
+          <p>Хорошие домашние колбаски, вкусные бургеры с нежной котлеткой. К любому супу советую не хлеб брать, а теплые булочки. Безалкогольные напитки попробовать не довелось, слишком много вкусного пива и коктейлей. Крепкий алко не пил тут, ничего не скажу.</p>
+    
+          <ul className="list-inline d-sm-flex my-0">
+            <li className="list-inline-item g-mr-20">
+            </li>
+            <li className="list-inline-item g-mr-20">
+            </li>
+            <li className="list-inline-item ml-auto">
+            </li>
+          </ul>
         </div>
-    </div>
+      </div>
+    </div> */}
+
 </div>
 </div>
         

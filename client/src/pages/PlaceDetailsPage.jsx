@@ -6,7 +6,7 @@ const PlaceDetailsPage = () => {
     return (
         <>
             <PlaceDetails/>
-            <SelectedPlaceMap/>
+            {/* <SelectedPlaceMap/> */}
         </>
     );
 };
