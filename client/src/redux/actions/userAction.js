@@ -1,6 +1,7 @@
 import {DELETE_USER, SET_IS_UNIQUE_NICK_NAME, SET_USER} from '../types/userTypes';
 import * as endPoints from '../../config/endPoints';
 import {disableLoader, enableLoader} from './loaderAction';
+import {profileInfo} from "./profileActions/profileInfoAction";
 
 export const setUser = (user) => ({
     type: SET_USER,
@@ -57,6 +58,7 @@ export const signChange = (payload, navigate) => async (dispatch) => {
     if (response.status === 200) {
         const user = await response.json();
         dispatch(setUser(user));
+        dispatch(profileInfo(user))
         navigate('/profile');
     } else {
         navigate('/profile');

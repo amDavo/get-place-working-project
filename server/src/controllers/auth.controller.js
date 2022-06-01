@@ -72,15 +72,13 @@ const signOut = async (req, res) => {
   });
 };
 const signChange = async (req,res)=>{
-  const { name, password, email, nickname } = req.body;
+  const { name, nickname } = req.body;
   console.log(req.session.user.id,'1234567')
 
-  if (name && password && email,nickname) {
+  if (name && nickname) {
     try {
       await User.update({
         name,
-        password: sha256(password),
-        email,
         nickname
       }, {where:{id:req.session.user.id}});
 

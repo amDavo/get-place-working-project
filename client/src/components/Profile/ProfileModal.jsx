@@ -5,8 +5,8 @@ import Modal from '@mui/material/Modal';
 import Input from '@mui/material/Input'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {signIn} from "../../../../redux/actions/userAction";
-import classes from './modal.module.css'
+import {signChange} from "../../redux/actions/userAction";
+import classes from './Profile.module.css'
 
 
 const style = {
@@ -26,38 +26,38 @@ const style = {
     textAlign: 'center',
 };
 
-export default function ModalSignIn({close, open}) {
+export default function ProfileModal({close, open, user}) {
     const [openView, setOpenView] = useState(false);
-    const [userSignIn, setUserSignIn] = useState({
-        email: '',
-        password: '',
+    const [userChange, setUserChange] = useState({
+        name: '',
+        nickname: '',
     });
     const navigate = useNavigate();
 
     useEffect(() => {
         if (open) setOpenView(true)
+        if (user) setUserChange(prev =>({...prev, name: user.name, nickname: user.nickname}))
     }, [open])
 
     const handleClose = () => {
         setOpenView(false)
         close()
-        navigate('/main')
+        navigate('/profile')
     }
-    const from = {pathname: '/main'};
+    const from = {pathname: '/profile'};
 
     const changeHandler = (e) => {
-        setUserSignIn((prev) => ({...prev, [e.target.name]: e.target.value}))
+        setUserChange((prev) => ({...prev, [e.target.name]: e.target.value}))
     };
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
-        console.log('popal')
-        console.log(userSignIn)
         e.preventDefault();
-        let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]))
+        let payload = Object.entries(userChange).filter((el) => (el[1] ? el[1].trim() : el[1]))
+        console.log(userChange, "kdlkldk")
         if (payload.length) {
             payload = Object.fromEntries(payload);
-            dispatch(signIn(payload, navigate, from));
+            dispatch(signChange(payload, navigate('/profile')));
             handleClose()
         }
     };
@@ -74,28 +74,32 @@ export default function ModalSignIn({close, open}) {
                     <form
                         onSubmit={submitHandler}
                     >
-
-                        <Input
-                            onChange={changeHandler}
-                            value={userSignIn.email}
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                        />
-
-                        <div>
-                            <Input
+                        <div className={classes.saveData}>Изменить данные</div>
+                        <div className={classes.inp1}>
+                            <input
                                 onChange={changeHandler}
-                                value={userSignIn.password}
-                                type="password"
-                                name="password"
-                                placeholder="Пароль"
+                                value={userChange.name}
+                                type="text"
+                                name="name"
+                                placeholder="Имя"
                             />
                         </div>
-                        <button className={classes.btnIn}>Войти</button>
+                        <div className={classes.inp2}>
+                            <input
+                                onChange={changeHandler}
+                                value={userChange.nickname}
+                                type="text"
+                                name="nickname"
+                                placeholder="Логин"
+                            />
+                        </div>
+                        <button className = {classes.BtnSave}>Сохранить</button>
                     </form>
                 </Box>
             </Modal>
         </div>
     );
 }
+
+
+

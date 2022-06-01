@@ -10,7 +10,7 @@ const MainPage = () => {
 
     return (
         <>
-            {viewNavBar && (
+            {!viewNavBar && (
                 <div className='filters'>
                     <Filters/>
                 </div>

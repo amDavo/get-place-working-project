@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,300;0,400;0,500;0,600;1,500;1,600&display=swap');
+.Data {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    font-size: 24px;
+    margin-left: 40px;
+    margin-right: 30px;
+}
+.Name {
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+    margin-right: 30px;
+}
+.Login {
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+    margin-right: 30px;
+}
+.Email {
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: center;
+}
+.Profile{
+    display: flex;
+    /*justify-content: flex-end;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: nowrap;*/
+    align-content: stretch;
+    align-items: baseline;
+    margin-left: 150px;
+}
+.BtnProf {
+    background-color: #457B9D;
+    /*border: 2px solid rgb(69, 123, 157);*/
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 1030px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.BtnSave {
+    background-color: #457B9D;
+    /*border: 2px solid rgb(69, 123, 157);*/
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 150px;
+    margin-top: 30px;
+    margin-left: 25px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.saveData {
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin-bottom: 20px;
+}
+.inp1 {
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin-top: 20px;
+    margin-bottom:30px;
+}
+.inp2 {
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+}

@@ -4,6 +4,8 @@ import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
+import classes from './Profile.module.css'
+import ProfileModal from './ProfileModal'
 
 function Profile() {
     const dispatch = useDispatch();
@@ -11,6 +13,7 @@ function Profile() {
     const userId = useSelector(state => state.user)
     const favorites = useSelector(state => state.userFavorites)
     const [show, setShow] = useState(false)
+    const [viewModal, setViewModal] = useState(false)
     const [userChange, setUserChange] = useState({
         name: '',
         email: '',
@@ -20,6 +23,9 @@ function Profile() {
 
     console.log(user, '======w=w=ww=w=w=')
 
+    const handleClose=()=>{
+        setViewModal(false)
+    }
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(setUserInfo(userId?.id))
@@ -38,69 +44,24 @@ function Profile() {
         }
     };
     return (<>
-
-            <div>{user.name}</div>
-            <div>
-                {user.email}
+            <div className = {classes.Profile}>
+                <div className = {classes.Data}>Данные профиля</div>
+                <div className = {classes.Name}>Имя: <input type = "text" value={user.name}/></div>
+                <div className = {classes.Login}>Логин: <input type = "text" value={user.nickname}/></div>
+                <div className={classes.Email}>E-mail: <input type = "text" value={user.email}/></div>
             </div>
-            <div>
-                {user.nickname}
-            </div>
-            <button onClick={() => {
+            <button className = {classes.BtnProf} onClick={() => {
                 setShow(prev => !prev)
+                setViewModal(prev=> !prev)
             }}>
                 {!show ? 'Редактировать' : 'Отменить'}
             </button>
             {show && (
-                <form
-                    onSubmit={submitHandler}
-                >
-                    <div>Изменить данные</div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.name}
-                            type="text"
-                            name="name"
-                            placeholder="Имя"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.email}
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.nickname}
-                            type="text"
-                            name="nickname"
-                            placeholder="nickname"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.password}
-                            type="password"
-                            name="password"
-                            placeholder="Пароль"
-                        />
-                    </div>
-                    <button>Сохранить</button>
-                </form>
-            )}
-            {
-                favorites?.length && favorites?.map(el =>
-                    <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+                <ProfileModal open={viewModal} close={handleClose} user={user}/>
+            )
             }
         </>
     )
 }
 
-export default Profile
+export default Profile;
