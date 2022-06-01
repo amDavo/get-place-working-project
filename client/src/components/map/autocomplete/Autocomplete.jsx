@@ -24,7 +24,7 @@ const API_KEY = process.env.REACT_APP_API_KEY
 //     },
 // };
 
-export const Autocomplete = () => {
+export const Autocomplete = ({setAutocompleteValue}) => {
     const {isLoaded} = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: API_KEY,
@@ -53,7 +53,7 @@ export const Autocomplete = () => {
     });
 
     const handleInput = (e) => {
-        // Update the keyword of the input element
+        // Update the keyword of the input elemen
         setValue(e.target.value);
     };
 
@@ -64,7 +64,6 @@ export const Autocomplete = () => {
                 // by setting the second parameter to "false"
                 setValue(description, false);
                 clearSuggestions();
-
                 // Get latitude and longitude via utility functions
                 getGeocode({
                     address: description,
@@ -80,6 +79,10 @@ export const Autocomplete = () => {
                     }
                 });
             };
+
+    useEffect(() => {
+        setAutocompleteValue(address || value);
+    })
 
     const renderSuggestions = () =>
         data.map((suggestion) => {
@@ -113,7 +116,7 @@ export const Autocomplete = () => {
             <Form.Control
                 className={classes.input}
                 // надо передать адрес из состояния в инпут хотя в value то же самое лежит
-                value={address}
+                value={value}
                 onChange={handleInput}
                 disabled={!ready}
                 placeholder="Введите адрес"
