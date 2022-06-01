@@ -6,4 +6,3 @@ const placeRouter = Router();
 placeRouter.post('/:id', getPlaceDetails)
 
 module.exports = placeRouter;
-//
