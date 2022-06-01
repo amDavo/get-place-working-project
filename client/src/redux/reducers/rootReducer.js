@@ -10,7 +10,7 @@ import viewNavBarReducer from "./viewNavBarReducer/viewNavBarReducer";
 
 export default combineReducers({
     userData: profileReducer,
-    list: placesReducer,
+    allPlaces: placesReducer,
     user: userReducer,
     loader: loaderReducer,
     isUniqueNickName: nickNameReducer,

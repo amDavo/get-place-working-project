@@ -3,8 +3,7 @@ import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/
 import {defaultTheme} from "./Theme";
 import classes from "./Map.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {THUNK_getCoordsFromAddress} from "../../redux/thunk/locationThunk/locationThunk";
-import {ACTION_clearLocation} from "../../redux/actions/locationAction/locationAction";
+import {Link} from "react-router-dom";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -31,21 +30,18 @@ const defaultOptions = {
 
 const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
-    const [marker, setMarker] = useState(null);
-    // const [markers, setMarkers] = useState([])
-    // const [selectedPlace, setSelectedPlace] = useState(null)
-    const list = useSelector(state => state.list)
+    // const [marker, setMarker] = useState(null);
+    const [selectedPlace, setSelectedPlace] = useState(null)
+    const allPlaces = useSelector(state => state.allPlaces)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(ACTION_clearLocation())
-        dispatch(THUNK_getCoordsFromAddress(list))
-        console.log('list', list)
+        // dispatch(ACTION_clearLocation())
+        // dispatch(THUNK_getCoordsFromAddress(allPlaces))
+        console.log('list', allPlaces)
         // console.log('selectedPlace', selectedPlace)
     }, [])
 
-    // console.log('list', list)
-    // console.log({location})
     // console.log('selectedPlace', selectedPlace)
 
     const {isLoaded} = useJsApiLoader({
@@ -54,36 +50,20 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
     })
 
     const handleClick = (event) => {
-        if (inputPlace) {
-            marker ? setMarker(null) : setMarker({
-                position: {
-                    lat: event.latLng.lat(),
-                    lng: event.latLng.lng()
-                }
-            })
-        }
+        // if (inputPlace) {
+        //     marker ? setMarker(null) : setMarker({
+        //         position: {
+        //             lat: event.latLng.lat(),
+        //             lng: event.latLng.lng()
+        //         }
+        //     })
+        // }
         // if (fullScreen) {
         //     setMarkers((current) =>
         //         [...current, {lat: event.latLng.lat(), lng: event.latLng.lng(), time: new Date().toISOString()}])
         //     // map.panTo(event.latLng)
         //     // map.setZoom(14)
         // }
-    }
-
-    function showCardInfo(place) {
-        console.log(place)
-        return (
-            <InfoWindow
-                position={place.coords}
-                // onCloseClick={() => setSelectedPlace(null)}
-            >
-
-                {/*<h1>{selectedPlace.place_name}</h1>*/}
-                {/*<h2>{selectedPlace.address}</h2>*/}
-                <h2>hello</h2>
-
-            </InfoWindow>
-        )
     }
 
     return isLoaded ? (
@@ -99,15 +79,15 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                 fullScreen={fullScreen}
                 onClick={handleClick}
             >
-                {list.length &&
-                    list.map((place) =>
+                {allPlaces.length &&
+                    allPlaces.map((place) =>
                         <Marker
                             key={place.id}
                             position={place.coords}
                             onClick={() => {
                                 console.log('cliiiiiiiiiiicked', place)
                                 // setSelectedPlace(position)
-                                showCardInfo(place)
+                                setSelectedPlace(place)
                             }}
                             icon={{
                                 url: '/icon/laptop.svg',
@@ -118,8 +98,7 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                         />
                     )
                 }
-                {selectedPlaceMap ?
-                    // <Marker position={}
+                {map ?
                     <img
                         className={classes.locate}
                         src='/icon/location-arrow.svg'
@@ -130,29 +109,25 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                                     lat: position.coords.latitude,
                                     lng: position.coords.longitude
                                 })
-                                map.setZoom(14)
+                                map.setZoom(12)
                             })
                         }}
                     /> : null}
-                {/*{selectedPlace ? (*/}
-                {/*    <InfoWindow*/}
-                {/*        position={{lat: selectedPlace.lat, lng: selectedPlace.lng}}*/}
-                {/*        // onCloseClick={() => setSelectedPlace(null)}*/}
-                {/*    >*/}
-                {/*        <div>*/}
-                {/*            /!*<h1>{selectedPlace.time}</h1>*!/*/}
-                {/*            /!*<h2>{selectedPlace.time}</h2>*!/*/}
-                {/*        </div>*/}
-                {/*    </InfoWindow>) : null}*/}
-                {/*{marker && <Marker*/}
-                {/*    position={marker.position}*/}
-                {/*    icon={{*/}
-                {/*        url: '/icon/logo.svg',*/}
-                {/*        scaledSize: new window.google.maps.Size(40, 40),*/}
-                {/*        origin: new window.google.maps.Point(0, 0),*/}
-                {/*        anchor: new window.google.maps.Point(15, 15)*/}
-                {/*    }}*/}
-                {/*/>}*/}
+                {selectedPlace ? (
+                    <InfoWindow
+                        position={selectedPlace.coords}
+                        onCloseClick={() => setSelectedPlace(null)}
+                    >
+                        <Link to={`/location/${selectedPlace.id}`}
+                              style={{textDecoration: "none", color: "black", margin: '10px'}}>
+                            <div>
+                                <h5>{selectedPlace.place_name}</h5>
+                                <p>{selectedPlace.location}</p>
+                                <img style={{width: '200px'}} src={`http://localhost:8080/images/${selectedPlace.img}`}
+                                     alt={selectedPlace.name + ' img'}/>
+                            </div>
+                        </Link>
+                    </InfoWindow>) : null}
             </GoogleMap>
         </div>
     ) : <h1>Loading...</h1>

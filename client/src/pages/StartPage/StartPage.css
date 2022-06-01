@@ -9,7 +9,15 @@
     overflow: hidden;
     z-index: 2;
     background-color: #000000;
-    /*opacity: 0.;*/
+}
+
+.gradient {
+    width: 100vw;
+    height: 80px;
+    background: linear-gradient(to bottom, black, #CEAD78);
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
 }
 
 .video {
@@ -23,7 +31,7 @@
     object-fit: cover;
     z-index: -1;
     transform-origin: center center;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 

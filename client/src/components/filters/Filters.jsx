@@ -2,7 +2,6 @@ import React from 'react';
 import {useDispatch} from "react-redux";
 import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import './module.css'
-import FavButton from "../UI/addToFavButton/FavButton";
 
 const Filters = () => {
     const dispatch = useDispatch()
@@ -50,7 +49,6 @@ const Filters = () => {
     const coFilter = () => {
         dispatch(getAllPlaces('Коворкинг'))
     }
-
 
 
     return (
@@ -115,7 +113,8 @@ const Filters = () => {
             <div className='logo'>
                 <button className='filter-btn' onClick={cafeFilter}>
                     <span>
-                        <img className='filter-logo' src="https://img.icons8.com/fluency-systems-regular/96/000000/restaurant-building.png"/>
+                        <img className='filter-logo'
+                             src="https://img.icons8.com/fluency-systems-regular/96/000000/restaurant-building.png"/>
                         <div>Кафе</div>
                     </span>
                 </button>

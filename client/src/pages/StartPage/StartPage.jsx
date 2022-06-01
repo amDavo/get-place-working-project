@@ -6,6 +6,8 @@ const StartPage = () => {
     return (
         <>
             <div>
+                <div className="gradient">
+                </div>
                 <div className='start-page-back'>
                     <div className='start-page-text'>
                         <h1>Welcome to the</h1>
