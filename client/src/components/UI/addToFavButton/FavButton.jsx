@@ -10,17 +10,22 @@ const FavButton = ({cardData}) => {
     const dispatch = useDispatch();
 
 
-    const addToFavHandler = () => {
 
+    console.log(cardData)
+    const addToFavHandler = (e) => {
+        e.preventDefault()
         if( cardData.id){
             dispatch(addFavorite(cardData.id))
             setShow(true)
         }
     }
 
-    return (
-        <>
-            <img alt='favorite'  className='fav-btn' src="https://img.icons8.com/stickers/100/000000/heart-plus.png"/>
+    return (<>
+                <img className='fav-btn' onClick={addToFavHandler}  src='/icon/iconn.svg'/>
+                {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
+            {show&&(<div>
+                {info}
+            </div>)}
         </>
     );
 };

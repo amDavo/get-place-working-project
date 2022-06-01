@@ -50,7 +50,7 @@ const AddNewPlace = () => {
                 <input
                     name="img"
                     type="file"
-                    accept="image/*"
+                    accept=".heic, image/*"
                     value={inputs.img}
                     onChange={addImgHandler}
                 />
