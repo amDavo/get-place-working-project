@@ -10,11 +10,13 @@ const MainPage = () => {
 
     return (
         <>
+        
             {viewNavBar && (
                 <div className='filters'>
                     <Filters/>
                 </div>
             )}
+          
             <ListOfCards/>
             <ShowPlacesOnMapButton/>
         </>

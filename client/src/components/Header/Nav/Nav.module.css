@@ -8,7 +8,10 @@
     /*background: linear-gradient(#1D3557 80%,white);*/
     background-color: black;
     height: 80px;
-    position: sticky;
+    position: fixed;
+    width: 100%;
+    opacity:83%;
+    
 }
 
 .logo {
@@ -20,6 +23,7 @@
     flex: 3 450px;
     justify-content: space-around;
     flex-direction: row-reverse;
+    
 }
 
 .simpleSelect {
@@ -27,6 +31,11 @@
     flex: 400px;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.container_links:hover {
+  color: #000;
+  background: #ff0059;
 }
 
 

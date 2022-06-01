@@ -26,7 +26,7 @@ function Nav() {
             <div className={classes.container}>
                 <div className={classes.logo}>
                     <Link className="navbar-brand" to="/main">
-                        <img style={{width: '450px', margin: '-40px -50px', height: '160px'}} src={logotip}/>
+                        <img style={{width: '', margin: '-40px -15px', height: '160px'}} src={logotip}/>
                     </Link>
                 </div>
                 <div className={classes.container_links}>
