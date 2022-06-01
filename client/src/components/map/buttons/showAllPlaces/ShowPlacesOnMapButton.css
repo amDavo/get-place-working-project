@@ -5,7 +5,8 @@
     left: 50%;
     right: 50%;
     font-size: small;
-    width: 175px;
+    width: 200px;
+    transform: translate(-50%, -50%);
 }
 
 span {

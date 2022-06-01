@@ -1,20 +1,19 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Input from '@mui/material/Input'
-import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signIn} from "../../../../redux/actions/userAction";
 import classes from './modal.module.css'
 
 
-
 const style = {
     position: 'absolute',
     top: '60%',
     left: '50%',
-    alignItems:'center',
+    alignItems: 'center',
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'White',
@@ -27,7 +26,7 @@ const style = {
     textAlign: 'center',
 };
 
-export default function ModalSignIn({close,open}) {
+export default function ModalSignIn({close, open}) {
     const [openView, setOpenView] = useState(false);
     const [userSignIn, setUserSignIn] = useState({
         email: '',
@@ -36,14 +35,15 @@ export default function ModalSignIn({close,open}) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(open) setOpenView(true)
+        if (open) setOpenView(true)
     }, [open])
 
     const handleClose = () => {
         setOpenView(false)
         close()
+        navigate('/main')
     }
-    const from = { pathname: '/main'};
+    const from = {pathname: '/main'};
 
     const changeHandler = (e) => {
         setUserSignIn((prev) => ({...prev, [e.target.name]: e.target.value}))
@@ -57,7 +57,7 @@ export default function ModalSignIn({close,open}) {
         let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]))
         if (payload.length) {
             payload = Object.fromEntries(payload);
-            dispatch(signIn(payload, navigate,from));
+            dispatch(signIn(payload, navigate, from));
             handleClose()
         }
     };
@@ -70,30 +70,30 @@ export default function ModalSignIn({close,open}) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-               <Box sx={style}>
-                   <form
-                       onSubmit={submitHandler}
-                   >
+                <Box sx={style}>
+                    <form
+                        onSubmit={submitHandler}
+                    >
 
-                           <Input
-                               onChange={changeHandler}
-                               value={userSignIn.email}
-                               type="email"
-                               name="email"
-                               placeholder="Email"
-                           />
+                        <Input
+                            onChange={changeHandler}
+                            value={userSignIn.email}
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                        />
 
-                       <div>
-                           <Input
-                               onChange={changeHandler}
-                               value={userSignIn.password}
-                               type="password"
-                               name="password"
-                               placeholder="Пароль"
-                           />
-                       </div>
-                       <button className={classes.btnIn}>Войти</button>
-                   </form>
+                        <div>
+                            <Input
+                                onChange={changeHandler}
+                                value={userSignIn.password}
+                                type="password"
+                                name="password"
+                                placeholder="Пароль"
+                            />
+                        </div>
+                        <button className={classes.btnIn}>Войти</button>
+                    </form>
                 </Box>
             </Modal>
         </div>

@@ -1,8 +1,8 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Input from '@mui/material/Input'
-import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsUniqueNickName, signUp} from "../../../../redux/actions/userAction";
@@ -12,7 +12,7 @@ const style = {
     position: 'absolute',
     top: '60%',
     left: '50%',
-    alignItems:'center',
+    alignItems: 'center',
     transform: 'translate(-50%, -50%)',
     width: 500,
     bgcolor: 'White',
@@ -26,31 +26,32 @@ const style = {
 
 };
 
-export default function ModalSignUp({close,open}) {
+export default function ModalSignUp({close, open}) {
     const [openView, setOpenView] = useState(false);
     const [userSignUp, setUserSignUp] = useState({
         name: '',
         email: '',
         password: '',
-        nickname:''
+        nickname: ''
     });
 
-    const isNotUnique = useSelector(state=> state.isUniqueNickName)
+    const isNotUnique = useSelector(state => state.isUniqueNickName)
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(open) setOpenView(true)
+        if (open) setOpenView(true)
     }, [open])
 
     const handleClose = () => {
         setOpenView(false)
         close()
+        navigate('/main')
     }
-    const from = { pathname: '/main'};
+    const from = {pathname: '/main'};
 
     const changeHandler = (e) => {
-        setUserSignUp((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+        setUserSignUp((prev) => ({...prev, [e.target.name]: e.target.value}));
     };
 
     const dispatch = useDispatch()
@@ -77,42 +78,42 @@ export default function ModalSignUp({close,open}) {
                     <form
                         onSubmit={submitHandler}
                     >
-                    <Input
-                        onChange={changeHandler}
-                        value={userSignUp.name}
-                        type="text"
-                        name="name"
-                        placeholder="Имя"
-                    />
-    <div>
-        <Input
-            onChange={changeHandler}
-            value={userSignUp.email}
-            type="email"
-            name="email"
-            placeholder="Email"
-        />
-    </div>
-    <div>
-        <Input
-            onChange={changeHandler}
-            value={userSignUp.nickname}
-            type="text"
-            name="nickname"
-            placeholder="Логин"
-        />
-    </div>
-    <div>
-        <Input
-            onChange={changeHandler}
-            value={userSignUp.password}
-            type="password"
-            name="password"
-            placeholder="Пароль"
-        />
-    </div>
-    <button className={classes.BtnUp}>Зарегистироваться</button>
-</form>
+                        <Input
+                            onChange={changeHandler}
+                            value={userSignUp.name}
+                            type="text"
+                            name="name"
+                            placeholder="Имя"
+                        />
+                        <div>
+                            <Input
+                                onChange={changeHandler}
+                                value={userSignUp.email}
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                onChange={changeHandler}
+                                value={userSignUp.nickname}
+                                type="text"
+                                name="nickname"
+                                placeholder="Логин"
+                            />
+                        </div>
+                        <div>
+                            <Input
+                                onChange={changeHandler}
+                                value={userSignUp.password}
+                                type="password"
+                                name="password"
+                                placeholder="Пароль"
+                            />
+                        </div>
+                        <button className={classes.BtnUp}>Зарегистироваться</button>
+                    </form>
                     <div className={classes.uniqueLog}>
                         {isNotUnique && (<span>
             Данный логин уже используется, попробуйте ввести другой
@@ -120,6 +121,6 @@ export default function ModalSignUp({close,open}) {
                     </div>
                 </Box>
             </Modal>
-    </div>
+        </div>
     );
 }

@@ -16,7 +16,7 @@ export default function SimpleSelect() {
     const handleCloseModal = () => {
         setOpenModal(false)
     }
-    const handleCloseModalSignUp=()=>{
+    const handleCloseModalSignUp = () => {
         setOpenModalSignUp(false)
     }
     const open = Boolean(anchorEl);
@@ -48,22 +48,35 @@ export default function SimpleSelect() {
                     onClick={handleClick}
                 >
 
-                    <HowToRegIcon style={{color: 'rgb(241, 250, 238)', marginBottom:'35px', width:'50px', height:'100px', marginRight:'40px'}}/> <DehazeIcon style={{color: 'rgb(241, 250, 238)', marginBottom:'35px', width:'50px', height:'100px', marginRight:'40px', marginLeft:'-30px'}}/>
+                    <HowToRegIcon style={{
+                        color: 'rgb(241, 250, 238)',
+                        marginBottom: '5px',
+                        width: '50px',
+                        height: '70px',
+                        marginRight: '40px'
+                    }}/> <DehazeIcon style={{
+                    color: 'rgb(241, 250, 238)',
+                    marginBottom: '5px',
+                    width: '50px',
+                    height: '70px',
+                    marginRight: '40px',
+                    marginLeft: '-30px'
+                }}/>
                 </Button>
-                <Menu style={{marginTop:'80px'}}
-                    id="demo-positioned-menu"
-                    aria-labelledby="demo-positioned-button"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
+                <Menu style={{marginTop: '80px'}}
+                      id="demo-positioned-menu"
+                      aria-labelledby="demo-positioned-button"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left',
+                      }}
                 >
                     <MenuItem onClick={handleCloseSignUp}>Зарегистироваться</MenuItem>
                     <MenuItem onClick={handleCloseSignIn}>Войти</MenuItem>

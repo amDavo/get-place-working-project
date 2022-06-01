@@ -7,18 +7,22 @@
     flex-direction: row;
     /*background: linear-gradient(#1D3557 80%,white);*/
     background-color: black;
-    height: 170px;
+    height: 80px;
+    position: sticky;
 }
-.logo{
+
+.logo {
     flex: 2 150px
 }
-.container_links{
+
+.container_links {
     display: flex;
     flex: 3 450px;
     justify-content: space-around;
     flex-direction: row-reverse;
 }
-.simpleSelect{
+
+.simpleSelect {
     display: flex;
     flex: 400px;
     justify-content: flex-end;
