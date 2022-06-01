@@ -1,8 +1,8 @@
 .container {
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    z-index: 10;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -13,8 +13,8 @@
     border: 1px solid #000;
     border-radius: 5px;
     padding: 10px;
-    width: 400px;
-    height: 400px;
+    width: 700px;
+    height: 700px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -28,5 +28,19 @@
     right: 20px;
     top: 10px;
     cursor: pointer;
+}
+
+.selected {
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    /*padding: 10px;*/
+    width: 300px;
+    height: 300px;
+    bottom: 50px;
+    left: 50px;
+    /*transform: translate(-50%, -50%);*/
 }
 

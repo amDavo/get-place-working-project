@@ -1,9 +1,9 @@
 .fav-btn {
     position: absolute;
-    top: 20px;
+    top: 16px;
     right: 25px;
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 27px;
     z-index: 1;
 }
 
@@ -12,5 +12,13 @@
     height: 25px;
 }
 
+.fav-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
 
-
+.fav-btn:focus {
+    opacity: 1;
+    transform: scale(1.3);
+}
