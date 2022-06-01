@@ -5,6 +5,7 @@
 .generalDiv {
     margin-left: 15px;
     color: #1D3557;
+    font-weight: 100;
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -20,6 +21,7 @@
 
 .nameDiv {
     margin-top: 20px;
+    font-weight: 200;
 }
 
 .imageDiv {
@@ -31,7 +33,7 @@
 .head {
     font-family: 'Montserrat Alternates', sans-serif;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .rating {

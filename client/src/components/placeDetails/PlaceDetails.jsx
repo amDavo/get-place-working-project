@@ -18,12 +18,13 @@ const PlaceDetails = () => {
 
     useEffect(() => {
         dispatch(getPlaceDetails(id))
-    }, [])
+        console.log(inputs, '-------')
+
+    }, [inputs])
 
 
     const changeHandler = (event) => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
-        console.log(inputs, '-------')
     }
 
     const submitHandler = (event) => {
@@ -83,7 +84,6 @@ const PlaceDetails = () => {
                     </div>
                     <Button type='submit' variant='success'>Добавить оценку</Button>
                 </form>
-                {/*<Comments id={id}/>*/}
             </div>
             <Comments id={id}/>
         </>
