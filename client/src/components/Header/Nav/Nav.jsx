@@ -26,10 +26,9 @@ function Nav() {
             <div className={classes.container}>
                 <div className={classes.logo}>
                     <Link className="navbar-brand" to="/main">
-                        <img style={{width: '350px', margin: '-3px 50px', height: '90px'}} src={logotip}/>
+                        <img style={{width: '', margin: '-40px -15px', height: '160px'}} src={logotip}/>
                     </Link>
                 </div>
-
                 <div className={classes.container_links}>
 
                     {user ? (
