@@ -12,18 +12,19 @@ import classes from './modal.module.css'
 
 const style = {
     position: 'absolute',
-    top: '50%',
+    top: '60%',
     left: '50%',
     alignItems:'center',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: 'Honeydew',
-    border: '5px solid rgb(168, 218, 220)',
+    bgcolor: 'White',
+    // border: '5px solid rgb(168, 218, 220)',
+    border: '1px solid black',
     boxShadow: 24,
     p: 13,
     borderRadius: 12,
     lineHeight: 4,
-
+    textAlign: 'center',
 };
 
 export default function ModalSignIn({close,open}) {

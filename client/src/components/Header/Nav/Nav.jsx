@@ -38,12 +38,12 @@ function Nav() {
           Выйти
           </Button>
          <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
-             dispatch(setViewNavBar(false))
+             dispatch(setViewNavBar(true))
              navigate("/newPlace")}}>
         Добавить место
         </Button>
            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}} onClick = {() => {
-               dispatch(setViewNavBar(false))
+               dispatch(setViewNavBar(true))
                navigate("/location/:id")}}>
           Посмотреть места
           </Button>

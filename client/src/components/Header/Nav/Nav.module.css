@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    background: linear-gradient(#1D3557 80%,white);
+    /*background: linear-gradient(#1D3557 80%,white);*/
+    background-color: black;
     height: 170px;
 }
 .logo{
