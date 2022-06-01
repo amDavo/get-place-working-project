@@ -20,6 +20,9 @@ module.exports = {
       category: {
         type: Sequelize.STRING
       },
+      description: {
+        type: Sequelize.TEXT
+      },
       free: {
         type: Sequelize.BOOLEAN
       },
