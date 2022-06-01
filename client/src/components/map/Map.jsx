@@ -15,7 +15,7 @@ const containerStyle = {
 
 const defaultOptions = {
     panControl: true,
-    zoomControl: true,
+    zoomControl: false,
     mapTypeControl: false,
     scaleControl: false,
     streetViewControl: false,
@@ -23,7 +23,7 @@ const defaultOptions = {
     rotateControl: false,
     disableDoubleClickZoom: false,
     keyboardShortcuts: false,
-    scrollWheel: true,
+    scrollWheel: false,
     clickableIcons: true,
     fullscreenControl: false,
     styles: defaultTheme,
@@ -105,7 +105,7 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                             key={place.id}
                             position={place.coords}
                             onClick={() => {
-                                console.log('cliiiiiiiiiiicked')
+                                console.log('cliiiiiiiiiiicked', place)
                                 // setSelectedPlace(position)
                                 showCardInfo(place)
                             }}
