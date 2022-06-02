@@ -7,7 +7,6 @@ import Button from '@mui/material/Button'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
-import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -45,22 +44,21 @@ function Profile() {
         }
     };
     return (<>
-            <div className = {classes.Profile}>
-                <div className = {classes.Data}>Данные профиля</div>
-                <div className = {classes.Name}>Имя: {user.name}</div>
-                <div className = {classes.Login}>Логин: {user.nickname}</div>
+            <div className={classes.Profile}>
+                <div className={classes.Data}>Данные профиля</div>
+                <div className={classes.Name}>Имя: {user.name}</div>
+                <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-            <Button variant='contained' onClick={() => {
-                setShow(prev => !prev)
-                setViewModal(prev => !prev)
-            }}>
-                {!show ? 'Редактировать' : 'Отменить'}
-            </Button>
-    </div>
+                <Button variant='contained' onClick={() => {
+                    setShow(prev => !prev)
+                    setViewModal(prev => !prev)
+                }}>
+                    {!show ? 'Редактировать' : 'Отменить'}
+                </Button>
+            </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
-            )
-            }
+            )}
             {
                 favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }

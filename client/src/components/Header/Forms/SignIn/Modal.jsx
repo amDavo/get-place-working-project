@@ -51,8 +51,6 @@ export default function ModalSignIn({close, open}) {
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
-        console.log('popal')
-        console.log(userSignIn)
         e.preventDefault();
         let payload = Object.entries(userSignIn).filter((el) => (el[1] ? el[1].trim() : el[1]))
         if (payload.length) {

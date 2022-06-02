@@ -7,23 +7,23 @@ import {useNavigate} from "react-router-dom";
 const FavButton = ({cardData}) => {
     const [show, setShow] = useState(false)
     const info = useSelector(state => state.infoFavoriteIsSuccess)
-    const user = useSelector(state=>state.user)
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const addToFavHandler = (e) => {
         e.preventDefault()
-    }
-        if(user) {
+        if (user) {
             if (cardData.id) {
                 dispatch(addFavorite(cardData.id))
                 setShow(true)
             }
-            else navigate('/main')
-        }
+        } else navigate('/main')
+    }
+
 
     return (<>
-       <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
+            <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
             {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
             {show && (<div>
                 {info}
@@ -31,5 +31,4 @@ const FavButton = ({cardData}) => {
         </>
     );
 };
-
 export default FavButton;

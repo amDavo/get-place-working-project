@@ -1,107 +1,107 @@
 const sha256 = require('sha256');
-const { User } = require('../../db/models');
+const {User} = require('../../db/models');
 
 const signUp = async (req, res) => {
-  const { name, password, email, nickname } = req.body;
-  const user = await User.findOne({where: {nickname} })
-  if(user){
-    return res.status(201).json({isUnique:false, status:201})
-  }
-  if (name && password && email,nickname) {
-    try {
-      const newUser = await User.create({
-        name,
-        password: sha256(password),
-        email,
-        nickname
-      });
-      req.session.user = {
-        id: newUser.id,
-        name: newUser.name,
-        
-      };
-      console.log(req.session.user.id)
-      return res.json({ id: newUser.id, name: newUser.name, nickname:newUser.nickname });
-    } catch (error) {
-      console.error(error);
-      return res.sendStatus(500);
+    const {name, password, email, nickname} = req.body;
+    const user = await User.findOne({where: {nickname}})
+    if (user) {
+        return res.status(201).json({isUnique: false, status: 201})
     }
-  }
+    if (name && password && email, nickname) {
+        try {
+            const newUser = await User.create({
+                name,
+                password: sha256(password),
+                email,
+                nickname
+            });
+            req.session.user = {
+                id: newUser.id,
+                name: newUser.name,
 
-  return res.sendStatus(400);
+            };
+            console.log(req.session.user.id)
+            return res.json({id: newUser.id, name: newUser.name, nickname: newUser.nickname});
+        } catch (error) {
+            console.error(error);
+            return res.sendStatus(500);
+        }
+    }
+
+    return res.sendStatus(400);
 };
 
 const signIn = async (req, res) => {
-  console.log('AUTH--------------------', req.body);
-  const { password, email } = req.body;
+    console.log('AUTH--------------------', req.body);
+    const {password, email} = req.body;
 
-  if (password && email) {
-    try {
-      const currentUser = await User.findOne({ where: { email }, raw:true });
+    if (password && email) {
+        try {
+            const currentUser = await User.findOne({where: {email}, raw: true});
 
-      if (currentUser && currentUser.password === sha256(password)) {
-        req.session.user = {
-          id: currentUser.id,
-          name: currentUser.name,
-        };
-        return res.json({ id: currentUser.id, name: currentUser.name });
-      }
-      return res.sendStatus(401);
-    } catch (error) {
-      console.error(error);
-      return res.sendStatus(500);
+            if (currentUser && currentUser.password === sha256(password)) {
+                req.session.user = {
+                    id: currentUser.id,
+                    name: currentUser.name,
+                };
+                return res.json({id: currentUser.id, name: currentUser.name});
+            }
+            return res.sendStatus(401);
+        } catch (error) {
+            console.error(error);
+            return res.sendStatus(500);
+        }
     }
-  }
 
-  return res.sendStatus(400);
+    return res.sendStatus(400);
 };
 
 const signOut = async (req, res) => {
-  req.session.destroy((error) => {
-    if (error) {
-      console.error(error);
-      return res.sendStatus(500);
-    }
+    req.session.destroy((error) => {
+        if (error) {
+            console.error(error);
+            return res.sendStatus(500);
+        }
 
-    res.clearCookie(req.app.get('cookieName'));
+        res.clearCookie(req.app.get('cookieName'));
 
-    return res.sendStatus(200);
-  });
+        return res.sendStatus(200);
+    });
 };
-const signChange = async (req,res)=>{
-  const { name, nickname } = req.body;
+const signChange = async (req, res) => {
+    const {name, nickname, email} = req.body;
 
-  if (name && nickname) {
-    try {
-      await User.update({
-        name,
-        nickname
-      }, {where:{id:req.session.user.id}});
+    if (name && nickname) {
+        try {
+            await User.update({
+                name,
+                nickname
+            }, {where: {id: req.session.user.id}});
 
-      return res.json({ id: req.session.user.id, name: name, nickname:nickname });
-    } catch (error) {
-      console.error(error);
-      return res.sendStatus(500);
+            return res.json({id: req.session.user.id, name: name, nickname: nickname, email});
+        } catch (error) {
+            console.error(error);
+            return res.sendStatus(500);
+        }
     }
-  }
 
-  return res.sendStatus(400);
+    return res.sendStatus(400);
 };
 
 const checkAuth = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.session.user.id);
-    return res.json({ id: user.id, name: user.name });
-  } catch (error) {
-    console.error(error);
-    return res.sendStatus(500);
-  }
+    try {
+        const user = await User.findByPk(req.session.user.id);
+        return res.json({id: user.id, name: user.name});
+    } catch (error) {
+        console.error(error);
+        return res.sendStatus(500);
+    }
 };
 
 module.exports = {
-  signIn,
-  signOut,
-  signUp,
-  checkAuth,
-  signChange,
+    signIn,
+    signOut,
+    signUp,
+    checkAuth,
+    signChange,
 };

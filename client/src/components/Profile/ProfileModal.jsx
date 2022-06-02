@@ -2,12 +2,10 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Input from '@mui/material/Input'
 import Button from '@mui/material/Button'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signChange} from "../../redux/actions/userAction";
-import classNames from 'classnames';
 import classes from './Profile.module.css'
 
 
@@ -18,7 +16,7 @@ const style = {
     // alignItems: 'center',
     transform: 'translate(-50%, -50%)',
     width: 400,
-    height:500,
+    height: 500,
     bgcolor: 'White',
     // border: '5px solid rgb(168, 218, 220)',
     border: '1px solid black',
@@ -34,12 +32,13 @@ export default function ProfileModal({close, open, user}) {
     const [userChange, setUserChange] = useState({
         name: '',
         nickname: '',
+        email: '',
     });
     const navigate = useNavigate();
 
     useEffect(() => {
         if (open) setOpenView(true)
-        if (user) setUserChange(prev =>({...prev, name: user.name, nickname: user.nickname}))
+        if (user) setUserChange(prev => ({...prev, name: user.name, nickname: user.nickname, email: user.email}))
     }, [open])
 
     const handleClose = () => {
@@ -57,7 +56,6 @@ export default function ProfileModal({close, open, user}) {
     const submitHandler = (e) => {
         e.preventDefault();
         let payload = Object.entries(userChange).filter((el) => (el[1] ? el[1].trim() : el[1]))
-        console.log(userChange, "kdlkldk")
         if (payload.length) {
             payload = Object.fromEntries(payload);
             dispatch(signChange(payload, navigate('/profile')));
@@ -80,7 +78,7 @@ export default function ProfileModal({close, open, user}) {
                         <div className={classes.saveData}>Изменить данные</div>
                         <div className={classes.inp1}>
                             <input
-                                style={{width:'160px', height:'50px'}}
+                                style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}
                                 value={userChange.name}
                                 type="text"
@@ -90,7 +88,7 @@ export default function ProfileModal({close, open, user}) {
                         </div>
                         <div className={classes.inp2}>
                             <input
-                                style={{width:'160px', height:'50px'}}
+                                style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}
                                 value={userChange.nickname}
                                 type="text"
@@ -99,8 +97,8 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.buttons}>
-                        <Button variant ='outlined'>Сохранить</Button>
-                        <Button variant ='outlined'  onClick={handleClose}>Отменить</Button>
+                            <Button type='submit' variant='outlined'>Сохранить</Button>
+                            <Button variant='outlined' onClick={handleClose}>Отменить</Button>
                         </div>
                     </form>
                 </Box>
