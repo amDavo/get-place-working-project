@@ -5,7 +5,6 @@ import Filters from "../components/filters/Filters";
 import {useDispatch, useSelector} from "react-redux";
 import classes from './MainPage.module.css'
 import {setViewNavBar} from "../redux/actions/viewNavBarAcction/viewNavBar.action";
-import Filters from "../components/filters/Filters";
 
 
 const MainPage = () => {
