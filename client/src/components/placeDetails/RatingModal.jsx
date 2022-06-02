@@ -17,8 +17,6 @@ const RatingModal = ({children}) => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
-    console.log(inputs, '111111111111')
-
     const submitHandler = (event) => {
         console.log('got u')
         event.preventDefault()
@@ -48,31 +46,31 @@ const RatingModal = ({children}) => {
                             <p className={cl.detailDiv}>Оцените качество Wi-Fi</p>
                             <Rating
                                 name="wifi"
-                                value={inputs.wifi || '0'}
+                                value={inputs.wifi}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените дружелюбность персонала</p>
                             <Rating
                                 name="staff"
-                                value={inputs.staff || '0'}
+                                value={inputs.staff}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените уровень комфорта</p>
                             <Rating
                                 name="comfort"
-                                value={inputs.comfort || '0'}
+                                value={inputs.comfort}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените, как тихо было в заведении</p>
                             <Rating
                                 name="noise"
-                                value={inputs.noise || '0'}
+                                value={inputs.noise}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените атмосферу в целом </p>
                             <Rating
                                 name="atmosphere"
-                                value={inputs.atmosphere || '0'}
+                                value={inputs.atmosphere}
                                 onChange={changeHandler}
                             />
                         </div>
@@ -85,3 +83,4 @@ const RatingModal = ({children}) => {
 };
 
 export default RatingModal;
+
