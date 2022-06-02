@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
+import Button from '@mui/material/Button'
+import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
@@ -23,12 +25,13 @@ function Profile() {
 
     const handleClose = () => {
         setViewModal(false)
+        setShow(false)
     }
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(setUserInfo(userId?.id))
         setUserChange(user)
-    }, [])
+    }, [dispatch])
 
     const changeHandler = (e) => {
         setUserChange((prev) => ({...prev, [e.target.name]: e.target.value}));
@@ -42,18 +45,18 @@ function Profile() {
         }
     };
     return (<>
-            <div className={classes.Profile}>
-                <div className={classes.Data}>Данные профиля</div>
-                <div className={classes.Name}>Имя: <input type="text" value={user.name}/></div>
-                <div className={classes.Login}>Логин: <input type="text" value={user.nickname}/></div>
-                <div className={classes.Email}>E-mail: <input type="text" value={user.email}/></div>
-            </div>
-            <button className={classes.BtnProf} onClick={() => {
+            <div className = {classes.Profile}>
+                <div className = {classes.Data}>Данные профиля</div>
+                <div className = {classes.Name}>Имя: {user.name}</div>
+                <div className = {classes.Login}>Логин: {user.nickname}</div>
+                <div className={classes.Email}>E-mail: {user.email}</div>
+            <Button variant='contained' onClick={() => {
                 setShow(prev => !prev)
                 setViewModal(prev => !prev)
             }}>
                 {!show ? 'Редактировать' : 'Отменить'}
-            </button>
+            </Button>
+    </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )

@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ListOfCards from "../components/listOfCards/ListOfCards";
 import ShowPlacesOnMapButton from "../components/map/buttons/showAllPlaces/ShowPlacesOnMapButton";
 import Filters from "../components/filters/Filters";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import classes from './MainPage.module.css'
+import {setViewNavBar} from "../redux/actions/viewNavBarAcction/viewNavBar.action";
+
 
 const MainPage = () => {
     const viewNavBar = useSelector(state => state.viewNavBar)
+    const user = useSelector(state=>state.user)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(setViewNavBar(false))
+    },[])
 
 
     return (
@@ -15,8 +23,16 @@ const MainPage = () => {
                     <Filters/>
                 </div>
             )}
+            {!user &&(
+                <div className={classes.errorMessage}>
+                   Необходимо зарегистрироваться или войти
+                </div>)}
+
+                <>
             <ListOfCards/>
             <ShowPlacesOnMapButton/>
+                    </>
+
         </>
     );
 };
