@@ -4,7 +4,6 @@ import {makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import classes from './Nav.module.css'
 import SimpleSelect from "../Forms/SelectSign/SelectSign";
-import logotip from '../Nav/logotip.png'
 import {setViewNavBar} from "../../../redux/actions/viewNavBarAcction/viewNavBar.action";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +25,7 @@ function Nav() {
             <div className={classes.container}>
                 <div className={classes.logo}>
                     <Link className="navbar-brand" to="/main">
-                        <img style={{width: '450px', margin: '-40px -50px', height: '160px'}} src={logotip}/>
+                        <img style={{width: '', margin: '-40px -15px', height: '160px'}}/>
                     </Link>
                 </div>
                 <div className={classes.container_links}>
@@ -49,7 +48,7 @@ function Nav() {
                             </Button>
                             <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}}
                                     onClick={() => {
-                                        dispatch(setViewNavBar(true))
+                                        dispatch(setViewNavBar(false))
                                         navigate("/main")
                                     }}>
                                 Посмотреть места

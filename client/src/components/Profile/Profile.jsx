@@ -1,11 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import { setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
+import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
+import Button from '@mui/material/Button'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
-import {setInfoFavoriteIsSuccess} from "../../redux/actions/favoriteAction/favorite.action";
-import {getFavorite} from "../../redux/thunk/favoritesThunks/addFavorite";
+import classes from './Profile.module.css'
+import ProfileModal from './ProfileModal'
 
 function Profile() {
     const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function Profile() {
     const userId = useSelector(state => state.user)
     const favorites = useSelector(state => state.userFavorites)
     const [show, setShow] = useState(false)
+    const [viewModal, setViewModal] = useState(false)
     const [userChange, setUserChange] = useState({
         name: '',
         email: '',
@@ -20,16 +22,15 @@ function Profile() {
         nickname: ''
     });
 
-    console.log(user, '======w=w=ww=w=w=')
-    console.log(favorites)
-
+    const handleClose = () => {
+        setViewModal(false)
+        setShow(false)
+    }
     const navigate = useNavigate();
     useEffect(() => {
-        // dispatch(setUserInfo(userId?.id))
-        // dispatch(setFav(userId?.id))
-        // dispatch(getFavorite())
+        dispatch(setUserInfo(userId?.id))
         setUserChange(user)
-    }, [])
+    }, [dispatch])
 
     const changeHandler = (e) => {
         setUserChange((prev) => ({...prev, [e.target.name]: e.target.value}));
@@ -43,69 +44,26 @@ function Profile() {
         }
     };
     return (<>
-
-            <div>{user.name}</div>
-            <div>
-                {user.email}
+            <div className={classes.Profile}>
+                <div className={classes.Data}>Данные профиля</div>
+                <div className={classes.Name}>Имя: {user.name}</div>
+                <div className={classes.Login}>Логин: {user.nickname}</div>
+                <div className={classes.Email}>E-mail: {user.email}</div>
+                <Button variant='contained' onClick={() => {
+                    setShow(prev => !prev)
+                    setViewModal(prev => !prev)
+                }}>
+                    {!show ? 'Редактировать' : 'Отменить'}
+                </Button>
             </div>
-            <div>
-                {user.nickname}
-            </div>
-            <button onClick={() => {
-                setShow(prev => !prev)
-            }}>
-                {!show ? 'Редактировать' : 'Отменить'}
-            </button>
             {show && (
-                <form
-                    onSubmit={submitHandler}
-                >
-                    <div>Изменить данные</div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.name}
-                            type="text"
-                            name="name"
-                            placeholder="Имя"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.email}
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.nickname}
-                            type="text"
-                            name="nickname"
-                            placeholder="nickname"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            onChange={changeHandler}
-                            value={userChange.password}
-                            type="password"
-                            name="password"
-                            placeholder="Пароль"
-                        />
-                    </div>
-                    <button>Сохранить</button>
-                </form>
+                <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
             {
-                favorites?.length && favorites?.map(el =>
-                    <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+                favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
         </>
     )
 }
 
-export default Profile
+export default Profile;

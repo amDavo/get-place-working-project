@@ -53,3 +53,8 @@
     background-color: #457B9D;
     color: #F1FAEE;
 }
+
+.description {
+    width: 400px;
+    height: 90px;
+}

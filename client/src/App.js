@@ -34,12 +34,12 @@ function App() {
                 {/*<Route path="/" element={<Main/>}/>*/}
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/main" element={<MainPage/>}/>
-                <Route path="/location/:id" element={<PlaceDetailsPage/>}/>
+                <Route path="/location/:id" element={<PrivateRouter><PlaceDetailsPage/></PrivateRouter>}/>
                 <Route path="/auth/signout" element={<PrivateRouter><SignOut/></PrivateRouter>}/>
                 <Route path="/auth/signup" element={<ModalSignUp/>}/>
                 <Route path="/auth/signin" element={<Modal/>}/>
-                <Route path="/newPlace" element={<AddNewPlace/>}/>
-                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/newPlace" element={<PrivateRouter><AddNewPlace/></PrivateRouter>}/>
+                <Route path="/profile" element={<PrivateRouter><Profile/> </PrivateRouter>}/>
                 {/*<Route path="/location/:id" element={<PlaceDetails/>}/>*/}
             </Routes>
 

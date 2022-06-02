@@ -6,6 +6,15 @@ const StartPage = () => {
     return (
         <>
             <div>
+                <div className="gradient1"></div>
+                <div className="gradient2"></div>
+                <div className="gradient3"></div>
+                <div className="gradient4"></div>
+                <div className="gradient5"></div>
+                <div className="gradient6"></div>
+                <div className="gradient7"></div>
+                <div className="gradient8"></div>
+                <div className="gradient9"></div>
                 <div className='start-page-back'>
                     <div className='start-page-text'>
                         <h1>Welcome to the</h1>
@@ -16,15 +25,13 @@ const StartPage = () => {
                             </Link>
                         </div>
                     </div>
-                    <img className='start-page' src="/icon/pexels-polina-kovaleva-5827784.gif" alt="wonder"/>
+                    <div className="start-page">
+                        <video className='video' muted="muted" autoplay="autoplay" loop>
+                            <source src="/icon/video-work.mp4" type='video/mp4'/>
+                        </video>
+                    </div>
                 </div>
             </div>
-
-            {/*<div style="padding-top:56.300%;position:relative;">*/}
-            {/*    <iframe src="https://gifer.com/embed/U61H" width="100%" height="100%"*/}
-            {/*            style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe>*/}
-            {/*</div>*/}
-            {/*<p><a href="https://gifer.com">через GIFER</a></p>*/}
         </>
     );
 };

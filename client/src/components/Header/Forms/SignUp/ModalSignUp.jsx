@@ -20,7 +20,7 @@ const style = {
     border: '2px solid black',
     boxShadow: 24,
     p: 13,
-    borderRadius: 12,
+    borderRadius: 4,
     lineHeight: 4,
     textAlign: 'center',
 
