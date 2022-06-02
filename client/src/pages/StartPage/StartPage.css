@@ -101,7 +101,6 @@
     opacity: 0.1;
 }
 
-
 .video {
     position: absolute;
     top: 0;
@@ -115,7 +114,6 @@
     transform-origin: center center;
     opacity: 0.6;
 }
-
 
 .start-page-text {
     z-index: 5;

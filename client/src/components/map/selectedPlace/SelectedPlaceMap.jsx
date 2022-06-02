@@ -1,7 +1,7 @@
 import React from 'react';
-// import './SelectedPlaceMap.css';
+import './SelectedPlaceMap.css';
 import Map from "../Map";
-import classes from "../Map.module.css";
+import classes from "./Map.module.css";
 
 const SelectedPlaceMap = () => {
     const center = {
