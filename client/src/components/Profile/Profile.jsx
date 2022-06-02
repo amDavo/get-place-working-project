@@ -64,11 +64,9 @@ function Profile() {
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
-        <div className='cards-container'>
             {
               favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
-        </div>
         </>
     )
 }
