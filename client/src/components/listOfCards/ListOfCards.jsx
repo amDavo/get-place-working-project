@@ -5,6 +5,7 @@ import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import './module.css'
 
 const ListOfCards = () => {
+
     const list = useSelector(state => state.list)
     const dispatch = useDispatch()
 
