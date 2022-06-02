@@ -2,7 +2,6 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signChange} from "../../redux/actions/userAction";
@@ -102,6 +101,7 @@ export default function ProfileModal({close, open, user}) {
                         <div className={classes.buttons}>
                             <Button type='submit' variant="outline-dark">Сохранить</Button>
                             <Button variant="outline-dark" onClick={handleClose}>Отменить</Button>
+
                         </div>
                     </form>
                 </Box>

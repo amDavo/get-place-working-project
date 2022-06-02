@@ -11,4 +11,5 @@ export const initState = () => ({
     viewNavBar: false,
     ratings: [],
     errorSignIn: false,
+    fav: false
 })

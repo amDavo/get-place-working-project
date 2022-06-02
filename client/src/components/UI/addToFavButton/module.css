@@ -7,6 +7,14 @@
     z-index: 1;
 }
 
+.del-btn {
+    position: absolute;
+    top: 16px;
+    right: 25px;
+    width: 28px;
+    height: 27px;
+    z-index: 2;
+}
 .fav-logo {
     width: 25px;
     height: 25px;

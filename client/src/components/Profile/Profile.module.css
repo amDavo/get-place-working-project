@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,300;0,400;0,500;0,600;1,500;1,600&family=Montserrat:ital,wght@1,100;1,400&family=Raleway:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,300;0,400;0,500;0,600;1,500;1,600&display=swap');
 .Data {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -75,3 +75,18 @@
     justify-content: space-around;
 
 }
+
+
+.fav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+
+.btn {
+    margin: 50px;
+    width: 230px;
+    transform: translate(-50%, -50%);
+}
+

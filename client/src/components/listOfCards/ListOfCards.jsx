@@ -8,6 +8,7 @@ import {THUNK_getCoordsFromAddress} from "../../redux/thunk/locationThunk/locati
 const ListOfCards = () => {
     const allPlaces = useSelector(state => state.allPlaces)
     const dispatch = useDispatch()
+    const favorites = useSelector(state => state.userFavorites)
 
     useEffect(() => {
         dispatch(getAllPlaces("all"))
@@ -15,12 +16,16 @@ const ListOfCards = () => {
         dispatch(THUNK_getCoordsFromAddress(allPlaces))
     }, [])
 
+
+
     return (
         <>
             <div className='cards-container'>
-                {
+                {allPlaces ?
                     allPlaces.map(el =>
                         <PlaceCardSmall cardData={el} key={el.id}/>)
+                    :
+                    ''
                 }
             </div>
         </>

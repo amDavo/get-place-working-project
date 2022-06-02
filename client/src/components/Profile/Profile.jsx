@@ -43,27 +43,29 @@ function Profile() {
             dispatch(signChange(payload, navigate));
         }
     };
-    return (
-        <>
-            <div className={classes.containerP}>
+
+    favorites.map(el => el.fav = true)
+
+    return (<>
             <div className={classes.Profile}>
                 <div className={classes.Data}>Данные профиля</div>
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <Button style={{marginbottom:'20px'}} variant="outline-dark" onClick={() => {
+                <div className= 'btn'>
+                <button className="btn btn btn-outline-secondary " id='1btn' onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
-                    {!show ? 'Редактировать' : 'Отменить'}
-                </Button>
-            </div>
+
+                    {!show ? 'Редактировать' : 'Отменить'}</button>
+                </div>
             </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
             {
-                favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+              favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
         </>
     )
