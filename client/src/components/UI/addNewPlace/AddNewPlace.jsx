@@ -25,7 +25,6 @@ const AddNewPlace = () => {
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log(autocompleteValue, '=====++==')
         dispatch(addNewPlace({...inputs, file, location: autocompleteValue}))
 
         navigate('/main')

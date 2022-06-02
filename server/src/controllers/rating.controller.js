@@ -105,4 +105,5 @@ const addRating = async (req, res) => {
     }
 }
 
-module.exports = addRating
+
+module.exports = {addRating}

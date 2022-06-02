@@ -17,6 +17,8 @@ const PlaceDetails = () => {
     const [addRate, setAddRate] = useState(false)
     const [inputs, setInputs] = useState({})
 
+    console.log(placeRates, '222222')
+
     useEffect(() => {
         dispatch(getPlaceDetails(id))
     }, [])
