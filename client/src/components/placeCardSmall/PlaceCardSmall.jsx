@@ -48,7 +48,6 @@ const PlaceCardSmall = ({cardData, view}) => {
                     {/*</div>*/}
                 </Link>
             </div>
-            <FavButton cardData={cardData}/>
         </>
     );
 };

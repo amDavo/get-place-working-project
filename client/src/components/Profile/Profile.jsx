@@ -4,6 +4,8 @@ import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
+import {setInfoFavoriteIsSuccess} from "../../redux/actions/favoriteAction/favorite.action";
+import {getFavorite} from "../../redux/thunk/favoritesThunks/addFavorite";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
 
@@ -13,7 +15,6 @@ function Profile() {
     const userId = useSelector(state => state.user)
     const favorites = useSelector(state => state.userFavorites)
     const [show, setShow] = useState(false)
-    const [viewModal, setViewModal] = useState(false)
     const [userChange, setUserChange] = useState({
         name: '',
         email: '',
