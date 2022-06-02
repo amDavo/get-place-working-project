@@ -75,3 +75,17 @@
     justify-content: space-around;
 
 }
+
+.fav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+
+.btn {
+    margin: 50px;
+    width: 230px;
+    transform: translate(-50%, -50%);
+}
+

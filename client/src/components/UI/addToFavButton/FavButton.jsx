@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {addFavorite} from "../../../redux/thunk/favoritesThunks/addFavorite";
 import './module.css'
+import { deleteFavorites} from "../../../redux/actions/favoriteAction/favorite.action";
 import {useNavigate} from "react-router-dom";
 
 const FavButton = ({cardData}) => {
     const [show, setShow] = useState(false)
     const info = useSelector(state => state.infoFavoriteIsSuccess)
     const user = useSelector(state => state.user)
+    const favorites = useSelector(state => state.userFavorites)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -17,13 +19,25 @@ const FavButton = ({cardData}) => {
             if (cardData.id) {
                 dispatch(addFavorite(cardData.id))
                 setShow(true)
+                cardData.fav = !cardData.fav
             }
         } else navigate('/main')
     }
 
+    const deleteFavHandler = (e) => {
+        e.preventDefault()
+        dispatch(deleteFavorites(cardData.id))
+        cardData.fav = !cardData.fav
+    }
+
 
     return (<>
-            <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
+            {cardData.fav
+                ?
+                <img className='fav-btn' onClick={deleteFavHandler} src='/icon/iconnn.svg'/>
+                :
+                <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
+            }
             {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
             {show && (<div>
                 {info}

@@ -129,7 +129,7 @@ const getCards = async (req, res) => {
         }
     }
 
-    else {
+    else if (params === 'top') {
         try {
             const places = await Place.findAll({
                 include: [{
@@ -144,9 +144,32 @@ const getCards = async (req, res) => {
                 placesWithRating.push(el)
             })
 
+            // const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(places)
+        } catch (e) {
+            res.sendStatus(500)
+        }
+    }
+    else {
+        try {
+            const places = await Place.findAll({
+                order: [['createdAt', "DESC"]],
+                include: [{
+                    model: Rate,
+                    include: [Type]
+                }],
+            })
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = ((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)
+                placesWithRating.push(el)
+            })
+
             const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
 
-            res.json(sortPlaces)
+            res.json(places)
         } catch (e) {
             res.sendStatus(500)
         }

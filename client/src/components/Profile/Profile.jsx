@@ -43,6 +43,10 @@ function Profile() {
             dispatch(signChange(payload, navigate));
         }
     };
+
+    favorites.map(el => el.fav = true)
+
+
     return (
         <>
             <div className={classes.containerP}>
@@ -63,7 +67,7 @@ function Profile() {
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
             {
-                favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+              favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
         </>
     )
