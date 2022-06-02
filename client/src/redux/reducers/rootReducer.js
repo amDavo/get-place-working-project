@@ -7,6 +7,7 @@ import placeDetailsReducer from "./placeDetailsReducer/placeDetailsReducer";
 import nickNameReducer from "./nickNameReducer";
 import favoriteReducer from "./favoriteReducer/favoriteReducer";
 import viewNavBarReducer from "./viewNavBarReducer/viewNavBarReducer";
+import ratesReducer from "./ratesReduces/ratesReducer";
 
 export default combineReducers({
     userData: profileReducer,
@@ -17,5 +18,6 @@ export default combineReducers({
     userFavorites: favoriteReducer,
     placeDetails: placeDetailsReducer,
     viewNavBar: viewNavBarReducer,
+    placeRate: ratesReducer,
 })
 

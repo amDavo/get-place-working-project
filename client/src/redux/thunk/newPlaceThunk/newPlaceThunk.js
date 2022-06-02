@@ -10,6 +10,7 @@ export const addNewPlace = (body) => async (dispatch) => {
     data.append('free', body.free);
     data.append('working_hoursFrom', body.working_hoursFrom);
     data.append('working_hoursTo', body.working_hoursTo);
+    data.append('description', body.description);
     const response = await axios.post(`http://localhost:8080/newPlace`, data,
         {
             headers: {

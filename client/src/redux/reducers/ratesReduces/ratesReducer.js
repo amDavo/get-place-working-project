@@ -1,11 +1,11 @@
-import {initState} from "../../../components/map/redux/initState";
 import {SET_RATES} from "../../types/types";
+import {initState} from "../../initState/initState";
 
 
 export default function ratesReducer(state = initState().ratings, action) {
     switch (action.type) {
         case SET_RATES:
-            return [...state, action.payload];
+            return action.payload
         default:
             return state
     }

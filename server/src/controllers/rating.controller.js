@@ -84,10 +84,10 @@ const addRating = async (req, res) => {
         })
 
         const wifiAverage = ((wifi.reduce((acc, b) => acc + b.rate_number, 0)) / wifi.length).toFixed(1)
-        const staffAverage = ((staff.reduce((acc, b) => acc + b.rate_number, 0)) / wifi.length).toFixed(1)
-        const comfortAverage = ((comfort.reduce((acc, b) => acc + b.rate_number, 0)) / wifi.length).toFixed(1)
-        const noiseAverage = ((noise.reduce((acc, b) => acc + b.rate_number, 0)) / wifi.length).toFixed(1)
-        const atmosphereAverage = ((atmosphere.reduce((acc, b) => acc + b.rate_number, 0)) / wifi.length).toFixed(1)
+        const staffAverage = ((staff.reduce((acc, b) => acc + b.rate_number, 0)) / staff.length).toFixed(1)
+        const comfortAverage = ((comfort.reduce((acc, b) => acc + b.rate_number, 0)) / comfort.length).toFixed(1)
+        const noiseAverage = ((noise.reduce((acc, b) => acc + b.rate_number, 0)) / noise.length).toFixed(1)
+        const atmosphereAverage = ((atmosphere.reduce((acc, b) => acc + b.rate_number, 0)) / atmosphere.length).toFixed(1)
 
         const ratesOfPlace = [{
             wifi: wifiAverage,

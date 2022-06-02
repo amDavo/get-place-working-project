@@ -4,33 +4,27 @@ import {getPlaceDetails} from "../../redux/thunk/placeDetailsThunk/placeDetailsT
 import {useParams} from "react-router-dom";
 import cl from './details.module.css'
 import '../../App.css'
-import {Rating} from "@mui/material";
-import {Button} from "react-bootstrap";
-import {setRatings} from "../../redux/thunk/ratesThunk/ratesThunk";
 import Comments from "../comments/Comments";
+import RatingModal from "./RatingModal";
 
 const PlaceDetails = () => {
     const placeInfo = useSelector(state => state.placeDetails)
     const dispatch = useDispatch()
     const {id} = useParams()
-    const [inputs, setInputs] = useState({})
+
+    const placeRates = useSelector(state => state.placeRate)
+    const [addRate, setAddRate] = useState(false)
 
 
     useEffect(() => {
         dispatch(getPlaceDetails(id))
-        console.log(inputs, '-------')
+    }, [])
 
-    }, [inputs])
+    console.log(placeRates, 'w1111')
 
 
-    const changeHandler = (event) => {
-        setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
-    }
-
-    const submitHandler = (event) => {
-        console.log('got u')
-        event.preventDefault()
-        dispatch(setRatings({...inputs, place_id: id}))
+    const showVote = () => {
+        setAddRate(!addRate)
     }
 
 
@@ -48,42 +42,20 @@ const PlaceDetails = () => {
                     <h3 className={cl.nameDiv}>Адрес: {placeInfo.location}</h3>
                     <h3 className={cl.nameDiv}>Часы работы: {placeInfo.working_hours}</h3>
                     <h3 className={cl.nameDiv}>Вход: {placeInfo.free ? "бесплатный" : "платный"}</h3>
+                    <h3 className={cl.nameDiv}>Описание: {placeInfo.description}</h3>
+                    <RatingModal>
+                        <button onClick={showVote}>Добавить отзыв</button>
+                    </RatingModal>
+
                 </div>
-                <form onSubmit={submitHandler}>
-                    <div className={cl.voteDiv}>
-                        <h3>ВайФай</h3>
-                        <Rating
-                            name="wifi"
-                            value={inputs.wifi}
-                            onChange={changeHandler}
-                        />
-                        <h3>Персонал</h3>
-                        <Rating
-                            name="staff"
-                            value={inputs.staff}
-                            onChange={changeHandler}
-                        />
-                        <h3>Комфорт</h3>
-                        <Rating
-                            name="comfort"
-                            value={inputs.comfort}
-                            onChange={changeHandler}
-                        />
-                        <h3>Шум</h3>
-                        <Rating
-                            name="noise"
-                            value={inputs.noise}
-                            onChange={changeHandler}
-                        />
-                        <h3>Атмосфера</h3>
-                        <Rating
-                            name="atmosphere"
-                            value={inputs.atmosphere}
-                            onChange={changeHandler}
-                        />
-                    </div>
-                    <Button type='submit' variant='success'>Добавить оценку</Button>
-                </form>
+
+            </div>
+            <div className={cl.stars}>
+                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.wifi}</h1>
+                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.staff}</h1>
+                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.noise}</h1>
+                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.comfort}</h1>
+                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.atmosphere}</h1>
             </div>
             <Comments id={id}/>
         </>

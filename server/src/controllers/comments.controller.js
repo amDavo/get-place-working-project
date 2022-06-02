@@ -1,5 +1,4 @@
-
-const { Comments, User } = require('../../db/models');
+const {Comments, User} = require('../../db/models');
 
 const getAllComments = async (req, res) => {
 
@@ -22,15 +21,21 @@ const getAllComments = async (req, res) => {
 };
 // /comments/:id
 const addComments = async (req, res) => {
-  const {id} =req.params
-  try {
-    const newComments = await Comments.create({
-      user_id:req.session.user.id,
-      place_id:id,
-      body: req.body.text
+    const {id} = req.params
+    try {
+        const newComments = await Comments.create({
+            user_id: req.session.user.id,
+            place_id: id,
+            body: req.body.text
 
         });
-        res.json(newComments);
+        const comments = await Comments.findAll({
+            where: {place_id: id},
+            include: {
+                model: User,
+            }
+        })
+        res.json(comments);
 
 
     } catch (error) {
@@ -58,7 +63,7 @@ const deleteComments = async (req, res) => {
 
 
 module.exports = {
-  getAllComments,
-  addComments,
-  deleteComments
+    getAllComments,
+    addComments,
+    deleteComments
 }

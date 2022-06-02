@@ -123,8 +123,19 @@ const AddNewPlace = () => {
                                 onChange={addImgHandler}
                             />
                         </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <h5>Описание</h5>
+                            <Form.Control className={cl.description}
+                                          label="Опишите локацию"
+                                          variant="standard"
+                                          name='description'
+                                          type="text"
+                                          placeholder="Опишите локацию"
+                                          value={inputs.description}
+                                          onChange={changeHandler}
+                            />
+                        </Form.Group>
                         <center>
-
                             <Button
                                 className={cl.btn}
                                 variant="outline-secondary"

@@ -6,9 +6,10 @@ import {Button, FloatingLabel, Form} from 'react-bootstrap';
 function Comments({id}) {
     const [comments, setComments] = useState([])
     const [inputs, setInputs] = useState('')
+
     useEffect(() => {
         fetch(`http://localhost:8080/comments/${id}`).then(res => res.json()).then(data => setComments(data.comments))
-    }, [comments])
+    }, [])
     const addHandler = async () => {
         const response = await fetch(`http://localhost:8080/comments/${id}`, {
             method: 'post',
@@ -18,6 +19,9 @@ function Comments({id}) {
             },
             body: JSON.stringify({text: inputs})
         })
+        const data = await response.json()
+        setComments(data)
+        setInputs('')
     }
 
     return (
@@ -26,6 +30,7 @@ function Comments({id}) {
 
                 <FloatingLabel controlId="floatingTextarea2" label="Комментарий">
                     <Form.Control
+                        value={inputs}
                         onChange={(e) => setInputs(e.target.value)}
                         as="textarea"
                         placeholder="Leave a comment here"
