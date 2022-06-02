@@ -97,8 +97,9 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.buttons}>
-                            <Button type='submit' variant='outlined'>Сохранить</Button>
-                            <Button variant='outlined' onClick={handleClose}>Отменить</Button>
+
+                            <button className="btn btn btn-outline-secondary " type='submit' id='1btn'>Сохранить</button>
+                            <button className="btn btn btn-outline-secondary "  onClick={handleClose} id='1btn'>Отменить</button>
                         </div>
                     </form>
                 </Box>
