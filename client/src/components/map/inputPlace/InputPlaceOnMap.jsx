@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from "../Map";
-import classes from "../Map.module.css";
+// import classes from "../Map.module.css";
 
 const InputPlaceOnMap = () => {
     const center = {
