@@ -34,7 +34,7 @@ function App() {
                 {/*<Route path="/" element={<Main/>}/>*/}
                 <Route path="/" element={<StartPage/>}/>
                 <Route path="/main" element={<MainPage/>}/>
-                <Route path="/location/:id" element={<PrivateRouter><PlaceDetailsPage/></PrivateRouter>}/>
+                <Route path="/location/:id" element={<PlaceDetailsPage/>}/>
                 <Route path="/auth/signout" element={<PrivateRouter><SignOut/></PrivateRouter>}/>
                 <Route path="/auth/signup" element={<ModalSignUp/>}/>
                 <Route path="/auth/signin" element={<Modal/>}/>

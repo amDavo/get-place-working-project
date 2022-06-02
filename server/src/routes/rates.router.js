@@ -3,6 +3,6 @@ const addRating = require("../controllers/rating.controller");
 
 const ratesRouter = Router();
 
-ratesRouter.post('/', addRating)
+ratesRouter.post('/', addRating.addRating)
 
 module.exports = ratesRouter;

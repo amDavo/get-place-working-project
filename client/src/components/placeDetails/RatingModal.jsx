@@ -12,10 +12,12 @@ const RatingModal = ({children}) => {
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
     const {id} = useParams()
-    
+
     const changeHandler = (event) => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
+
+    console.log(inputs, '111111111111')
 
     const submitHandler = (event) => {
         console.log('got u')
@@ -46,31 +48,31 @@ const RatingModal = ({children}) => {
                             <p className={cl.detailDiv}>Оцените качество Wi-Fi</p>
                             <Rating
                                 name="wifi"
-                                value={inputs.wifi}
+                                value={inputs.wifi || '0'}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените дружелюбность персонала</p>
                             <Rating
                                 name="staff"
-                                value={inputs.staff}
+                                value={inputs.staff || '0'}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените уровень комфорта</p>
                             <Rating
                                 name="comfort"
-                                value={inputs.comfort}
+                                value={inputs.comfort || '0'}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените, как тихо было в заведении</p>
                             <Rating
                                 name="noise"
-                                value={inputs.noise}
+                                value={inputs.noise || '0'}
                                 onChange={changeHandler}
                             />
                             <p className={cl.detailDiv}>Оцените атмосферу в целом </p>
                             <Rating
                                 name="atmosphere"
-                                value={inputs.atmosphere}
+                                value={inputs.atmosphere || '0'}
                                 onChange={changeHandler}
                             />
                         </div>
