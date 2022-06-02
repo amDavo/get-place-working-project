@@ -63,3 +63,17 @@
     text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
 }
+
+.fav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+
+.btn {
+    margin: 50px;
+    width: 230px;
+    transform: translate(-50%, -50%);
+}
+

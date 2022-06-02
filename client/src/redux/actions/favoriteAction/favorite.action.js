@@ -1,4 +1,10 @@
-import {ADD_USERS_FAVORITES, DELETE_FAVORITES, GET_FAVORITES, INFO_FAVORITES_SUCCESS} from "../../types/favoriteTypes";
+import {
+    ADD_USERS_FAVORITES,
+    DELETE_FAVORITES,
+    FAV,
+    GET_FAVORITES,
+    INFO_FAVORITES_SUCCESS
+} from "../../types/favoriteTypes";
 
 export const setUserFavorites = (userFavorites) => ({
     type: ADD_USERS_FAVORITES,
@@ -19,3 +25,5 @@ export const deleteFavorites = (id) => ({
     type: DELETE_FAVORITES,
     payload: id
 })
+
+

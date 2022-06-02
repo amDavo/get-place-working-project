@@ -7,7 +7,6 @@ import Button from '@mui/material/Button'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
-import {deleteFavorites} from "../../redux/actions/favoriteAction/favorite.action";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -45,29 +44,31 @@ function Profile() {
         }
     };
 
-    const deleteHandler = () => {
-        dispatch(deleteFavorites())
-    }
+    favorites.map(el => el.fav = true)
+
     return (<>
             <div className={classes.Profile}>
                 <div className={classes.Data}>Данные профиля</div>
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <Button style={{marginbottom:'20px'}} variant='contained' onClick={() => {
+                <div className= 'btn'>
+                <button className="btn btn btn-outline-secondary " id='1btn' onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
-                    {!show ? 'Редактировать' : 'Отменить'}
-                </Button>
+
+                    {!show ? 'Редактировать' : 'Отменить'}</button>
+                </div>
             </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
+        <div className='cards-container'>
             {
-                favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+              favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
-            <button onClick={deleteHandler}>delete</button>
+        </div>
         </>
     )
 }
