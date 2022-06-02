@@ -2,11 +2,17 @@ import {DELETE_USER, SET_IS_UNIQUE_NICK_NAME, SET_USER} from '../types/userTypes
 import * as endPoints from '../../config/endPoints';
 import {disableLoader, enableLoader} from './loaderAction';
 import {profileInfo} from "./profileActions/profileInfoAction";
+import {SET_ERROR_SIGN_IN} from "../types/setErrorSignIn";
+
 
 export const setUser = (user) => ({
     type: SET_USER,
     payload: user,
 });
+export const setErrorSignIn = (errorSignIn) => ({
+    type: SET_ERROR_SIGN_IN,
+    payload: errorSignIn,
+})
 export const setIsUniqueNickName = (isUniqueNickName) => ({
     type: SET_IS_UNIQUE_NICK_NAME,
     payload: isUniqueNickName,
@@ -81,7 +87,7 @@ export const signIn = (payload, navigate, from) => async (dispatch) => {
         dispatch(setUser(user));
         navigate(from);
     } else {
-        navigate('/auth/signin');
+        dispatch(setErrorSignIn(true));
     }
     dispatch(disableLoader());
 };
@@ -108,5 +114,7 @@ export const checkAuth = () => async (dispatch) => {
         dispatch(setUser(user));
     }
 };
+
+
 
 

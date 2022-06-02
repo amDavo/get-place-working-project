@@ -77,6 +77,7 @@ export default function ProfileModal({close, open, user}) {
                     >
                         <div className={classes.saveData}>Изменить данные</div>
                         <div className={classes.inp1}>
+                            Имя:
                             <input
                                 style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}
@@ -87,6 +88,7 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.inp2}>
+                            Логин:
                             <input
                                 style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}

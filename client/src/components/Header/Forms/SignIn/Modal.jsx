@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Input from '@mui/material/Input'
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../../../redux/actions/userAction";
 import classes from './modal.module.css'
 
 
 const style = {
     position: 'absolute',
-    top: '60%',
+    top: '50%',
     left: '50%',
     alignItems: 'center',
     transform: 'translate(-50%, -50%)',
@@ -32,7 +32,13 @@ export default function ModalSignIn({close, open}) {
         email: '',
         password: '',
     });
+    const errorSignIn = useSelector(state => state.errorSignIn)
+    const user = useSelector(state => state.user)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(user) handleClose()
+    }, [user])
 
     useEffect(() => {
         if (open) setOpenView(true)
@@ -40,7 +46,7 @@ export default function ModalSignIn({close, open}) {
 
     const handleClose = () => {
         setOpenView(false)
-        close()
+        // handleClose()
         navigate('/main')
     }
     const from = {pathname: '/main'};
@@ -56,7 +62,6 @@ export default function ModalSignIn({close, open}) {
         if (payload.length) {
             payload = Object.fromEntries(payload);
             dispatch(signIn(payload, navigate, from));
-            handleClose()
         }
     };
 
@@ -92,6 +97,11 @@ export default function ModalSignIn({close, open}) {
                         </div>
                         <button className={classes.btnIn}>Войти</button>
                     </form>
+                    {errorSignIn &&(
+                        <div className = {classes.ErrorEmail}>
+                            Вы ввели некорректные данные, попробуйте еще раз или зарегистрируйтесь
+                        </div>
+                    )}
                 </Box>
             </Modal>
         </div>

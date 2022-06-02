@@ -4,9 +4,6 @@ import {getPlaceDetails} from "../../redux/thunk/placeDetailsThunk/placeDetailsT
 import {useParams} from "react-router-dom";
 import cl from './details.module.css'
 import '../../App.css'
-import {Rating} from "@mui/material";
-import {Button} from "react-bootstrap";
-import {setRatings} from "../../redux/thunk/ratesThunk/ratesThunk";
 import Comments from "../comments/Comments";
 import ShowOneOnMapButton from "../map/buttons/showOne/ShowOneOnMapButton";
 import RatingModal from "./RatingModal";
@@ -22,17 +19,8 @@ const PlaceDetails = () => {
 
     useEffect(() => {
         dispatch(getPlaceDetails(id))
-    }, [inputs])
+    }, [])
 
-    const changeHandler = (event) => {
-        setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
-    }
-
-    const submitHandler = (event) => {
-        console.log('got u')
-        event.preventDefault()
-        dispatch(setRatings({...inputs, place_id: id}))
-    }
 
     const showVote = () => {
         setAddRate(!addRate)
@@ -63,11 +51,31 @@ const PlaceDetails = () => {
 
             </div>
             <div className={cl.stars}>
-                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.wifi}</h1>
-                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.staff}</h1>
-                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.noise}</h1>
-                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.comfort}</h1>
-                <p style={{fontSize: '70px'}}>⭐</p> <h1>{placeRates[0]?.atmosphere}</h1>
+                <div>
+                    <h4>Качество интернета</h4>
+                    <img style={{width: '60px', height: '60px'}} src="/icon/favorite.png" alt="wwwww"/>
+                    <h1>{placeRates[0]?.wifi}</h1>
+                </div>
+                <div>
+                    <h4>Качество интернета</h4>
+                    <img style={{width: '60px', height: '60px'}} src="/icon/favorite.png" alt="wwwww"/>
+                    <h1>{placeRates[0]?.staff}</h1>
+                </div>
+                <div>
+                    <h4>Качество интернета</h4>
+                    <img style={{width: '60px', height: '60px'}} src="/icon/favorite.png" alt="wwwww"/>
+                    <h1>{placeRates[0]?.noise}</h1>
+                </div>
+                <div>
+                    <h4>Качество интернета</h4>
+                    <img style={{width: '60px', height: '60px'}} src="/icon/favorite.png" alt="wwwww"/>
+                    <h1>{placeRates[0]?.comfort}</h1>
+                </div>
+                <div>
+                    <h4>Общая атмосфера</h4>
+                    <img style={{width: '60px', height: '60px'}} src="/icon/favorite.png" alt="wwwww"/>
+                    <h1>{placeRates[0]?.atmosphere}</h1>
+                </div>
             </div>
             <Comments id={id}/>
         </>

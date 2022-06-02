@@ -1,0 +1,1 @@
+export const SET_ERROR_SIGN_IN = 'SET_ERROR_SIGN_IN';
