@@ -3,10 +3,10 @@ import {useEffect, useState} from "react";
 import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
-import Button from '@mui/material/Button'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
+import {Button} from "react-bootstrap";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -47,28 +47,26 @@ function Profile() {
     favorites.map(el => el.fav = true)
 
     return (<>
+            <div className={classes.containerP}>
             <div className={classes.Profile}>
                 <div className={classes.Data}>Данные профиля</div>
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <div className= 'btn'>
-                <button className="btn btn btn-outline-secondary " id='1btn' onClick={() => {
+                <Button className={classes.BtnP} variant="outline-dark" onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
-
-                    {!show ? 'Редактировать' : 'Отменить'}</button>
-                </div>
+                    {!show ? 'Редактировать' : 'Отменить'}
+                </Button>
+            </div>
             </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
-        <div className='cards-container'>
             {
-              favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+                favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
-        </div>
         </>
     )
 }

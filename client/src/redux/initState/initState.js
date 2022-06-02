@@ -10,6 +10,7 @@ export const initState = () => ({
     infoFavoriteIsSuccess: '',
     viewNavBar: false,
     ratings: [],
-    fav: false,
     errorSignIn: false,
+    fav: false
 })
+

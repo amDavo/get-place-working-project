@@ -5,7 +5,6 @@ import {useParams} from "react-router-dom";
 import cl from './details.module.css'
 import '../../App.css'
 import Comments from "../comments/Comments";
-import ShowOneOnMapButton from "../map/buttons/showOne/ShowOneOnMapButton";
 import RatingModal from "./RatingModal";
 
 const PlaceDetails = () => {
@@ -42,9 +41,11 @@ const PlaceDetails = () => {
                     <h3 className={cl.nameDiv}>Часы работы: {placeInfo.working_hours}</h3>
                     <h3 className={cl.nameDiv}>Вход: {placeInfo.free ? "бесплатный" : "платный"}</h3>
                     <h3 className={cl.nameDiv}>Описание: {placeInfo.description}</h3>
+                    {/*<ShowOneOnMapButton/>*/}
                     <RatingModal>
                         <button onClick={showVote}>Добавить отзыв</button>
                     </RatingModal>
+
                 </div>
 
             </div>

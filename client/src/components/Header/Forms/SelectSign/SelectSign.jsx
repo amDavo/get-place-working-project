@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom";
 import ModalSignIn from "../SignIn/Modal";
 import ModalSignUp from "../SignUp/ModalSignUp";
+import classes from "./SelectSign.module.css"
 
 export default function SimpleSelect() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -47,23 +48,25 @@ export default function SimpleSelect() {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-
+                    <div className = {classes.BtnRegDeh}>Регистрация/Авторизация</div>
                     <HowToRegIcon style={{
-                        color: 'rgb(241, 250, 238)',
+                        color: 'white',
                         marginBottom: '5px',
-                        width: '50px',
+                        width: '30px',
                         height: '70px',
                         marginRight: '40px'
                     }}/> <DehazeIcon style={{
-                    color: 'rgb(241, 250, 238)',
+                    color: 'white',
                     marginBottom: '5px',
-                    width: '50px',
+                    width: '30px',
                     height: '70px',
                     marginRight: '40px',
                     marginLeft: '-30px'
-                }}/>
+                }}
+
+                />
                 </Button>
-                <Menu style={{marginTop: '80px'}}
+                <Menu style={{marginTop: '50px'}}
                       id="demo-positioned-menu"
                       aria-labelledby="demo-positioned-button"
                       anchorEl={anchorEl}

@@ -2,11 +2,11 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button'
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signChange} from "../../redux/actions/userAction";
 import classes from './Profile.module.css'
+import {Button} from "react-bootstrap";
 
 
 const style = {
@@ -21,9 +21,9 @@ const style = {
     // border: '5px solid rgb(168, 218, 220)',
     border: '1px solid black',
     boxShadow: 24,
-    p: 10,
+    p: 8,
     borderRadius: 4,
-    lineHeight: 4,
+    lineHeight: 3,
     textAlign: 'center',
 };
 
@@ -99,9 +99,9 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.buttons}>
+                            <Button type='submit' variant="outline-dark">Сохранить</Button>
+                            <Button variant="outline-dark" onClick={handleClose}>Отменить</Button>
 
-                            <button className="btn btn btn-outline-secondary " type='submit' id='1btn'>Сохранить</button>
-                            <button className="btn btn btn-outline-secondary "  onClick={handleClose} id='1btn'>Отменить</button>
                         </div>
                     </form>
                 </Box>
