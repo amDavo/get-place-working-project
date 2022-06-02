@@ -37,16 +37,13 @@ const signIn = async (req, res) => {
 
   if (password && email) {
     try {
-      console.log('preRESPONSE-------------');
       const currentUser = await User.findOne({ where: { email }, raw:true });
-      console.log('RESPONSE-------------', currentUser);
 
       if (currentUser && currentUser.password === sha256(password)) {
         req.session.user = {
           id: currentUser.id,
           name: currentUser.name,
         };
-        console.log('-------------------------',req.session);
         return res.json({ id: currentUser.id, name: currentUser.name });
       }
       return res.sendStatus(401);
@@ -73,7 +70,6 @@ const signOut = async (req, res) => {
 };
 const signChange = async (req,res)=>{
   const { name, password, email, nickname } = req.body;
-  console.log(req.session.user.id,'1234567')
 
   if (name && password && email,nickname) {
     try {

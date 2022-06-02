@@ -18,8 +18,6 @@ const getAllComments = async (req, res) => {
 };
 // /comments/:id
 const addComments = async (req, res) => {
-  console.log(req.body);
-  console.log(req.session);
   const {id} =req.params
   try {
     const newComments = await Comments.create({

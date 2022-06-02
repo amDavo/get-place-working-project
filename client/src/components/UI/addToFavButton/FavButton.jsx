@@ -8,7 +8,8 @@ const FavButton = ({cardData}) => {
     const info = useSelector(state => state.infoFavoriteIsSuccess)
     const dispatch = useDispatch();
 
-    const addToFavHandler = () => {
+    const addToFavHandler = (e) => {
+        e.preventDefault()
         if (cardData.id) {
             dispatch(addFavorite(cardData.id))
             setShow(true)
@@ -16,7 +17,7 @@ const FavButton = ({cardData}) => {
     }
 
     return (<>
-            <button><img className='fav-btn' onClick={() => addToFavHandler()} src='/icon/iconn.svg'/></button>
+       <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
             {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
             {show && (<div>
                 {info}

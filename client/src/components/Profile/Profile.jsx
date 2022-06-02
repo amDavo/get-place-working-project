@@ -1,9 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
+import { setUserInfo} from "../../redux/thunk/profileThunk/profileThunk";
 import {signChange} from "../../redux/actions/userAction";
 import {useNavigate} from "react-router-dom";
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
+import {setInfoFavoriteIsSuccess} from "../../redux/actions/favoriteAction/favorite.action";
+import {getFavorite} from "../../redux/thunk/favoritesThunks/addFavorite";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -19,10 +21,13 @@ function Profile() {
     });
 
     console.log(user, '======w=w=ww=w=w=')
+    console.log(favorites)
 
     const navigate = useNavigate();
     useEffect(() => {
-        dispatch(setUserInfo(userId?.id))
+        // dispatch(setUserInfo(userId?.id))
+        // dispatch(setFav(userId?.id))
+        // dispatch(getFavorite())
         setUserChange(user)
     }, [])
 
