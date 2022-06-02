@@ -26,12 +26,12 @@
     display: flex;
     flex-direction: column;
     /*align-self: flex-end;*/
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     margin-left: 30px;
     margin-top: 20px;
     padding: 20px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     width: 400px;
     line-height:2;
     border-radius: 10px;
@@ -88,4 +88,6 @@
     width: 230px;
     transform: translate(-50%, -50%);
 }
-
+.BtnP {
+    margin-top: 20px;
+}

@@ -55,7 +55,7 @@ function Profile() {
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <Button style={{marginbottom:'20px'}} variant="outline-dark" onClick={() => {
+                <Button className={classes.BtnP} variant="outline-dark" onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
