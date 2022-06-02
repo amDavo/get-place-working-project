@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { response, raw} = require('express');
 const { Favorites, Place, Rate, Type} = require('../../db/models');
 
 const getAll = async (req, res) => {
@@ -30,7 +30,7 @@ const addFavorite = async (req, res) => {
     });
 
     const place = await Place.findOne({
-      where: {id: newFavorite.user_id},
+      where: {id: newFavorite.place_id},
       include: [{
         model: Rate,
         include: [Type]
