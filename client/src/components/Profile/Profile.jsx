@@ -65,7 +65,7 @@ function Profile() {
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
             )}
             {
-              favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
+                favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
         </>
     )

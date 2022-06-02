@@ -18,16 +18,13 @@ const AddNewPlace = () => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
-    console.log(autocompleteValue, '0))))))')
     const addImgHandler = (event) => {
         setFile(event.target.files[0])
     }
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log(autocompleteValue, '=====++==')
         dispatch(addNewPlace({...inputs, file, location: autocompleteValue}))
-
         navigate('/main')
     }
 
