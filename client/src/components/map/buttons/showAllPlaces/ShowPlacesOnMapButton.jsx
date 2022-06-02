@@ -39,7 +39,7 @@ const ShowPlacesOnMapButton = () => {
     return (
         <>
             {map ? <FullScreenMap/> : null}
-            <button className="all btn btn-outline-secondary" onClick={() => buttonHandle()}>
+            <button className="all btn btn-secondary" onClick={() => buttonHandle()}>
                 {value}
             </button>
         </>
