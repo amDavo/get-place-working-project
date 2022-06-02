@@ -5,10 +5,11 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    /*background: linear-gradient(#1D3557 80%,white);*/
-    background-color: black;
-    height: 90px;
-    position: sticky;
+    background-color: #22223b;
+    position: absolute;
+    width: 100vw;
+    z-index: 10;
+    opacity: 0.5;
 }
 
 .logo {

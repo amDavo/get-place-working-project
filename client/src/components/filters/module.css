@@ -30,6 +30,7 @@
     justify-content: space-evenly;
     opacity: 0.8;
     height: 100px;
+    margin-top: 65px;
 }
 
 .logo-container:hover {

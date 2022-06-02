@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+body {
+    background: #9a8c98;
+}
+
 /*.App-logo {*/
 /*  height: 40vmin;*/
 /*  pointer-events: none;*/
@@ -46,7 +50,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: white;
+    /*background: #22223b;*/
     opacity: 1;
 }
 
