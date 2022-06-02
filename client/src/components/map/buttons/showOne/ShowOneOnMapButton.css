@@ -1,9 +1,7 @@
 .one {
-    position: absolute;
-    z-index: 5;
     margin: 100px;
     font-size: small;
-    width: 142px;
+    width: 210px;
 }
 
 span {

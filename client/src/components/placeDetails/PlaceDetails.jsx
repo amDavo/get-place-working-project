@@ -8,6 +8,7 @@ import {Rating} from "@mui/material";
 import {Button} from "react-bootstrap";
 import {setRatings} from "../../redux/thunk/ratesThunk/ratesThunk";
 import Comments from "../comments/Comments";
+import ShowOneOnMapButton from "../map/buttons/showOne/ShowOneOnMapButton";
 
 const PlaceDetails = () => {
     const placeInfo = useSelector(state => state.placeDetails)
@@ -83,6 +84,7 @@ const PlaceDetails = () => {
                         />
                     </div>
                     <Button type='submit' variant='success'>Добавить оценку</Button>
+                    <ShowOneOnMapButton/>
                 </form>
             </div>
             <Comments id={id}/>
