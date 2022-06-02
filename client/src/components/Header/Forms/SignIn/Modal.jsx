@@ -7,6 +7,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {signIn} from "../../../../redux/actions/userAction";
 import classes from './modal.module.css'
+import {Button} from "react-bootstrap";
 
 
 const style = {
@@ -20,9 +21,9 @@ const style = {
     // border: '5px solid rgb(168, 218, 220)',
     border: '1px solid black',
     boxShadow: 24,
-    p: 13,
+    p: 8,
     borderRadius: 4,
-    lineHeight: 4,
+    lineHeight: 3,
     textAlign: 'center',
 };
 
@@ -74,6 +75,7 @@ export default function ModalSignIn({close, open}) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    <div className = {classes.ModalIn}>Вход</div>
                     <form
                         onSubmit={submitHandler}
                     >
@@ -95,7 +97,7 @@ export default function ModalSignIn({close, open}) {
                                 placeholder="Пароль"
                             />
                         </div>
-                        <button className={classes.btnIn}>Войти</button>
+                        <Button type ="submit" variant="outline-dark">Войти</Button>
                     </form>
                     {errorSignIn &&(
                         <div className = {classes.ErrorEmail}>
