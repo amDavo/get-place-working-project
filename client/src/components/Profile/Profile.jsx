@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import PlaceCardSmall from "../placeCardSmall/PlaceCardSmall";
 import classes from './Profile.module.css'
 import ProfileModal from './ProfileModal'
+import {deleteFavorites} from "../../redux/actions/favoriteAction/favorite.action";
 
 function Profile() {
     const dispatch = useDispatch();
@@ -43,6 +44,10 @@ function Profile() {
             dispatch(signChange(payload, navigate));
         }
     };
+
+    const deleteHandler = () => {
+        dispatch(deleteFavorites())
+    }
     return (<>
             <div className={classes.Profile}>
                 <div className={classes.Data}>Данные профиля</div>
@@ -62,6 +67,7 @@ function Profile() {
             {
                 favorites?.length && favorites?.map(el => <PlaceCardSmall view={true} cardData={el} key={el.id}/>)
             }
+            <button onClick={deleteHandler}>delete</button>
         </>
     )
 }

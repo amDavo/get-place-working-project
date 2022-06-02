@@ -17,13 +17,19 @@ const FavButton = ({cardData}) => {
             if (cardData.id) {
                 dispatch(addFavorite(cardData.id))
                 setShow(true)
+                cardData.fav = !cardData.fav
             }
         } else navigate('/main')
     }
 
 
     return (<>
-            <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
+            {cardData.fav
+                ?
+                <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconnn.svg'/>
+                :
+                <img className='fav-btn' onClick={addToFavHandler} src='/icon/iconn.svg'/>
+            }
             {/*<FavoriteBorderIcon className='fav-btn' onClick={addToFavHandler}/>*/}
             {show && (<div>
                 {info}
