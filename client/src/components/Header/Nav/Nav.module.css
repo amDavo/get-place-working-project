@@ -5,12 +5,9 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
+    background-color: black;
     height: 90px;
     position: sticky;
-    background-color: #22223b;
-    width: 100vw;
-    /*z-index: 10;*/
-    opacity: 0.5;
 }
 
 .logo {

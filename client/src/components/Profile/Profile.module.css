@@ -26,12 +26,12 @@
     display: flex;
     flex-direction: column;
     /*align-self: flex-end;*/
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     margin-left: 30px;
     margin-top: 20px;
     padding: 20px;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
     width: 400px;
     line-height:2;
     border-radius: 10px;
@@ -41,17 +41,6 @@
     justify-content: center;
     align-items: center;
 }
-/*.BtnProf {*/
-/*    background-color: #457B9D;*/
-/*    !*border: 2px solid rgb(69, 123, 157);*!*/
-/*    margin-top: 18px;*/
-/*    border: 2px solid black;*/
-/*    border-radius: 10px;*/
-/*    width: 200px;*/
-/*    font-family: 'Raleway', sans-serif;*/
-/*    font-weight: bold;*/
-/*}*/
-
 
 .saveData {
     font-family: 'Raleway', sans-serif;
@@ -76,7 +65,6 @@
 
 }
 
-
 .fav-container {
     display: flex;
     flex-wrap: wrap;
@@ -89,4 +77,6 @@
     width: 230px;
     transform: translate(-50%, -50%);
 }
-
+.BtnP {
+    margin-top: 20px;
+}

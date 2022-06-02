@@ -47,19 +47,19 @@ function Profile() {
     favorites.map(el => el.fav = true)
 
     return (<>
+            <div className={classes.containerP}>
             <div className={classes.Profile}>
                 <div className={classes.Data}>Данные профиля</div>
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <div className= 'btn'>
-                <button className="btn btn btn-outline-secondary " id='1btn' onClick={() => {
+                <Button className={classes.BtnP} variant="outline-dark" onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
-
-                    {!show ? 'Редактировать' : 'Отменить'}</button>
-                </div>
+                    {!show ? 'Редактировать' : 'Отменить'}
+                </Button>
+            </div>
             </div>
             {show && (
                 <ProfileModal open={viewModal} close={handleClose} user={user}/>
