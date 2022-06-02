@@ -7,10 +7,11 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setIsUniqueNickName, signUp} from "../../../../redux/actions/userAction";
 import classes from "./ModalSignUp.module.css";
+import {Button} from "react-bootstrap";
 
 const style = {
     position: 'absolute',
-    top: '60%',
+    top: '50%',
     left: '50%',
     alignItems: 'center',
     transform: 'translate(-50%, -50%)',
@@ -19,7 +20,7 @@ const style = {
     // border: '5px solid rgb(168, 218, 220)',
     border: '2px solid black',
     boxShadow: 24,
-    p: 13,
+    p: 8,
     borderRadius: 4,
     lineHeight: 4,
     textAlign: 'center',
@@ -75,6 +76,7 @@ export default function ModalSignUp({close, open}) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    <div className = {classes.ModalUp}>Регистрация</div>
                     <form
                         onSubmit={submitHandler}
                     >
@@ -112,7 +114,7 @@ export default function ModalSignUp({close, open}) {
                                 placeholder="Пароль"
                             />
                         </div>
-                        <button className={classes.BtnUp}>Зарегистироваться</button>
+                        <Button type ="submit" variant="outline-dark">Зарегистрироваться</Button>
                     </form>
                     <div className={classes.uniqueLog}>
                         {isNotUnique && (<span>

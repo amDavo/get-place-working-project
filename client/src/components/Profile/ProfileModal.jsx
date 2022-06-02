@@ -2,11 +2,12 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button'
+
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {signChange} from "../../redux/actions/userAction";
 import classes from './Profile.module.css'
+import {Button} from "react-bootstrap";
 
 
 const style = {
@@ -21,9 +22,9 @@ const style = {
     // border: '5px solid rgb(168, 218, 220)',
     border: '1px solid black',
     boxShadow: 24,
-    p: 10,
+    p: 8,
     borderRadius: 4,
-    lineHeight: 4,
+    lineHeight: 3,
     textAlign: 'center',
 };
 
@@ -77,6 +78,7 @@ export default function ProfileModal({close, open, user}) {
                     >
                         <div className={classes.saveData}>Изменить данные</div>
                         <div className={classes.inp1}>
+                            Имя:
                             <input
                                 style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}
@@ -87,6 +89,7 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.inp2}>
+                            Логин:
                             <input
                                 style={{width: '160px', height: '50px'}}
                                 onChange={changeHandler}
@@ -97,8 +100,8 @@ export default function ProfileModal({close, open, user}) {
                             />
                         </div>
                         <div className={classes.buttons}>
-                            <Button type='submit' variant='outlined'>Сохранить</Button>
-                            <Button variant='outlined' onClick={handleClose}>Отменить</Button>
+                            <Button type='submit' variant="outline-dark">Сохранить</Button>
+                            <Button variant="outline-dark" onClick={handleClose}>Отменить</Button>
                         </div>
                     </form>
                 </Box>

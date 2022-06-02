@@ -22,6 +22,7 @@ function Nav() {
 
     return (
         <nav>
+            <div className ={classes.Navbar}>
             <div className={classes.container}>
                 <div className={classes.logo}>
                     <Link className="navbar-brand" to="/main">
@@ -32,34 +33,29 @@ function Nav() {
 
                     {user ? (
                         <>
-                            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}}
+
+                            <Button style={{color: 'white', fontFamily: 'font-family: \'Raleway\', sans-serif;'}}
                                     onClick={() => {
                                         dispatch(setViewNavBar(false))
                                         navigate("/auth/signout")
                                     }}>
                                 Выйти
                             </Button>
-                            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}}
+                            <Button style={{color: 'white', fontFamily: 'font-family: \'Raleway\', sans-serif;'}}
                                     onClick={() => {
                                         dispatch(setViewNavBar(true))
                                         navigate("/newPlace")
                                     }}>
                                 Добавить место
                             </Button>
-                            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}}
-                                    onClick={() => {
-                                        dispatch(setViewNavBar(false))
-                                        navigate("/main")
-                                    }}>
-                                Посмотреть места
-                            </Button>
-                            <Button style={{color: 'rgb(241, 250, 238)', fontFamily: 'Montserrat Alternates'}}
+                            <Button style={{color: 'white', fontFamily: 'font-family: \'Raleway\', sans-serif;'}}
                                     onClick={() => {
                                         dispatch(setViewNavBar(true))
                                         navigate("/profile")
                                     }}>
                                 Профиль
                             </Button>
+
                         </>
                     ) : (
                         <>
@@ -68,6 +64,7 @@ function Nav() {
                             </div>
                         </>
                     )}
+                </div>
                 </div>
             </div>
         </nav>

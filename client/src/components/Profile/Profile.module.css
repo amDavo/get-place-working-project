@@ -1,61 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,300;0,400;0,500;0,600;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,300;0,400;0,500;0,600;1,500;1,600&family=Montserrat:ital,wght@1,100;1,400&family=Raleway:wght@300;500&display=swap');
 .Data {
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 40px;
-    font-size: 24px;
+    font-size: 36px;
 }
 .Name {
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Login {
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Email {
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Profile{
     display: flex;
     flex-direction: column;
-    align-self: flex-end;
+    /*align-self: flex-end;*/
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    width: 400px;
+    line-height:2;
+    border-radius: 10px;
+}
+.containerP{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.BtnProf {
-    background-color: #457B9D;
-    /*border: 2px solid rgb(69, 123, 157);*/
-    margin-top: 18px;
-    border: 2px solid black;
-    border-radius: 10px;
-    width: 200px;
-    font-family: 'Montserrat Alternates', sans-serif;
+/*.BtnProf {*/
+/*    background-color: #457B9D;*/
+/*    !*border: 2px solid rgb(69, 123, 157);*!*/
+/*    margin-top: 18px;*/
+/*    border: 2px solid black;*/
+/*    border-radius: 10px;*/
+/*    width: 200px;*/
+/*    font-family: 'Raleway', sans-serif;*/
+/*    font-weight: bold;*/
+/*}*/
+
+
+.saveData {
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 30px;
     font-weight: bold;
+    font-size:24px;
+}
+.inp1 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.inp2 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
 }
 .buttons{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-top: 30px;
 
-}
-
-.saveData {
-    font-family: 'Montserrat Alternates', sans-serif;
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 18px;
-}
-.inp1 {
-    text-align: center;
-    font-family: 'Montserrat Alternates', sans-serif;
-    margin-top: 20px;
-}
-.inp2 {
-    text-align: center;
-    font-family: 'Montserrat Alternates', sans-serif;
 }
