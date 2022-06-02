@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     description: DataTypes.TEXT,
     free: DataTypes.BOOLEAN,
-    working_hours: DataTypes.STRING
+    working_hours: DataTypes.STRING,
+    fav: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Place',

@@ -19,7 +19,8 @@ const PlaceCardSmall = ({cardData, view}) => {
         <>
             <div className='card'>
                 <Link style={{textDecoration: "none", color: "black", margin: '10px'}} to={`/location/${cardData.id}`}>
-                    <img className='card-Img' alt={'картинка'} src={`http://localhost:8080/images/${cardData.img}`}/>
+                        <img className='card-Img' alt={'картинка'}
+                             src={`http://localhost:8080/images/${cardData.img}`}/>
                     <FavButton cardData={cardData}/>
                     <div className='text'>
                         <div className='text-holder'>
