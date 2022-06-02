@@ -5,26 +5,30 @@
     text-align: center;
     margin-bottom: 20px;
     margin-top: 40px;
-    font-size: 24px;
+    font-size: 36px;
 }
 .Name {
     font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Login {
     font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Email {
     font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 24px;
     text-align: center;
 }
 .Profile{
     display: flex;
     flex-direction: column;
     align-self: flex-end;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: start;
+    margin-left: 30px;
 }
 .BtnProf {
     background-color: #457B9D;
@@ -41,7 +45,6 @@
     flex-direction: row;
     justify-content: space-around;
     padding-top: 30px;
-
 }
 
 .saveData {
@@ -54,6 +57,7 @@
     text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
     margin-top: 20px;
+    margin-left: 15px;
 }
 .inp2 {
     text-align: center;

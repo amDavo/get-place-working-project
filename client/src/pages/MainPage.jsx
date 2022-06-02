@@ -23,10 +23,10 @@ const MainPage = () => {
                     <Filters/>
                 </div>
             )}
-            {!user &&(
-                <div className={classes.errorMessage}>
-                   Необходимо зарегистрироваться или войти
-                </div>)}
+            {/*{!user &&(*/}
+            {/*    <div className={classes.errorMessage}>*/}
+            {/*       Необходимо зарегистрироваться или войти*/}
+            {/*    </div>)}*/}
 
                 <>
             <ListOfCards/>

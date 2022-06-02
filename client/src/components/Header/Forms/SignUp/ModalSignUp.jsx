@@ -10,7 +10,7 @@ import classes from "./ModalSignUp.module.css";
 
 const style = {
     position: 'absolute',
-    top: '60%',
+    top: '50%',
     left: '50%',
     alignItems: 'center',
     transform: 'translate(-50%, -50%)',

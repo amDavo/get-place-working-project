@@ -8,6 +8,7 @@ import nickNameReducer from "./nickNameReducer";
 import favoriteReducer from "./favoriteReducer/favoriteReducer";
 import viewNavBarReducer from "./viewNavBarReducer/viewNavBarReducer";
 import ratesReducer from "./ratesReduces/ratesReducer";
+import errorSignInReducer from './errorSignInReducer/errorSignInReducer';
 
 export default combineReducers({
     userData: profileReducer,
@@ -19,5 +20,6 @@ export default combineReducers({
     placeDetails: placeDetailsReducer,
     viewNavBar: viewNavBarReducer,
     placeRate: ratesReducer,
+    errorSignIn: errorSignInReducer,
 })
 

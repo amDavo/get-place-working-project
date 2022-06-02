@@ -49,7 +49,7 @@ function Profile() {
                 <div className={classes.Name}>Имя: {user.name}</div>
                 <div className={classes.Login}>Логин: {user.nickname}</div>
                 <div className={classes.Email}>E-mail: {user.email}</div>
-                <Button variant='contained' onClick={() => {
+                <Button style={{marginbottom:'20px'}} variant='contained' onClick={() => {
                     setShow(prev => !prev)
                     setViewModal(prev => !prev)
                 }}>
