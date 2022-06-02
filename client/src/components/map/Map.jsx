@@ -3,7 +3,12 @@ import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/
 import {defaultTheme} from "./Theme";
 import classes from "./Map.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import {THUNK_getCoordsFromAddress} from "../../redux/thunk/locationThunk/locationThunk";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -14,13 +19,13 @@ const containerStyle = {
 
 const defaultOptions = {
     panControl: true,
-    zoomControl: false,
+    zoomControl: true,
     mapTypeControl: false,
     scaleControl: false,
     streetViewControl: false,
     overviewMapControl: false,
     rotateControl: false,
-    disableDoubleClickZoom: false,
+    disableDoubleClickZoom: true,
     keyboardShortcuts: false,
     scrollWheel: false,
     clickableIcons: true,
@@ -30,41 +35,22 @@ const defaultOptions = {
 
 const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
-    // const [marker, setMarker] = useState(null);
+    const [marker, setMarker] = useState([]);
     const [selectedPlace, setSelectedPlace] = useState(null)
     const allPlaces = useSelector(state => state.allPlaces)
     const dispatch = useDispatch()
+    const {id} = useParams()
 
     useEffect(() => {
-        // dispatch(ACTION_clearLocation())
-        // dispatch(THUNK_getCoordsFromAddress(allPlaces))
-        console.log('list', allPlaces)
-        // console.log('selectedPlace', selectedPlace)
+        dispatch(THUNK_getCoordsFromAddress(allPlaces))
+        setMarker(allPlaces?.filter(place => place.id === +id))
     }, [])
 
-    // console.log('selectedPlace', selectedPlace)
 
     const {isLoaded} = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: API_KEY,
     })
-
-    const handleClick = (event) => {
-        // if (inputPlace) {
-        //     marker ? setMarker(null) : setMarker({
-        //         position: {
-        //             lat: event.latLng.lat(),
-        //             lng: event.latLng.lng()
-        //         }
-        //     })
-        // }
-        // if (fullScreen) {
-        //     setMarkers((current) =>
-        //         [...current, {lat: event.latLng.lat(), lng: event.latLng.lng(), time: new Date().toISOString()}])
-        //     // map.panTo(event.latLng)
-        //     // map.setZoom(14)
-        // }
-    }
 
     return isLoaded ? (
         <div className={container}>
@@ -77,16 +63,14 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                 options={defaultOptions}
                 inputPlace={inputPlace}
                 fullScreen={fullScreen}
-                onClick={handleClick}
             >
-                {allPlaces.length &&
+                {fullScreen ?
+                    allPlaces.length &&
                     allPlaces.map((place) =>
                         <Marker
                             key={place.id}
                             position={place.coords}
                             onClick={() => {
-                                console.log('cliiiiiiiiiiicked', place)
-                                // setSelectedPlace(position)
                                 setSelectedPlace(place)
                             }}
                             icon={{
@@ -96,7 +80,7 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                                 // anchor: new window.google.maps.Point(20, 20)
                             }}
                         />
-                    )
+                    ) : null
                 }
                 {map ?
                     <img
@@ -120,14 +104,29 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                     >
                         <Link to={`/location/${selectedPlace.id}`}
                               style={{textDecoration: "none", color: "black", margin: '10px'}}>
-                            <div>
-                                <h5>{selectedPlace.place_name}</h5>
-                                <p>{selectedPlace.location}</p>
-                                <img style={{width: '200px'}} src={`http://localhost:8080/images/${selectedPlace.img}`}
-                                     alt={selectedPlace.name + ' img'}/>
-                            </div>
+                            <Card sx={{maxWidth: 200}}
+                                  variant="outlined"
+                                  style={{position: 'relative', zIndex: 10000, border: '10px white'}}>
+                                <CardMedia
+                                    component="img"
+                                    height="auto"
+                                    image={`http://localhost:8080/images/${selectedPlace.img}`}
+                                    alt={selectedPlace.name + ' img'}
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {selectedPlace.place_name}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {selectedPlace.location}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
                         </Link>
                     </InfoWindow>) : null}
+                {selectedPlaceMap ? (
+                    <Marker position={marker[0].coords}/>
+                ) : null}
             </GoogleMap>
         </div>
     ) : <h1>Loading...</h1>

@@ -4,7 +4,11 @@ import {getPlaceDetails} from "../../redux/thunk/placeDetailsThunk/placeDetailsT
 import {useParams} from "react-router-dom";
 import cl from './details.module.css'
 import '../../App.css'
+import {Rating} from "@mui/material";
+import {Button} from "react-bootstrap";
+import {setRatings} from "../../redux/thunk/ratesThunk/ratesThunk";
 import Comments from "../comments/Comments";
+import ShowOneOnMapButton from "../map/buttons/showOne/ShowOneOnMapButton";
 import RatingModal from "./RatingModal";
 
 const PlaceDetails = () => {
@@ -14,14 +18,21 @@ const PlaceDetails = () => {
 
     const placeRates = useSelector(state => state.placeRate)
     const [addRate, setAddRate] = useState(false)
-
+    const [inputs, setInputs] = useState({})
 
     useEffect(() => {
         dispatch(getPlaceDetails(id))
-    }, [])
+    }, [inputs])
 
-    console.log(placeRates, 'w1111')
+    const changeHandler = (event) => {
+        setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
+    }
 
+    const submitHandler = (event) => {
+        console.log('got u')
+        event.preventDefault()
+        dispatch(setRatings({...inputs, place_id: id}))
+    }
 
     const showVote = () => {
         setAddRate(!addRate)
@@ -43,6 +54,7 @@ const PlaceDetails = () => {
                     <h3 className={cl.nameDiv}>Часы работы: {placeInfo.working_hours}</h3>
                     <h3 className={cl.nameDiv}>Вход: {placeInfo.free ? "бесплатный" : "платный"}</h3>
                     <h3 className={cl.nameDiv}>Описание: {placeInfo.description}</h3>
+                    <ShowOneOnMapButton/>
                     <RatingModal>
                         <button onClick={showVote}>Добавить отзыв</button>
                     </RatingModal>
