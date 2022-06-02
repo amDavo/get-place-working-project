@@ -13,3 +13,4 @@ export const initState = () => ({
     errorSignIn: false,
     fav: false
 })
+
