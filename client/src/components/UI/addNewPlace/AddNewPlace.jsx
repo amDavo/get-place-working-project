@@ -63,10 +63,10 @@ const AddNewPlace = () => {
                             />
                         </Form.Group>
 
-
                         <Form.Group className='mb-3' controlId="formBasicPassword">
                             <h5>Время работы</h5>
                             <div className={cl.hoursDiv}>
+                                <div>
                                 <h6 className={cl.detDiv}>Открыто с</h6>
                                 <Form.Control
                                     className={cl.hours}
@@ -76,6 +76,8 @@ const AddNewPlace = () => {
                                     value={inputs.working_hoursFrom}
                                     onChange={changeHandler}
                                 />
+                                </div>
+                                <div>
                                 <h6 className={cl.detDiv}>Открыто до</h6>
                                 <Form.Control
                                     className={cl.hours}
@@ -85,6 +87,7 @@ const AddNewPlace = () => {
                                     value={inputs.working_hoursTo}
                                     onChange={changeHandler}
                                 />
+                                </div>
                             </div>
                         </Form.Group>
 

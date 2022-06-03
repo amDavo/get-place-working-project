@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 
 .formDiv {
     display: flex;
@@ -11,17 +10,18 @@
 }
 
 .formData {
-    font-family: 'Montserrat Alternates', sans-serif;
+    font-family: 'Raleway', sans-serif;
     color: #1d3557;
     margin-top: 30px;
     width: 70%;
 }
 
 .head {
+    margin-top: 30px;
     margin-bottom: 30px;
     color: #1d3557;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
 }
 
 .hours {
@@ -29,16 +29,18 @@
 }
 
 .hoursDiv {
+
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
 }
 
 .detDiv {
+    width: 500px;
     margin-right: 10px;
-    margin-top: auto;
     margin-bottom: auto;
     margin-left: 5px;
+    padding: 10px;
 }
 
 .all {
