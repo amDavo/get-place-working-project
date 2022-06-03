@@ -47,6 +47,8 @@ const addRating = async (req, res) => {
             }
         })
 
+        console.log(wifi, '====================================')
+
         const staff = await Rate.findAll({
             where: {
                 [Op.and]: [

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
+
 
 body{
   margin-top:20px;
@@ -54,11 +54,10 @@ body{
 
 p {
   width: 100%;
-  font-family: 'Montserrat Alternates', sans-serif;
-}
+  font-family: 'Raleway', sans-serif;}
 
 .nameUser {
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700 !important;
   color: rgb(29, 53, 87) !important;
   
@@ -73,6 +72,6 @@ p {
   background-color: rgb(69, 123, 157) !important;
   border-color: rgb(0, 0, 0) !important;
   border-radius: 8px !important;
-  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 

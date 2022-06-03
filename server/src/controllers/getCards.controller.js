@@ -7,38 +7,34 @@ const getCards = async (req, res) => {
     if (params === 'wifi') {
         try {
             const places = await Place.findAll({
-            include: [{
-                model:Rate,
-                where: { type_id: 1 },
-                include: [Type]
-            }],
-            order: [[Rate, 'rate_number', 'DESC']],
-            raw:true,
-        })
-        res.json(places)
+                include: [{
+                    model: Rate,
+                    where: {type_id: 1},
+                    include: [Type]
+                }],
+                order: [[Rate, 'rate_number', 'DESC']],
+                raw: true,
+            })
+            res.json(places)
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if (params === 'comfort') {
-        try{
+    } else if (params === 'comfort') {
+        try {
             const comfortPlaces = await Place.findAll({
-            include: [{
-                model:Rate,
-                where: { type_id: 2 },
-                include: [Type]
-            }],
-            order: [[Rate, 'rate_number', 'DESC']],
-            raw:true,
-        })
-        res.json(comfortPlaces)
+                include: [{
+                    model: Rate,
+                    where: {type_id: 2},
+                    include: [Type]
+                }],
+                order: [[Rate, 'rate_number', 'DESC']],
+                raw: true,
+            })
+            res.json(comfortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if(params === 'personal') {
+    } else if (params === 'personal') {
         try {
             const places = await Place.findAll({
                 include: [{
@@ -53,9 +49,7 @@ const getCards = async (req, res) => {
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if(params === 'noise') {
+    } else if (params === 'noise') {
         try {
             const places = await Place.findAll({
                 include: [{
@@ -70,9 +64,7 @@ const getCards = async (req, res) => {
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if(params === 'atmosphere') {
+    } else if (params === 'atmosphere') {
         try {
             const places = await Place.findAll({
                 include: [{
@@ -84,28 +76,25 @@ const getCards = async (req, res) => {
                 raw: true,
             })
             res.json(places)
-        }catch (e) {
+        } catch (e) {
             res.sendStatus(500)
         }
-    }
-    else if(params === 'Кафе' || params === 'Коворкинг' || params === 'Библиотека' || params === 'Опен Спейс' ) {
+    } else if (params === 'Кафе' || params === 'Коворкинг' || params === 'Библиотека' || params === 'Опен Спейс') {
         try {
             const places = await Place.findAll({
                 where: {category: params},
-                include: [{
-                    model: Rate,
-                    include: [Type]
-                }],
-                order: [[Rate, 'rate_number', 'DESC']],
+                // include: [{
+                //     model: Rate,
+                //     include: [Type]
+                // }],
+                // order: [[Rate, 'rate_number', 'DESC']],
                 raw: true,
             })
             res.json(places)
-        }catch (e) {
+        } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if(params === 'free') {
+    } else if (params === 'free') {
         try {
             const places = await Place.findAll({
                 where: {free: true},
@@ -117,7 +106,7 @@ const getCards = async (req, res) => {
             const placesWithRating = []
 
             places.map((el) => {
-                el.dataValues.Rating = ((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
                 placesWithRating.push(el)
             })
 
@@ -127,9 +116,7 @@ const getCards = async (req, res) => {
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-
-    else if (params === 'top') {
+    } else if (params === 'top') {
         try {
             const places = await Place.findAll({
                 include: [{
@@ -140,7 +127,7 @@ const getCards = async (req, res) => {
             const placesWithRating = []
 
             places.map((el) => {
-                el.dataValues.Rating = ((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
                 placesWithRating.push(el)
             })
 
@@ -150,8 +137,7 @@ const getCards = async (req, res) => {
         } catch (e) {
             res.sendStatus(500)
         }
-    }
-    else {
+    } else {
         try {
             const places = await Place.findAll({
                 order: [['createdAt', "DESC"]],
@@ -163,7 +149,7 @@ const getCards = async (req, res) => {
             const placesWithRating = []
 
             places.map((el) => {
-                el.dataValues.Rating = ((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
                 placesWithRating.push(el)
             })
 
@@ -176,4 +162,4 @@ const getCards = async (req, res) => {
     }
 }
 
-module.exports = { getCards }
+module.exports = {getCards}

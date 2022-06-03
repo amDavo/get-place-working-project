@@ -18,11 +18,10 @@ const ListOfCards = () => {
     return (
         <>
             <div className='cards-container'>
-                {allPlaces ?
+                {
                     allPlaces.map(el =>
                         <PlaceCardSmall cardData={el} key={el.id}/>)
-                    :
-                    ''
+
                 }
             </div>
         </>

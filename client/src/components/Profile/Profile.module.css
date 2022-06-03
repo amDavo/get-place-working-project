@@ -65,7 +65,7 @@
 
 }
 
-.fav-container {
+.favContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

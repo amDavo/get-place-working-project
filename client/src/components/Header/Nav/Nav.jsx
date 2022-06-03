@@ -25,15 +25,16 @@ function Nav() {
             <div className ={classes.Navbar}>
             <div className={classes.container}>
                 <div className={classes.logo}>
+
                     <Link className="navbar-brand" to="/main">
-                        <img style={{width: '', margin: '-40px -15px', height: '160px'}}/>
+                        <img src='/icon/logo-no-bg.png' style={{width: '', margin: '-30px -15px', height: '160px'}}/>
                     </Link>
+                    <Link to='/' style={{color: 'black'}}>button</Link>
                 </div>
                 <div className={classes.container_links}>
 
                     {user ? (
                         <>
-
                             <Button style={{color: 'white', fontFamily: 'font-family: \'Raleway\', sans-serif;'}}
                                     onClick={() => {
                                         dispatch(setViewNavBar(false))

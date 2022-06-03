@@ -12,25 +12,26 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Users', [{
-      name: 'John Doe',
-      nickname: '123',
-      email: '123@mail.ru',
-      password: sha256('123'),
-      isAdmin: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-      {
-        name: 'Johnt Doe',
-        nickname: '12344',
-        email: '124443@mail.ru',
-        password: sha256('12344'),
-        isAdmin: true,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ], {});
+    // await queryInterface.bulkInsert(
+    //     'Users', [{
+    //   name: 'John Doe',
+    //   nickname: '123',
+    //   email: '123@mail.ru',
+    //   password: sha256('123'),
+    //   isAdmin: true,
+    //   createdAt: new Date(),
+    //   updatedAt: new Date(),
+    // },
+    //   {
+    //     name: 'Johnt Doe',
+    //     nickname: '12344',
+    //     email: '124443@mail.ru',
+    //     password: sha256('12344'),
+    //     isAdmin: true,
+    //     createdAt: new Date(),
+    //     updatedAt: new Date(),
+    //   }
+    // ], {});
   },
 
   async down (queryInterface, Sequelize) {
