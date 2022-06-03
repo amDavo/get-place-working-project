@@ -13,9 +13,18 @@ const getCards = async (req, res) => {
                     include: [Type]
                 }],
                 order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
             })
-            res.json(places)
+            console.log(places)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -28,9 +37,17 @@ const getCards = async (req, res) => {
                     include: [Type]
                 }],
                 order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
             })
-            res.json(comfortPlaces)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -43,9 +60,17 @@ const getCards = async (req, res) => {
                     include: [Type]
                 }],
                 order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
             })
-            res.json(places)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -58,9 +83,17 @@ const getCards = async (req, res) => {
                     include: [Type]
                 }],
                 order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
             })
-            res.json(places)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -73,9 +106,17 @@ const getCards = async (req, res) => {
                     include: [Type]
                 }],
                 order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
             })
-            res.json(places)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -83,14 +124,22 @@ const getCards = async (req, res) => {
         try {
             const places = await Place.findAll({
                 where: {category: params},
-                // include: [{
-                //     model: Rate,
-                //     include: [Type]
-                // }],
-                // order: [[Rate, 'rate_number', 'DESC']],
-                raw: true,
+                include: [{
+                    model: Rate,
+                    include: [Type]
+                }],
+                order: [[Rate, 'rate_number', 'DESC']],
             })
-            res.json(places)
+            const placesWithRating = []
+
+            places.map((el) => {
+                el.dataValues.Rating = (((el.Rates.reduce((acc, elem) => acc + elem.rate_number, 0)) / el.Rates.length)).toFixed(1)
+                placesWithRating.push(el)
+            })
+
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -131,9 +180,9 @@ const getCards = async (req, res) => {
                 placesWithRating.push(el)
             })
 
-            // const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
+            const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
 
-            res.json(places)
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }
@@ -155,7 +204,7 @@ const getCards = async (req, res) => {
 
             const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
 
-            res.json(places)
+            res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)
         }

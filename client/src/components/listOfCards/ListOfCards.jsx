@@ -13,7 +13,7 @@ const ListOfCards = () => {
     useEffect(() => {
         dispatch(getAllPlaces("all"))
         dispatch(THUNK_getCoordsFromAddress(allPlaces))
-    }, [])
+    },[])
 
     return (
         <>

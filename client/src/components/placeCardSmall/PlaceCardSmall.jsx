@@ -26,7 +26,10 @@ const PlaceCardSmall = ({cardData, view}) => {
                                     {cardData?.place_name.length < 21 ? cardData.place_name : cardData.place_name.slice(0, 20) + '...'}
                                 </div>
                                 <div className='text-holder'>
-                                    <div className='rate'>{cardData.Rating}</div>
+                                        <div className='rate'>
+                                            {isNaN(cardData.Rating)? '' : cardData.Rating}
+                                        </div>
+
                                     <img alt='rate' className='star'
                                          src="https://img.icons8.com/ios-glyphs/30/000000/star--v1.png"/>
 

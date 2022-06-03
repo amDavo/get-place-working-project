@@ -1,9 +1,11 @@
 import React from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import './module.css'
 
 const Filters = () => {
+    const list = useSelector(state => state.allPlaces)
+
     const dispatch = useDispatch()
 
     const topFilter = () => {
