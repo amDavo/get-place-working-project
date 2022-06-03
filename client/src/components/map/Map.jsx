@@ -74,8 +74,8 @@ const Map = ({center, container, inputPlace, fullScreen, selectedPlaceMap}) => {
                                 setSelectedPlace(place)
                             }}
                             icon={{
-                                url: '/icon/laptop.svg',
-                                scaledSize: new window.google.maps.Size(40, 40),
+                                url: '/icon/laptop.png',
+                                scaledSize: new window.google.maps.Size(60, 60),
                                 origin: new window.google.maps.Point(0, 0),
                                 // anchor: new window.google.maps.Point(20, 20)
                             }}

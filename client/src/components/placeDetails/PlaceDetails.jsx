@@ -46,7 +46,7 @@ const PlaceDetails = () => {
                     <div className={cl.placeInfo}>
                         <h2 className={cl.head}>Детальная информация о локации
                             <RatingModal>
-                                <Button style={{marginBottom: "20px", marginTop: '20px'}} variant='outline-success'
+                                <Button className={cl.rateBtn}
                                         onClick={showVote}>Оценить
                                     локацию</Button>
                             </RatingModal>
@@ -71,29 +71,29 @@ const PlaceDetails = () => {
                     <div className={cl.stars}>
                         <div className={cl.starStyle}>
                             <div className={cl.starBorder}>
-                                <h4>Качество интернета</h4>
+                                <h5>Качество интернета</h5>
                                 <img style={{width: '60px', height: '60px'}} src="/icon/star.png" alt="wwwww"/>
-                                <h1>{placeRates?.wifi}</h1>
+                                <h2>{placeRates?.wifi}</h2>
                             </div>
                             <div className={cl.starBorder}>
-                                <h4>Дружелюбность персонала</h4>
+                                <h5>Дружелюбность персонала</h5>
                                 <img style={{width: '60px', height: '60px'}} src="/icon/star.png" alt="wwwww"/>
-                                <h1>{placeRates?.staff}</h1>
+                                <h2>{placeRates?.staff}</h2>
                             </div>
                             <div className={cl.starBorder}>
-                                <h4>Уровень комфорта</h4>
+                                <h5>Уровень комфорта</h5>
                                 <img style={{width: '60px', height: '60px'}} src="/icon/star.png" alt="wwwww"/>
-                                <h1>{placeRates?.noise}</h1>
+                                <h2>{placeRates?.noise}</h2>
                             </div>
                             <div className={cl.starBorder}>
-                                <h4>Тишина в заведении</h4>
+                                <h5>Тишина в заведении</h5>
                                 <img style={{width: '60px', height: '60px'}} src="/icon/star.png" alt="wwwww"/>
-                                <h1>{placeRates?.comfort}</h1>
+                                <h2>{placeRates?.comfort}</h2>
                             </div>
                             <div className={cl.starBorder}>
-                                <h4>Общая атмосфера</h4>
+                                <h5>Общая атмосфера</h5>
                                 <img style={{width: '60px', height: '60px'}} src="/icon/star.png" alt="wwwww"/>
-                                <h1>{placeRates?.atmosphere}</h1>
+                                <h2>{placeRates?.atmosphere}</h2>
                             </div>
                         </div>
                     </div>

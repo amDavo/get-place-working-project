@@ -112,8 +112,16 @@
 }
 
 .rateBtn {
+    background-color: #f4978e !important;
+    border: none !important;
     margin-top: 20px;
     margin-bottom: 10px;
+    box-shadow: none !important;
+}
+
+.rateBtn:hover {
+    background-color: #f08080 !important;
+    border: none;
 }
 
 .detailDiv {

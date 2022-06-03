@@ -40,8 +40,9 @@ function Comments({id}) {
                     />
                 </FloatingLabel>
                 {/* <button onClick={addHandler}>Добавить</button> */}
-                <Button style={{marginTop: "10px", marginBottom: '20px'}} onClick={addHandler}
-                        variant="outline-success">Добавить
+                <Button className='addBtnComments' style={{marginTop: "10px", marginBottom: '20px'}}
+                        onClick={addHandler}
+                >Добавить
                     комментарий</Button>{' '}
 
             </div>
@@ -50,7 +51,7 @@ function Comments({id}) {
                 <div className="row">
                     {comments.map(comment => {
                             return (
-                                <div style={{marginBottom: '40px'}} className="col-md-8">
+                                <div style={{marginBottom: '5px'}} className="col-md-8">
                                     <div className="media g-mb-30 media-comment">
                                         <div className="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                                             <div className="g-mb-15">
