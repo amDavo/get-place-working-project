@@ -8,11 +8,11 @@ const StartPage = () => {
             <div>
                 <div className='start-page-back'>
                     <div className='start-page-text'>
-                        <h1>Welcome to Workery</h1>
-                        <h3>Work from anywhere anytime</h3>
+                        <h1>Добро пожаловать в Workery</h1>
+                        <h3>Ищи, создавай и оценивай локации для работы по всему городу</h3>
                         <div>
                             <Link to="/main">
-                                <button className="start btn btn-dark">Start now</button>
+                                <button className="start btn btn-dark">Попробовать</button>
                             </Link>
                         </div>
                     </div>

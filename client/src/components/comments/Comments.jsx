@@ -27,8 +27,10 @@ function Comments({id}) {
     return (
         <>
             <div className='commentForm'>
-
-                <FloatingLabel controlId="floatingTextarea2" label="Комментарий">
+                <h3 style={{marginBottom: '30px', marginTop: '20px', color: '#1D3557'}}>Расскажите нам о
+                    своих
+                    впечатлениях!</h3>
+                <FloatingLabel style={{width: '900px'}} controlId="floatingTextarea2" label="Комментарий">
                     <Form.Control
                         value={inputs}
                         onChange={(e) => setInputs(e.target.value)}
@@ -38,7 +40,9 @@ function Comments({id}) {
                     />
                 </FloatingLabel>
                 {/* <button onClick={addHandler}>Добавить</button> */}
-                <Button style={{marginTop:"10px", marginBottom: '20px'}} onClick={addHandler} variant="info">Добавить</Button>{' '}
+                <Button style={{marginTop: "10px", marginBottom: '20px'}} onClick={addHandler}
+                        variant="outline-success">Добавить
+                    комментарий</Button>{' '}
 
             </div>
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {setRatings} from "../../redux/thunk/ratesThunk/ratesThunk";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button, Modal} from "react-bootstrap";
 import {Rating} from "@mui/material";
 import cl from './details.module.css'
@@ -9,10 +9,11 @@ import {useParams} from "react-router-dom";
 
 const RatingModal = ({children}) => {
     const [inputs, setInputs] = useState({})
+    const allPlaces = useSelector(state => state.allPlaces)
     const [show, setShow] = useState(false);
     const dispatch = useDispatch()
     const {id} = useParams()
-    
+
     const changeHandler = (event) => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
@@ -20,7 +21,7 @@ const RatingModal = ({children}) => {
     const submitHandler = (event) => {
         console.log('got u')
         event.preventDefault()
-        dispatch(setRatings({...inputs, place_id: id}))
+        dispatch(setRatings({...inputs, place_id: id, allPlaces}))
         setShow(false)
     }
 

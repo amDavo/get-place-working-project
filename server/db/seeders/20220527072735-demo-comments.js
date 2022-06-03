@@ -11,22 +11,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Comments', [
-        {
-      place_id: 1,
-      user_id: 1,
-      body: 'zaebis mesto',
-          createdAt: new Date(),
-          updatedAt: new Date()
-    },
-      {
-        place_id: 2,
-        user_id: 1,
-        body: 'nishtyak mestechchchchko',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ], {});
+    // await queryInterface.bulkInsert('Comments', [
+    //     {
+    //   place_id: 1,
+    //   user_id: 1,
+    //   body: 'zaebis mesto',
+    //       createdAt: new Date(),
+    //       updatedAt: new Date()
+    // },
+    //   {
+    //     place_id: 2,
+    //     user_id: 1,
+    //     body: 'nishtyak mestechchchchko',
+    //     createdAt: new Date(),
+    //     updatedAt: new Date()
+    //   }
+    // ], {});
   },
 
   async down (queryInterface, Sequelize) {

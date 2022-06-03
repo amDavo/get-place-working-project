@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;400&display=swap');
 
 .generalDiv {
-    margin-left: 15px;
+    width: 50%;
     color: #1D3557;
     font-weight: 100;
     font-family: 'Raleway', sans-serif;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 /*.placeInfo {*/
@@ -21,7 +21,8 @@
 
 .nameDiv {
     margin-top: 20px;
-    font-weight: 200;
+    font-weight: 300;
+    font-size: 25px;
 }
 
 .imageDiv {
@@ -32,9 +33,10 @@
 
 .head {
     font-family: 'Raleway', sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-weight: 400;
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .rating {
@@ -104,14 +106,13 @@
 }
 
 .modalBody {
-    width:500px;
+    width: 500px;
     display: flex;
     justify-content: center;
 }
 
 .rateBtn {
-
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
@@ -126,6 +127,9 @@
 .stars {
     display: flex;
     justify-content: flex-start;
+    /*margin-top: 100px;*/
+    font-family: 'Raleway', sans-serif;
+
 }
 
 .modalBodyMain {
@@ -133,5 +137,45 @@
 }
 
 .comm {
-    margin-left: 60px;
+    margin-left: 15px;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+    /*align-content: center;*/
+}
+
+.starStyle {
+    display: flex;
+    flex-direction: row;
+    margin-right: 300px;
+    align-content: center;
+    color: #1D3557;
+
+}
+
+.starBorder {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+/*.starBorder {*/
+/*    border: 1px solid grey;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px;*/
+/*    display:flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
+
+.starAndComDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
 }
