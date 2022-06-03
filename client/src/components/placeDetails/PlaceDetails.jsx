@@ -5,8 +5,8 @@ import {useParams} from "react-router-dom";
 import cl from './details.module.css'
 import '../../App.css'
 import Comments from "../comments/Comments";
-import ShowOneOnMapButton from "../map/buttons/showOne/ShowOneOnMapButton";
 import RatingModal from "./RatingModal";
+import {Button} from "react-bootstrap";
 
 const PlaceDetails = () => {
     const placeInfo = useSelector(state => state.placeDetails)
@@ -42,9 +42,9 @@ const PlaceDetails = () => {
                     <h3 className={cl.nameDiv}>Часы работы: {placeInfo.working_hours}</h3>
                     <h3 className={cl.nameDiv}>Вход: {placeInfo.free ? "бесплатный" : "платный"}</h3>
                     <h3 className={cl.nameDiv}>Описание: {placeInfo.description}</h3>
-                    <ShowOneOnMapButton/>
+                    {/*<ShowOneOnMapButton/>*/}
                     <RatingModal>
-                        <button onClick={showVote}>Добавить отзыв</button>
+                        <Button variant='success' onClick={showVote}>Оценить локацию</Button>
                     </RatingModal>
 
                 </div>
@@ -77,7 +77,9 @@ const PlaceDetails = () => {
                     <h1>{placeRates[0]?.atmosphere}</h1>
                 </div>
             </div>
-            <Comments id={id}/>
+            <div className={cl.comm}>
+            <Comments  id={id}/>
+            </div>
         </>
     );
 }

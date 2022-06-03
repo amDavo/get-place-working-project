@@ -1,12 +1,25 @@
 .all {
     position: fixed;
     z-index: 4;
-    bottom: 10%;
+    bottom: 5%;
     left: 50%;
     right: 50%;
     font-size: small;
     width: 230px;
-    transform: translate(-50%, -50%);
+    border-radius: 24px !important;
+    transform: translateX(-50%);
+    background-color: black !important;
+    border-color: black !important;
+    opacity: 0.6 !important;
+    transition: -ms-transform 0.25s ease, -webkit-transform 0.25s ease, transform 0.25s ease !important;
+}
+
+.all:hover {
+    opacity: 0.8 !important;
+}
+
+.btn-check:focus + .btn-secondary, .btn-secondary:focus {
+    box-shadow: none !important;
 }
 
 span {

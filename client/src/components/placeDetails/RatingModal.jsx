@@ -34,7 +34,7 @@ const RatingModal = ({children}) => {
         {children}
       </span>
 
-            <Modal className={cl.modalBody} show={show} onHide={handleClose}>
+            <Modal className={cl.modalBodyMain} show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <h5>
                         Расскажите нам о своих впечатлениях

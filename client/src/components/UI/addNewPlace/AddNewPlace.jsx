@@ -18,16 +18,13 @@ const AddNewPlace = () => {
         setInputs(prev => ({...prev, [event.target.name]: event.target.value}))
     }
 
-    console.log(autocompleteValue, '0))))))')
     const addImgHandler = (event) => {
         setFile(event.target.files[0])
     }
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log(autocompleteValue, '=====++==')
         dispatch(addNewPlace({...inputs, file, location: autocompleteValue}))
-
         navigate('/main')
     }
 
@@ -66,10 +63,10 @@ const AddNewPlace = () => {
                             />
                         </Form.Group>
 
-
                         <Form.Group className='mb-3' controlId="formBasicPassword">
                             <h5>Время работы</h5>
                             <div className={cl.hoursDiv}>
+                                <div>
                                 <h6 className={cl.detDiv}>Открыто с</h6>
                                 <Form.Control
                                     className={cl.hours}
@@ -79,6 +76,8 @@ const AddNewPlace = () => {
                                     value={inputs.working_hoursFrom}
                                     onChange={changeHandler}
                                 />
+                                </div>
+                                <div>
                                 <h6 className={cl.detDiv}>Открыто до</h6>
                                 <Form.Control
                                     className={cl.hours}
@@ -88,6 +87,7 @@ const AddNewPlace = () => {
                                     value={inputs.working_hoursTo}
                                     onChange={changeHandler}
                                 />
+                                </div>
                             </div>
                         </Form.Group>
 

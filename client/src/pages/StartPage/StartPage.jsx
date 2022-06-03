@@ -6,27 +6,18 @@ const StartPage = () => {
     return (
         <>
             <div>
-                <div className="gradient1"></div>
-                <div className="gradient2"></div>
-                <div className="gradient3"></div>
-                <div className="gradient4"></div>
-                <div className="gradient5"></div>
-                <div className="gradient6"></div>
-                <div className="gradient7"></div>
-                <div className="gradient8"></div>
-                <div className="gradient9"></div>
                 <div className='start-page-back'>
                     <div className='start-page-text'>
-                        <h1>Welcome to the</h1>
-                        <h1>Workery</h1>
+                        <h1>Welcome to Workery</h1>
+                        <h3>Work from anywhere anytime</h3>
                         <div>
                             <Link to="/main">
-                                <button className='btn btn-primary'>Start your new experience</button>
+                                <button className="start btn btn-dark">Start now</button>
                             </Link>
                         </div>
                     </div>
                     <div className="start-page">
-                        <video className='video' muted="muted" autoplay="autoplay" loop>
+                        <video className='video' muted="muted" autoPlay="autoplay" loop>
                             <source src="/icon/video-work.mp4" type='video/mp4'/>
                         </video>
                     </div>
