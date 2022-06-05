@@ -18,6 +18,4 @@ export const getAllPlaces = (params) => async (dispatch) => {
     })
     dispatch(setAllPlaces(places))
     dispatch(THUNK_getCoordsFromAddress(places))
-
-
 }

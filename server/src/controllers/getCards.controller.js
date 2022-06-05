@@ -138,7 +138,7 @@ const getCards = async (req, res) => {
             })
 
             const sortPlaces = placesWithRating.sort((a, b) => b.dataValues.Rating - a.dataValues.Rating)
-
+            console.log(sortPlaces[0].dataValues)
             res.json(sortPlaces)
         } catch (e) {
             res.sendStatus(500)

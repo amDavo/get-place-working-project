@@ -1,5 +1,5 @@
 import {initState} from "../../initState/initState";
-import {ADD_PLACE, SET_PLACES} from "../../types/types";
+import {ADD_PLACE, GET_PLACES, SET_PLACES} from "../../types/types";
 import {CLEAR_LOCATION, GET_COORDS} from "../../types/locationTypes";
 
 export default function placesReducer(state = initState().allPlaces, action) {
@@ -8,6 +8,10 @@ export default function placesReducer(state = initState().allPlaces, action) {
             return action.payload
         case ADD_PLACE:
             return [...state, action.payload]
+        case GET_PLACES:
+            console.log(action.payload)
+            console.log(3+null)
+            return action.payload
         case GET_COORDS:
             return action.payload
         case CLEAR_LOCATION:

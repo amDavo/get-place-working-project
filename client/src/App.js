@@ -26,7 +26,7 @@ function App() {
         <>
 
             <div className='nav-child'>
-                <Nav/>
+                {/*<Nav/>*/}
             </div>
 
 

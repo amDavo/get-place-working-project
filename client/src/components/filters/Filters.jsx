@@ -2,22 +2,41 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getAllPlaces} from "../../redux/thunk/placesThunk/placesThunk";
 import './module.css'
+import {ggetAllPlaces, setAllPlaces} from "../../redux/actions/allPlacesAction/placesAction";
 
 const Filters = () => {
     const list = useSelector(state => state.allPlaces)
+    //
+    // list.map(el =>  el.wifi = (el?.Rates).reduce((acc,e) => {
+    //     if (e.type_id === 1) {
+    //         return (acc + e.rate_number)/el.length
+    //     }
+    // },0))
 
+   const a = list.sort((a,b) => a.rate.wifi/a.rateCount.wifi - b.rate.wifi/b.rateCount.wifi)
+    console.log(a, 'aaaaa')
+
+
+
+    // const b = a.map(el => (el.Rates).reduce((acc, el) => acc + el.type_id, 0 ))
+    // console.log(a, '22222222')
     const dispatch = useDispatch()
 
     const topFilter = () => {
+
         dispatch(getAllPlaces('top'))
     }
 
     const wifiFilter = () => {
-        dispatch(getAllPlaces('wifi'))
+        const a = list.sort((a,b) => a.rate.wifi/a.rateCount.wifi - b.rate.wifi/b.rateCount.wifi)
+        console.log(a, 'aaaaa')
+        dispatch(ggetAllPlaces(a))
     }
 
     const comfortFilter = () => {
-        dispatch(getAllPlaces('comfort'))
+        const a = list.sort((a,b) => b.rate.comfort/b.rateCount.comfort - a.rate.comfort/a.rateCount.comfort)
+        console.log(a, 'aaaaa')
+        dispatch(ggetAllPlaces(a))
     }
 
     const personalFilter = () => {
@@ -52,6 +71,7 @@ const Filters = () => {
         dispatch(getAllPlaces('Коворкинг'))
     }
 
+    console.log(list)
 
     return (
         <div className='logo-container'>

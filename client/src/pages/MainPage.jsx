@@ -5,6 +5,7 @@ import Filters from "../components/filters/Filters";
 import {useDispatch, useSelector} from "react-redux";
 import classes from './MainPage.module.css'
 import {setViewNavBar} from "../redux/actions/viewNavBarAcction/viewNavBar.action";
+import Nav from "../components/Header/Nav/Nav";
 
 
 const MainPage = () => {
@@ -18,11 +19,14 @@ const MainPage = () => {
 
     return (
         <>
+            <div>
+            <Nav/>
             {!viewNavBar && (
                 <div className='filters'>
                     <Filters/>
                 </div>
             )}
+            </div>
             {/*{!user &&(*/}
             {/*    <div className={classes.errorMessage}>*/}
             {/*       Необходимо зарегистрироваться или войти*/}
